@@ -8,4 +8,4 @@ public class Prova{
     system.out.println("another something")
     system.out.println("this is like vb6")
     /* system.out.print = prints on the screen a line
-    system.out.println = goes down a row and prints a line*/
+    system.out.println = prints a CR (carriage return) after the line is printed*/
