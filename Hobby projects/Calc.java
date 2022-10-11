@@ -3,7 +3,7 @@ import java.lang.Math; //imports Mathematic functions
 public class Calc{
 
     public static void main(String[]args) {
-System.out.println("[°°°°°°Simple Calculator in Java°°°°°° - Copyright(C) 2014-2022 MoonLight Corp.");
+System.out.println("[°°°°°°Simple Calculator in Java°°°°°°]");
 
 char operator;
         double number1, number2, result;  //variables
@@ -11,13 +11,13 @@ char operator;
         Scanner Input = new Scanner(System.in); //creates a new scanner object
 
 
-        System.out.println("Enter here the first number:");
+        System.out.print("Enter here the first number: ");
             number1 = Input.nextDouble();
 
-            System.out.println("Enter here which operation you want to make (+, -, *, /, q for sqrt, p for pow):");
+            System.out.print("Enter here which operation you want to make (+, -, *, /, q for sqrt, p for pow, a for average): ");
         operator = Input.next().charAt(0); //asks for an operator
        
-        System.out.println("Enter here the second number");
+        System.out.print("Enter here the second number: ");
             number2 = Input.nextDouble();
 
             switch (operator) {
@@ -49,14 +49,25 @@ char operator;
                 case 'q':
                Double resultsqrt1 = Math.sqrt(number1);
                  Double resultsqrt2 = Math.sqrt(number2);
-                System.out.println("First sqrt value: " + resultsqrt1);
-                System.out.println("Second sqrt value:" + resultsqrt2);
+                System.out.print("First sqrt value: " + resultsqrt1);
+                System.out.print("Second sqrt value:" + resultsqrt2);
                 break;
 
                 //performs pow
                 case 'p':
                 double resultpow1 = Math.pow(number1, number2);
                 System.out.println(number1 + " power of " +number2 + " = " +resultpow1);
+                break;
+
+                //does an average between the two numbers
+                case 'a':
+                double number3;
+                
+                System.out.print("Enter here the third number to do an average: ");
+                number3 = Input.nextDouble();
+
+                double resulta = (number1 + number2 + number3)/3;
+                System.out.println("The average between the two numbers is: " + resulta);
                 break;
 
 
