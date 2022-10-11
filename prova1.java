@@ -59,6 +59,10 @@ public class prova1{
         System.out.println(a);
         System.out.println(n);
         /*print function: System.out.print for the same line, System.out.println */
+        /* system.out.println = print a CR (carriage return) after the line is printed, aka
+         * I write something
+         * it goes down one line after it prints out that
+         */
     }
 
 }
