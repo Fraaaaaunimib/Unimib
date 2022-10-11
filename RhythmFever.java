@@ -14,6 +14,7 @@ public class RhythmFever {
              */
 
              // ask time
+             boolean distance2;
              int hour, minute, second, hourtosecond, minutetosecond;
              char min;
              double distance, secondtotal, rhythmfever, hourtominute, secondtominute, minutetotal;
@@ -28,6 +29,12 @@ public class RhythmFever {
              second = tastiera.nextInt();
 
              // ask the distance
+             System.out.print("Do you want to calculate your distance in metres or kilometres? true for metres, false for kilometers. ");
+            distance2 = tastiera.nextBoolean();
+
+            System.out.println("Ok, we'll be measuring this marathon in " + distance2 + ".");
+
+             //ask the distance value
              System.out.print("Enter here how much distance you want your marathon to be: ");
             distance = tastiera.nextInt();
 
@@ -39,16 +46,20 @@ public class RhythmFever {
             secondtominute = second / 60;
 
             // select which in min or seconds
-            System.out.print("Enter if you want it in minutes or seconds. ");
+            System.out.print("Enter if you want it in minutes or seconds. (Type true for minutes, type 2 for seconds) ");
             min = tastiera.next().charAt(0);
 
             switch (min) {
                 case '1':
             minutetotal = hourtominute + minute + secondtominute;
 
-                rhythmfever = (distance)/ minutetotal;
+            if (distance2 = true);    
+            rhythmfever = (distance)/ minutetotal;
+                System.out.println("Here's your rhythm - in km/m: " + rhythmfever);
 
-                System.out.println("Here's your rhythm - " + rhythmfever);
+                if (distance2 = false);
+                rhythmfever = (distance)/minutetotal;
+                System.out.println("Here's your rhythm - in m/s: " + rhythmfever);
                 break;
 
                 case '2':
@@ -56,12 +67,15 @@ public class RhythmFever {
                
             secondtotal = hourtosecond + minutetosecond + second;
 
+        
             
-            
-            
-
+                if (distance2 = true);
                 rhythmfever = (distance)/ secondtotal;
-                System.out.println("Here's your rhythm - " + rhythmfever);
+                System.out.println("Here's your rhythm - in km/s: " + rhythmfever);
+
+                if (distance2 = false);
+                rhythmfever = (distance)/secondtotal;
+                System.out.println("Here's your rhythm - in m/s: " + rhythmfever);
                 break;
             }
 
