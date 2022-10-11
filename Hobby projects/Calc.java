@@ -8,6 +8,7 @@ public class Calc{
 
 System.out.println("[°°°°°°Simple Calculator in Java°°°°°°] (10/10/2022)");
 
+
 char operator;
         double number1, number2, result, resto;  //variables
 
