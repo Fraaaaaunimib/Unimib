@@ -6,16 +6,68 @@ public class undiciott {
         Scanner tastiera = new Scanner (System.in);
         
 
-        int baseM;
-        int basem;
-        int altezzaT;
+        //secondo problema:
+            /*calcolare il ritmo in min/km per percorrere una maratona nel tempo specificato dall'utente.
+             * 1) chiediamo il tempo in ore, minuti e secondi
+             * 2) chiedere la distanza che si vuole avere
+             * 
+             */
 
-        baseM= tastiera.nextInt();
-        basem = tastiera.nextInt();
-        altezzaT = tastiera.nextInt();
+             // ask time
+             int hour, minute, second, hourtosecond, minutetosecond;
+             char min;
+             double distance, secondtotal, rhythmfever, hourtominute, secondtominute, minutetotal;
+                
+             System.out.print("Enter here how much time you want your marathon to be, in hour: ");
+             hour = tastiera.nextInt();
+             
+             System.out.print("Now type the minutes: ");
+             minute = tastiera.nextInt();
 
-        System.out.println("La base maggiore del trapezio è: " + baseM + ", la base minore è: " + basem + ", e l'altezza è: " + altezzaT);
-        tastiera.close(); //closes the input after reading it
+             System.out.print("Now type the seconds: ");
+             second = tastiera.nextInt();
+
+             // ask the distance
+             System.out.print("Enter here how much distance you want your marathon to be: ");
+            distance = tastiera.nextInt();
+
+            // make the rhythm
+            hourtosecond = hour * 3600;
+                
+            minutetosecond = minute * 60;
+            hourtominute = hour * 60;
+            secondtominute = second / 60;
+
+            // select which in min or seconds
+            System.out.print("Enter if you want it in minutes or seconds. ");
+            min = tastiera.next().charAt(0);
+
+            switch (min) {
+                case '1':
+            minutetotal = hourtominute + minute + secondtominute;
+
+                rhythmfever = (distance)/ minutetotal;
+
+                System.out.println("Here's your rhythm - " + rhythmfever);
+                break;
+
+                case '2':
+
+               
+            secondtotal = hourtosecond + minutetosecond + second;
+
+            
+            
+            
+
+                rhythmfever = (distance)/ secondtotal;
+                System.out.println("Here's your rhythm - " + rhythmfever);
+                break;
+            }
+
+
+ tastiera.close();
+
     }
 
 }

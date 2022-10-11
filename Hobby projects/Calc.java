@@ -3,10 +3,10 @@ import java.lang.Math; //imports Mathematic functions
 public class Calc{
 
     public static void main(String[]args) {
-System.out.println("[°°°°°°Simple Calculator in Java°°°°°°]");
+System.out.println("[°°°°°°Simple Calculator in Java°°°°°°] (10/10/2022)");
 
 char operator;
-        double number1, number2, result;  //variables
+        double number1, number2, result, resto;  //variables
 
         Scanner Input = new Scanner(System.in); //creates a new scanner object
 
@@ -42,7 +42,8 @@ char operator;
                 //performs division between numbers
                 case '/':
                 result = number1 / number2;
-                System.out.println(number1 + " / " + number2 + " = " + result);
+                resto = number1 % number2;
+                System.out.println(number1 + " / " + number2 + " = " + result + " with a rest of " + resto);
                 break;
 
                 //performs sqrt between numbers...?

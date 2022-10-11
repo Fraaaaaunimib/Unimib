@@ -52,6 +52,12 @@ public class prova1{
         System.out.println(piGreco);
         System.out.println(d);
 
+        // prova del quiz
+        int c = 30;
+        int n = c++; //firstly, the value gets assigned - then augmented
+        int a = ++c; /*firstly, it augments the value out of nowhere, and then assigns the value. */ 
+        System.out.println(a);
+        System.out.println(n);
         /*print function: System.out.print for the same line, System.out.println */
     }
 
