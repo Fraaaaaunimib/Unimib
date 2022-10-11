@@ -1,6 +1,6 @@
 import java.util.Scanner; //imports scanner library from java.util
 
-public class undiciott {
+public class RhythmFever {
     public static void main (String[] args)    {
 
         Scanner tastiera = new Scanner (System.in);
