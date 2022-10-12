@@ -14,10 +14,12 @@ public class RhythmFever {
              */
 
              // ask time
-             boolean distance2;
+             char distance2;
+             boolean distance3 = true;
              int hour, minute, second, hourtosecond, minutetosecond;
              char min;
              double distance, secondtotal, rhythmfever, hourtominute, secondtominute, minutetotal;
+             String resultmsg = "Initialising this variable";
                 
              System.out.print("Enter here how much time you want your marathon to be, in hour: ");
              hour = tastiera.nextInt();
@@ -29,10 +31,24 @@ public class RhythmFever {
              second = tastiera.nextInt();
 
              // ask the distance
-             System.out.print("Do you want to calculate your distance in metres or kilometres? true for metres, false for kilometers. ");
-            distance2 = tastiera.nextBoolean();
+             System.out.print("Do you want to calculate your distance in metres or kilometres? a for metres, b for kilometers. ");
+             distance2 = tastiera.next().charAt(0);
 
-            System.out.println("Ok, we'll be measuring this marathon in " + distance2 + ".");
+             switch (distance2) {
+                case 'a':
+                    distance3 = true;
+                    resultmsg = "Ok, we'll be measuring this marathon in metres.";
+
+                case 'b':
+                    distance3 = false;
+                    resultmsg = "Ok, we'll be measuring this marathon in kilometers.";
+             }
+
+            System.out.println(resultmsg);
+            
+             
+
+
 
              //ask the distance value
              System.out.print("Enter here how much distance you want your marathon to be: ");
@@ -46,42 +62,43 @@ public class RhythmFever {
             secondtominute = second / 60;
 
             // select which in min or seconds
-            System.out.print("Enter if you want it in minutes or seconds. (Type true for minutes, type 2 for seconds) ");
+            System.out.print("Enter if you want it in minutes or seconds. (Type a for minutes, type b for seconds) ");
             min = tastiera.next().charAt(0);
 
             switch (min) {
-                case '1':
+                case 'a':
             minutetotal = hourtominute + minute + secondtominute;
 
-            if (distance2 = true);    
+            if (distance3 = true);    
             rhythmfever = (distance)/ minutetotal;
-                System.out.println("Here's your rhythm - in km/m: " + rhythmfever);
+                System.out.println("Here's your rhythm - in km/min: " + rhythmfever + " km/min");
+            
 
-                if (distance2 = false);
-                rhythmfever = (distance)/minutetotal;
-                System.out.println("Here's your rhythm - in m/s: " + rhythmfever);
-                break;
+            if (distance3 = false);
+            rhythmfever = (distance)/minutetotal;
+            System.out.println("Here's your rhythm - in m/min: " + rhythmfever + " m/min");
+            break;
 
-                case '2':
+            case 'b':
 
                
             secondtotal = hourtosecond + minutetosecond + second;
 
         
             
-                if (distance2 = true);
+                if (distance3 = true);
                 rhythmfever = (distance)/ secondtotal;
-                System.out.println("Here's your rhythm - in km/s: " + rhythmfever);
+                System.out.println("Here's your rhythm - in km/s: " + rhythmfever + " km/s");
 
-                if (distance2 = false);
+                if (distance3 = false);
                 rhythmfever = (distance)/secondtotal;
-                System.out.println("Here's your rhythm - in m/s: " + rhythmfever);
+                System.out.println("Here's your rhythm - in m/s: " + rhythmfever + " m/s");
                 break;
             }
 
 
  tastiera.close();
-
+System.out.println("Let's write here the value of distance3: " + distance3);
     }
 
 }
