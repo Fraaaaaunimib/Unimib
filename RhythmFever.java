@@ -39,19 +39,26 @@ public class RhythmFever {
                 case 'a':
                     distance3 = true;
 
+                    
+                        System.out.println("Ok, we'll be measuring this marathon in metres.");
+                   break;
+
                 case 'b':
                     distance3 = false;
 
+                    
+                        System.out.println("Ok, we'll be measuring this marathon in kilometers.");
+                      
+                break;
 
                    
              }
-
-             if (distance3 = true){
-                System.out.println("Ok, we'll be measuring this marathon in metres.");
-            }
-            else {
-                System.out.println("Ok, we'll be measuring this marathon in kilometers.");
-            }
+if (distance3 == true){
+    distance3 = true;
+}
+else {
+    distance3 = false;
+}
             
              //ask the distance value
              System.out.print("Enter here how much distance you want your marathon to be: ");
@@ -73,7 +80,7 @@ public class RhythmFever {
             minutetotal = hourtominute + minute + secondtominute;
             time = true;
 
-            if (distance3 = true){
+            if (distance3 == true){
                 rhythmfever = (distance)/ minutetotal;
                 System.out.println("Here's your rhythm - in m/min: " + rhythmfever + " m/min");
             }   
@@ -91,7 +98,7 @@ public class RhythmFever {
 
         
             
-                if (distance3 = true){
+                if (distance3 == true){
                     rhythmfever = (distance)/ secondtotal;
                     System.out.println("Here's your rhythm - in m/s: " + rhythmfever + " m/s");
                 }
@@ -110,12 +117,24 @@ public class RhythmFever {
             
 System.out.println("Let's write here the value of distance3: " + distance3 + " and time: " + time);
 
-                if (time = true){
-                    System.out.println("The time you've chosen for this marathon was: " + hour + " hours, " + minute + " minutes, and " + second + "seconds, with a distance of " + distance + " m.");
+                if (time == true){
+                        if (distance3 == true){
+                            System.out.println("The time you've chosen for this marathon was: " + hour + " hours, " + minute + " minutes, and " + second + "seconds, with a distance of " + distance + " m.");
+                        }
+                        else{
+                            System.out.println("The time you've chosen for this marathon was: " + hour + " hours, " + minute + " minutes, and " + second + "seconds, with a distance of " + distance + " km.");
+                        }
+                   
                 }
 
                      else{
-                        System.out.println("The time you've chosen for this marathon was: " + hour + " hours, "+ minute + " minutes, and "+ second + " seconds, with a distance of " + distance + " km.");
+                        if (distance3 == true){
+                            System.out.println("The time you've chosen for this marathon was: " + hour + " hours, "+ minute + " minutes, and "+ second + " seconds, with a distance of " + distance + " m.");
+                        }
+                        else {
+                            System.out.println("The time you've chosen for this marathon was: " + hour + " hours, "+ minute + " minutes, and "+ second + " seconds, with a distance of " + distance + " km.");
+                        }
+                        
 
                      }
                     }
