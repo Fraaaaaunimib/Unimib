@@ -16,10 +16,11 @@ public class RhythmFever {
              // ask time
              char distance2;
              boolean distance3 = true;
+             boolean time = true;
              int hour, minute, second, hourtosecond, minutetosecond;
              char min;
              double distance, secondtotal, rhythmfever, hourtominute, secondtominute, minutetotal;
-             String resultmsg = "Initialising this variable";
+
                 
              System.out.print("Enter here how much time you want your marathon to be, in hour: ");
              hour = tastiera.nextInt();
@@ -37,19 +38,21 @@ public class RhythmFever {
              switch (distance2) {
                 case 'a':
                     distance3 = true;
-                    resultmsg = "Ok, we'll be measuring this marathon in metres.";
 
                 case 'b':
                     distance3 = false;
-                    resultmsg = "Ok, we'll be measuring this marathon in kilometers.";
+
+
+                   
              }
 
-            System.out.println(resultmsg);
+             if (distance3 = true){
+                System.out.println("Ok, we'll be measuring this marathon in metres.");
+            }
+            else {
+                System.out.println("Ok, we'll be measuring this marathon in kilometers.");
+            }
             
-             
-
-
-
              //ask the distance value
              System.out.print("Enter here how much distance you want your marathon to be: ");
             distance = tastiera.nextInt();
@@ -68,33 +71,34 @@ public class RhythmFever {
             switch (min) {
                 case 'a':
             minutetotal = hourtominute + minute + secondtominute;
+            time = true;
 
             if (distance3 = true){
                 rhythmfever = (distance)/ minutetotal;
-                System.out.println("Here's your rhythm - in km/min: " + rhythmfever + " km/min");
+                System.out.println("Here's your rhythm - in m/min: " + rhythmfever + " m/min");
             }   
            
             else{
                 rhythmfever = (distance)/minutetotal;
-                System.out.println("Here's your rhythm - in m/min: " + rhythmfever + " m/min");
+                System.out.println("Here's your rhythm - in km/min: " + rhythmfever + " km/min");
             }
             break;
 
             case 'b':
 
-               
+               time = false;
             secondtotal = hourtosecond + minutetosecond + second;
 
         
             
                 if (distance3 = true){
                     rhythmfever = (distance)/ secondtotal;
-                    System.out.println("Here's your rhythm - in km/s: " + rhythmfever + " km/s");
+                    System.out.println("Here's your rhythm - in m/s: " + rhythmfever + " m/s");
                 }
                 
                 else {
                     rhythmfever = (distance)/secondtotal;
-                    System.out.println("Here's your rhythm - in m/s: " + rhythmfever + " m/s");
+                    System.out.println("Here's your rhythm - in km/s: " + rhythmfever + " km/s");
                 }
                 
                 break;
@@ -102,10 +106,23 @@ public class RhythmFever {
 
 
  tastiera.close();
-System.out.println("Let's write here the value of distance3: " + distance3);
+// value writing...?
+            
+System.out.println("Let's write here the value of distance3: " + distance3 + " and time: " + time);
+
+                if (time = true){
+                    System.out.println("The time you've chosen for this marathon was: " + hour + " hours, " + minute + " minutes, and " + second + "seconds, with a distance of " + distance + " m.");
+                }
+
+                     else{
+                        System.out.println("The time you've chosen for this marathon was: " + hour + " hours, "+ minute + " minutes, and "+ second + " seconds, with a distance of " + distance + " km.");
+
+                     }
+                    }
+
     }
 
-}
+
 
 
 
