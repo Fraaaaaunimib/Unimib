@@ -37,6 +37,20 @@ public class Rhythm {
         // create a new Scanner object
         Scanner tastiera = new Scanner (System.in);
 
+        // ASCII art
+        String string = """
+            $$\\                   $$\\     $$\\                     
+            $$ |                  $$ |    $$ |                    
+   $$$$$$\\  $$$$$$$\\  $$\\   $$\\ $$$$$$\\   $$$$$$$\\  $$$$$$\\$$$$\\  
+  $$  __$$\\ $$  __$$\\ $$ |  $$ |\\_$$  _|  $$  __$$\\ $$  _$$  _$$\\ 
+  $$ |  \\__|$$ |  $$ |$$ |  $$ |  $$ |    $$ |  $$ |$$ / $$ / $$ |
+  $$ |      $$ |  $$ |$$ |  $$ |  $$ |$$\\ $$ |  $$ |$$ | $$ | $$ |
+  $$ |      $$ |  $$ |\\$$$$$$$ |  \\$$$$  |$$ |  $$ |$$ | $$ | $$ |
+  \\__|      \\__|  \\__| \\____$$ |   \\____/ \\__|  \\__|\\__| \\__| \\__|
+                      $$\\   $$ |                                  
+                      \\$$$$$$  |                                  
+                       \\______/                                                                                 
+                """;
 
         // ANSI strings - check https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences for all details
         final String ANSI_BOLD = "\u001B[1m"; // makes text afterwards bold
@@ -44,6 +58,9 @@ public class Rhythm {
         final String ANSI_ITALIC = "\u001B[3m"; // makes the text italic
         final String ANSI_GREEN1 = "\u001B[38;2;62;142;146m"; // colour variable: \u001B[38;2 <-- this tells to just colour the text;R;G;Bm <-- rgb values
         final String ANSI_GREENB = "\u001B[48;2;62;244;197m"; // prints the background as green
+        final String ANSI_ORANGE1 = "\u001B[38;2;207;188;0m";
+        final String ANSI_BLACK = "\u001B[38;2;0,0,0m";
+        final String ANSI_WHITEB = "\u001B[48;2;240;240;240m";
 
         // string to reset the colours to default values
         final String ANSI_RESET = "\033[49m";
@@ -63,12 +80,17 @@ public class Rhythm {
              char min;
              double distance, secondtotal, rhythm, hourtominute, secondtominute, minutetotal;
 
+
+             // start program
+             System.out.println(" ");
+             System.out.println(string);
+             System.out.println(" ");
              // ask how many hours 
-             System.out.print("Enter here how much time you want your marathon to be, in hour: ");
+             System.out.print("Enter here how much time you want your marathon to be," + ANSI_ORANGE1 +" in hours." + ANSI_RESET + " --> " + ANSI_BOLD + ANSI_BLACK + ANSI_WHITEB);
              hour = tastiera.nextInt();
              
              // ask how many minutes
-             System.out.print("Now type the minutes: ");
+             System.out.print(ANSI_BOLD_END + ANSI_RESET + "Now type the minutes: ");
              minute = tastiera.nextInt();
 
              // ask how many seconds
