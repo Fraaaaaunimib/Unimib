@@ -42,11 +42,11 @@
                 ________  ___  ___      ___    ___ _________  ___  ___  _____ ______         
                 |\\   __  \\|\\  \\|\\  \\    |\\  \\  /  /|\\___   ___\\  \\\\|\\  \\|\\   _ \\  _   \\       
                 \\ \\  \\|\\  \\ \\  \\\\\\  \\   \\ \\  \\/  / ||___ \\  \\_\\ \\  \\\\\\  \\ \\  \\\\\\__\\ \\  \\      
-                \\ \\   _  _\\ \\   __  \\   \\ \\    / /     \\ \\  \\ \\ \\   __  \\ \\  \\\\|__| \\  \\     
-                \\ \\  \\\\  \\\\ \\  \\ \\  \\   \\/  /  /       \\ \\  \\ \\ \\  \\ \\  \\ \\  \\    \\ \\  \\    
-                \\ \\__\\\\ _\\\\ \\__\\ \\__\\__/  / /          \\ \\__\\ \\ \\__\\ \\__\\ \\__\\    \\ \\__\\   
+                 \\ \\   _  _\\ \\   __  \\   \\ \\    / /     \\ \\  \\ \\ \\   __  \\ \\  \\\\|__| \\  \\     
+                  \\ \\  \\\\  \\\\ \\  \\ \\  \\   \\/  /  /       \\ \\  \\ \\ \\  \\ \\  \\ \\  \\    \\ \\  \\    
+                   \\ \\__\\\\ _\\\\ \\__\\ \\__\\__/  / /          \\ \\__\\ \\ \\__\\ \\__\\ \\__\\    \\ \\__\\   
                     \\|__|\\|__|\\|__|\\|__|\\___/ /            \\|__|  \\|__|\\|__|\\|__|     \\|__|   
-                                    \\|___|/                                                                                                                              
+                                       \\|___|/                                                                         
                     """;
 
             // ANSI strings - check https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences for all details
@@ -238,7 +238,7 @@
                             }
                             else {
                                 System.out.println(ANSI_BOLD_END + ANSI_RESET);
-                                System.out.println("[[ The time you've chosen for this marathon was: " + ANSI_BOLD + ANSI_RED + hour + ANSI_BOLD_END + ANSI_RESET + " hours, "+ ANSI_BOLD + ANSI_ORANGE1 + minute + ANSI_BOLD_END + ANSI_RESET + " minutes, and "+ ANSI_GREEN1 + ANSI_BOLD + second + ANSI_BOLD_END + ANSI_RESET +" seconds, with a distance of " + ANSI_YELLOW + ANSI_BOLD + distance + ANSI_BOLD_END + ANSI_RESET + " km. ]]");
+                                System.out.println("[[ The time you've chosen for this marathon was: " + ANSI_BOLD + ANSI_RED + hour + ANSI_BOLD_END + ANSI_RESET + " hours, "+ ANSI_BOLD + ANSI_ORANGE1 + minute + ANSI_BOLD_END + ANSI_RESET + " minutes, and "+ ANSI_GREEN1 + ANSI_BOLD + second + ANSI_BOLD_END + ANSI_RESET +" seconds, with a distance of " + ANSI_YELLOW + ANSI_BOLD + distance + ANSI_BOLD_END + ANSI_RESET + " km. ]] o(*≧▽≦)ツ┏━┓");
                                 System.out.println(ANSI_BOLD_END + ANSI_RESET);
                             }
                             
