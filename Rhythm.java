@@ -125,7 +125,7 @@ public class Rhythm {
 
              // ask the distance
              System.out.println(ANSI_BOLD_END + ANSI_RESET);
-             System.out.print(ANSI_BOLD_END + ANSI_RESET + "[[ Do you want to calculate your distance in metres or kilometres? ]]" + ANSI_ITALIC + ANSI_BLUE + ANSI_GRAYB + " (Type a for metres, b for kilometers.)" + ANSI_RESET + ANSI_WHITE + " --> " + ANSI_SOL1 + ANSI_SOL11 + ANSI_BOLD);
+             System.out.print(ANSI_BOLD_END + ANSI_RESET + "[[ Do you want to calculate your distance in metres or kilometres? ]] " + ANSI_ITALIC + ANSI_BLUE + ANSI_GRAYB + "(Type a for metres, b for kilometers.)" + ANSI_RESET + ANSI_WHITE + " --> " + ANSI_SOL1 + ANSI_SOL11 + ANSI_BOLD);
              distance2 = tastiera.next().charAt(0);
              
              // make a switch for distance -> if "a" then do thing, if "b" then do other thing.
@@ -164,7 +164,7 @@ public class Rhythm {
 
             // select if you want time in minutes or seconds
             System.out.println(ANSI_BOLD_END + ANSI_RESET);
-            System.out.print(ANSI_BOLD_END + ANSI_RESET + "[[ Do you want to measure the speed in minutes or seconds? ]]" + ANSI_ITALIC + ANSI_GREEN1 + ANSI_GRAYB + " (Type a for minutes, type b for seconds)" + ANSI_RESET + ANSI_BOLD_END + "  --> " + ANSI_SOL1 + ANSI_SOL11 + ANSI_BOLD);
+            System.out.print(ANSI_BOLD_END + ANSI_RESET + "[[ Do you want to measure the speed in minutes or seconds? ]] " + ANSI_ITALIC + ANSI_GREEN1 + ANSI_GRAYB + "(Type a for minutes, type b for seconds)" + ANSI_RESET + ANSI_BOLD_END + "  --> " + ANSI_SOL1 + ANSI_SOL11 + ANSI_BOLD);
             min = tastiera.next().charAt(0);
 
             // check what you've written in console
