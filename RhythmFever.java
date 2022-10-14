@@ -69,14 +69,15 @@ public class RhythmFever {
                 case 'a':
             minutetotal = hourtominute + minute + secondtominute;
 
-            if (distance3 = true);    
-            rhythmfever = (distance)/ minutetotal;
+            if (distance3 = true){
+                rhythmfever = (distance)/ minutetotal;
                 System.out.println("Here's your rhythm - in km/min: " + rhythmfever + " km/min");
-            
-
-            if (distance3 = false);
-            rhythmfever = (distance)/minutetotal;
-            System.out.println("Here's your rhythm - in m/min: " + rhythmfever + " m/min");
+            }   
+           
+            else{
+                rhythmfever = (distance)/minutetotal;
+                System.out.println("Here's your rhythm - in m/min: " + rhythmfever + " m/min");
+            }
             break;
 
             case 'b':
@@ -86,13 +87,16 @@ public class RhythmFever {
 
         
             
-                if (distance3 = true);
-                rhythmfever = (distance)/ secondtotal;
-                System.out.println("Here's your rhythm - in km/s: " + rhythmfever + " km/s");
-
-                if (distance3 = false);
-                rhythmfever = (distance)/secondtotal;
-                System.out.println("Here's your rhythm - in m/s: " + rhythmfever + " m/s");
+                if (distance3 = true){
+                    rhythmfever = (distance)/ secondtotal;
+                    System.out.println("Here's your rhythm - in km/s: " + rhythmfever + " km/s");
+                }
+                
+                else {
+                    rhythmfever = (distance)/secondtotal;
+                    System.out.println("Here's your rhythm - in m/s: " + rhythmfever + " m/s");
+                }
+                
                 break;
             }
 
