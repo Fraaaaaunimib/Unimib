@@ -2,14 +2,51 @@
  * Made by Fraaaaa#7481 - October 2022
 */
 
+/*    ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ 
+     /  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  /|
+    /  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // 
+   /  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  
+  /  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //   
+ /_ //_ //_ //_ //_ //_ //_ //_ //_ //_ //_ //_ //_ //_ //_ //_ //_ //_ //    
+|__|/__|/__|/__|/__|/__|/__|/__|/__|/__|/__|/__|/__|/__|/__|/__|/__|/__|/               
+ ________  ___  ___      ___    ___ _________  ___  ___  _____ ______         
+|\   __  \|\  \|\  \    |\  \  /  /|\___   ___\\  \|\  \|\   _ \  _   \       
+\ \  \|\  \ \  \\\  \   \ \  \/  / ||___ \  \_\ \  \\\  \ \  \\\__\ \  \      
+ \ \   _  _\ \   __  \   \ \    / /     \ \  \ \ \   __  \ \  \\|__| \  \     
+  \ \  \\  \\ \  \ \  \   \/  /  /       \ \  \ \ \  \ \  \ \  \    \ \  \    
+   \ \__\\ _\\ \__\ \__\__/  / /          \ \__\ \ \__\ \__\ \__\    \ \__\   
+    \|__|\|__|\|__|\|__|\___/ /            \|__|  \|__|\|__|\|__|     \|__|   
+                       \|___|/                                                
+      ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___ ___    
+     /  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  /|    
+    /  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //     
+   /  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //      
+  /  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  //       
+ /_ //_ //_ //_ //_ //_ //_ //_ //_ //_ //_ //_ //_ //_ //_ //_ //_ //        
+|__|/__|/__|/__|/__|/__|/__|/__|/__|/__|/__|/__|/__|/__|/__|/__|/__|/         
+                                                                              
+                                                                               */
+
 import java.util.Scanner; //imports scanner library from java.util
 
 public class Rhythm {
     public static void main (String[] args)    {
 
+
+
         // create a new Scanner object
         Scanner tastiera = new Scanner (System.in);
-        
+
+
+        // ANSI strings - check https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences for all details
+        final String ANSI_BOLD = "\u001B[1m"; // makes text afterwards bold
+        final String ANSI_BOLD_END = "\u001B[0m"; // makes the text return to its normal state
+        final String ANSI_ITALIC = "\u001B[3m"; // makes the text italic
+        final String ANSI_GREEN1 = "\u001B[38;2;62;142;146m"; // colour variable: \u001B[38;2 <-- this tells to just colour the text;R;G;Bm <-- rgb values
+        final String ANSI_GREENB = "\u001B[48;2;62;244;197m"; // prints the background as green
+
+        // string to reset the colours to default values
+        final String ANSI_RESET = "\033[49m";
 
         //secondo problema:
             /*calcolare il ritmo in min/km per percorrere una maratona nel tempo specificato dall'utente.
@@ -39,19 +76,19 @@ public class Rhythm {
              second = tastiera.nextInt();
 
              // ask the distance
-             System.out.print("Do you want to calculate your distance in metres or kilometres? a for metres, b for kilometers. ");
+             System.out.print("Do you want to calculate your distance in metres or kilometres? (Type a for metres, b for kilometers.)");
              distance2 = tastiera.next().charAt(0);
              
              // make a switch for distance -> if "a" then do thing, if "b" then do other thing.
              switch (distance2) {
                 case 'a':
                     distance3 = true;
-                        System.out.println("Ok, we'll be measuring this marathon in metres.");
+                        System.out.println("Ok, we'll be measuring this marathon in" + ANSI_BOLD + " metres" + ANSI_BOLD_END);
                    break; // remember to put break otherwise it doesn't check for the rest
 
                 case 'b':
                     distance3 = false;
-                        System.out.println("Ok, we'll be measuring this marathon in kilometers.");
+                        System.out.println("Ok, we'll be measuring this marathon in" + ANSI_BOLD + " kilometers." + ANSI_BOLD_END);
                 break;
 
                    
@@ -74,7 +111,7 @@ public class Rhythm {
             secondtominute = second / 60;
 
             // select if you want time in minutes or seconds
-            System.out.print("Enter if you want it in minutes or seconds. (Type a for minutes, type b for seconds) ");
+            System.out.print("Do you want to measure the speed in minutes or seconds?" + ANSI_ITALIC + ANSI_GREEN1 + ANSI_GREENB + "(Type a for minutes, type b for seconds)" + ANSI_RESET + ANSI_BOLD_END + "  --> ");
             min = tastiera.next().charAt(0);
 
             // check what you've written in console
