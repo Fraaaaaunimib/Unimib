@@ -109,8 +109,8 @@
                 System.out.println(string);
 
                 // ask how many hours 
-                System.out.println(ANSI_BOLD_END + ANSI_RESET);
-                System.out.print("[[ Enter here how long is this marathon," + ANSI_RED +" in hours" + ANSI_RESET + ANSI_RESET2 + " ]]" + ANSI_WHITE + " --> " + ANSI_SOL1 + ANSI_SOL11 + ANSI_BOLD);
+                System.out.print(ANSI_BOLD_END + ANSI_RESET);
+                System.out.print("[[ Enter here how long is this marathon," + ANSI_RED +" in hours" + ANSI_RESET + ANSI_RESET2 + " ]]" + ANSI_WHITE + " --> " + ANSI_SOL1 + ANSI_SOL11 + ANSI_BOLD  + '\n' + ANSI_RESET);
                 hour = tastiera.nextInt();
                 
                 // ask how many minutes
