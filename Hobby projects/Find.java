@@ -16,24 +16,24 @@ public class Find {
             """;
                     
             String search = """
-            ║       ,@@@@@@/                                 ║
-            ║    (@@@      @@@                               ║
-            ║   @@            @@                             ║
-            ║  @@             ,@(                            ║
-            ║  &@             %@        Insert the text      ║
-            ║   @@,          @@(        you want to          ║
-            ║     @@@@.  .@@@@@/*       SEARCH!              ║
-            ║         @@@@    ..%&&                          ║
-            ║                    &&&&#                       ║
-            ║                      (%&%%                     ║
+            ║       ,@@@@@@/                                  ║
+            ║    (@@@      @@@                                ║
+            ║   @@            @@                              ║
+            ║  @@             ,@(                             ║
+            ║  &@             %@        Insert the text       ║
+            ║   @@,          @@(        you want to           ║
+            ║     @@@@.  .@@@@@/*       SEARCH!               ║
+            ║         @@@@    ..%&&                           ║
+            ║                    &&&&#                        ║
+            ║                      (%&%%                      ║
             """;
                     
         do{
             
             System.out.print(string);
 
-        System.out.println(search);
-        System.out.println("║                                                ║");
+        System.out.print(search);
+        System.out.println("║                                                 ║");
         System.out.print("║   Text: --> ");
         String s = in.next();
         String toSearch = in.next();

@@ -110,22 +110,22 @@
 
                 // ask how many hours 
                 System.out.print(ANSI_BOLD_END + ANSI_RESET);
-                System.out.print("[[ Enter here how long is this marathon," + ANSI_RED +" in hours" + ANSI_RESET + ANSI_RESET2 + " ]]" + ANSI_WHITE + " --> " + ANSI_SOL1 + ANSI_SOL11 + ANSI_BOLD  + '\n' + ANSI_RESET);
+                System.out.print("[[ Enter here how long is this marathon," + ANSI_RED +" in hours" + ANSI_RESET + ANSI_RESET2 + " ]]" + ANSI_WHITE + " --> " + ANSI_SOL1 + ANSI_SOL11 + ANSI_BOLD + ANSI_RESET);
                 hour = tastiera.nextInt();
                 
                 // ask how many minutes
                 System.out.println(ANSI_BOLD_END + ANSI_RESET);
-                System.out.print(ANSI_BOLD_END + ANSI_RESET + ANSI_BLACKB + "[[ Now type the " + ANSI_ORANGE1 + "minutes" + ANSI_RESET + ANSI_RESET2 + " ]]" + ANSI_WHITE + " --> " + ANSI_SOL1 + ANSI_SOL11 + ANSI_BOLD);
+                System.out.print(ANSI_BOLD_END + ANSI_RESET + ANSI_BLACKB + "[[ Now type the " + ANSI_ORANGE1 + "minutes" + ANSI_RESET + ANSI_RESET2 + " ]]" + ANSI_WHITE + " --> " + ANSI_SOL1 + ANSI_SOL11 + ANSI_BOLD + ANSI_RESET);
                 minute = tastiera.nextInt();
 
                 // ask how many seconds
                 System.out.println(ANSI_BOLD_END + ANSI_RESET);
-                System.out.print(ANSI_BOLD_END + ANSI_RESET + "[[ Now type the " + ANSI_GREEN1 + "seconds" + ANSI_RESET + ANSI_RESET2 + " ]]" + ANSI_WHITE + " --> " + ANSI_SOL1 + ANSI_SOL11 + ANSI_BOLD);
+                System.out.print(ANSI_BOLD_END + ANSI_RESET + "[[ Now type the " + ANSI_GREEN1 + "seconds" + ANSI_RESET + ANSI_RESET2 + " ]]" + ANSI_WHITE + " --> " + ANSI_SOL1 + ANSI_SOL11 + ANSI_BOLD + ANSI_RESET);
                 second = tastiera.nextInt();
 
                 // ask the distance
                 System.out.println(ANSI_BOLD_END + ANSI_RESET);
-                System.out.print(ANSI_BOLD_END + ANSI_RESET + "[[ Do you want to calculate your distance in metres or kilometres? ]] " + ANSI_ITALIC + ANSI_BLUE + ANSI_GRAYB + "(Type a for metres, b for kilometers.)" + ANSI_RESET + ANSI_WHITE + " --> " + ANSI_SOL1 + ANSI_SOL11 + ANSI_BOLD);
+                System.out.print(ANSI_BOLD_END + ANSI_RESET + "[[ Do you want to calculate your distance in metres or kilometres? ]] " + ANSI_ITALIC + ANSI_BLUE + ANSI_GRAYB + "(Type a for metres, b for kilometers.)" + ANSI_RESET + ANSI_WHITE + " --> " + ANSI_SOL1 + ANSI_SOL11 + ANSI_BOLD + ANSI_RESET);
                 distance2 = tastiera.next().charAt(0);
                 
                 // make a switch for distance -> if "a" then do thing, if "b" then do other thing.
@@ -147,7 +147,7 @@
                 
                 //ask the distance value
                 System.out.println(ANSI_BOLD_END + ANSI_RESET);
-                System.out.print(ANSI_BOLD_END + ANSI_RESET +"[[ Enter here how much distance you want your marathon to be: ]]" + ANSI_RESET + ANSI_WHITE + " --> " + ANSI_SOL1 + ANSI_SOL11 + ANSI_BOLD);
+                System.out.print(ANSI_BOLD_END + ANSI_RESET +"[[ Enter here how much distance you want your marathon to be: ]]" + ANSI_RESET + ANSI_WHITE + " --> " + ANSI_SOL1 + ANSI_SOL11 + ANSI_BOLD + ANSI_RESET);
                 distance = tastiera.nextInt();
 
                 // convert from hour to seconds --> for time = false
