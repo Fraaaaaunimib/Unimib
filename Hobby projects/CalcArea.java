@@ -65,7 +65,7 @@ public class CalcArea {
             altezza_2= tastiera.nextDouble();
 
                 result = ((base + altezza) * altezza_2) / 2;
-                System.out.println ("Risultato aera del trapezio: " + result);
+                System.out.println ("Risultato area del trapezio: " + result);
                 break;
 
         }
