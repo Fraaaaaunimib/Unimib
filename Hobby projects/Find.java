@@ -6,7 +6,7 @@ public class Find {
 
         String s1;
         String toSearch1;
-        int found1;
+   //     int found1;
         int index1;
 
         String string = """

@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.lang.Math;
+// import java.lang.Math;
 public class es_lab_diciottoott {
     public static void main(String[]args) {
 
@@ -76,9 +76,8 @@ public class es_lab_diciottoott {
 /* definisca due variabili carattere x e y;
 • assegni alla variabile x il valore ’a’, alla variabile y il valore ’b’;
 • stampi a video la stringa ab. */
-/* /
-        char x3 = 'a', y3 = 'b';
-        
+/* /* */
+        char x3 = 'a', y3 = 'b';        
             System.out.println("┣ stampiamo sia la a che la b assieme senza il + se no lo somma ┣━━>  " + x3+y3);
 
  ////////////////////////////////////////////////////////////////
@@ -144,6 +143,12 @@ forma seguente:
                 i++;
                 a = 3*a-2;
                 System.out.println(a);
+                int a2 = 2147483640, b = 5;
+                int result;
+                result = a2+(b-5*3)+b*5;
+                System.out.println(result);
+                
+Input.close();
 
                 /*
                  * come funzionano le successioni
