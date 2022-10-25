@@ -97,7 +97,7 @@ public class es_lab_venticinqueott {
         int resto;
        String risultato = "";
   quoziente = numero/2;
-  quoziente = quoziente / 2;
+  
                     resto = quoziente%2;
         if (numero < 0 | numero > 127) {
             System.out.println("This does not work");
@@ -105,77 +105,99 @@ public class es_lab_venticinqueott {
                 quoziente = numero / 2;
                 resto = quoziente%2;
                 
-                if (resto == 0) { //1
-                    quoziente = quoziente /2;
-                    resto = quoziente%2;
-                    risultato = risultato + resto;
+                // carattere 1
+                String risultatoparte1 = "0";
+                String risultatoparte2 = "0";
+                String risultatoparte3 = "0";
+                String risultatoparte4 = "0";
+                String risultatoparte5 = "0";
+                String risultatoparte6 = "0";
+                String risultatoparte7 = "0";
+
+                if (resto == 0) {
+                    quoziente = numero/2;
+                    resto = numero%2;
+                    risultatoparte1 = "0";
                 } else if (resto == 1) {
                     quoziente = numero/2;
-                    resto = quoziente%2;
-                    risultato = risultato + resto;
+                    resto = numero%2;
+                    risultatoparte1 = "1";
                 }
 
-                if (resto == 0) { //2
-                    quoziente = quoziente /2;
+                
+                if (resto == 0) {
+                    quoziente = quoziente/2;
+                resto = quoziente%2;
+                    risultatoparte2 = "0";
+                } else if (resto == 1) {
+                    quoziente = quoziente/2;
+                resto = quoziente%2;
+                    risultatoparte2 = "1";
+                }
+
+                if (resto == 0) {
+                    quoziente = quoziente/2;
                     resto = quoziente%2;
-                    risultato = risultato + resto;
+                    risultatoparte3 = "0";
                 } else if (resto == 1) {
                     quoziente = quoziente/2;
                     resto = quoziente%2;
-                    risultato = risultato + resto;
+                    risultatoparte3 = "1";
                 }
 
-                if (resto == 0) { //3
-                    quoziente = quoziente /2;
+                if (resto == 0) {
+                    quoziente = quoziente/2;
                     resto = quoziente%2;
-                    risultato = risultato + resto;
+                    risultatoparte4 = "0";
                 } else if (resto == 1) {
                     quoziente = quoziente/2;
                     resto = quoziente%2;
-                    risultato = risultato + resto;
+                    risultatoparte4 = "1";
                 }
 
-                if (resto == 0) { //4
-                    quoziente = quoziente /2;
+                if (resto == 0) {
+                    quoziente = quoziente/2;
                     resto = quoziente%2;
-                    risultato = risultato + resto;
+                    risultatoparte5 = "0";
                 } else if (resto == 1) {
                     quoziente = quoziente/2;
                     resto = quoziente%2;
-                    risultato = risultato + resto;
+                    risultatoparte5 = "1";
                 }
 
-                if (resto == 0) { //5
-                    quoziente = quoziente /2;
+                if (resto == 0) {
+                    quoziente = quoziente/2;
                     resto = quoziente%2;
-                    risultato = risultato + resto;
+                    risultatoparte6 = "0";
                 } else if (resto == 1) {
                     quoziente = quoziente/2;
                     resto = quoziente%2;
-                    risultato = risultato + resto;
+                    risultatoparte6 = "1";
                 }
 
-                if (resto == 0) { //6
-                    quoziente = quoziente /2;
+                if (resto == 0) {
+                    quoziente = quoziente/2;
                     resto = quoziente%2;
-                    risultato = risultato + resto;
+                    risultatoparte7 = "0";
                 } else if (resto == 1) {
                     quoziente = quoziente/2;
                     resto = quoziente%2;
-                    risultato = risultato + resto;
+                    risultatoparte7 = "1";
                 }
 
-                if (resto == 0) { //7
-                    quoziente = quoziente /2;
-                    resto = quoziente%2;
-                    risultato = risultato + resto;
-                } else if (resto == 1) {
-                    quoziente = quoziente/2;
-                   resto = quoziente%2;
-                    risultato = risultato + resto;
+
+                String risultato1 = risultato.concat(risultatoparte7);
+                String risultato2 = risultato1.concat(risultatoparte6);
+                String risultato3 = risultato2.concat(risultatoparte5);
+                String risultato4 = risultato3.concat(risultatoparte4);
+                String risultato5 = risultato4.concat(risultatoparte3);
+                String risultato6 = risultato5.concat(risultatoparte2);
+                String risultato7 = risultato6.concat(risultatoparte1);
+
+                System.out.println(risultato7);
+
                 }
-                System.out.println(risultato);
-                }
+            }
                 /* while (quoziente != 0) {
                    
 
@@ -194,7 +216,7 @@ public class es_lab_venticinqueott {
       
 
    
-    } 
+    
     
 
    
