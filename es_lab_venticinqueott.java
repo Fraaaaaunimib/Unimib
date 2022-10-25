@@ -91,7 +91,7 @@ public class es_lab_venticinqueott {
         System.out.println("The string isn't made out of four characters.");
         System.exit(0);
     }
-*/
+*/ /* 
     // esercizio 5
         int numero; 
 
@@ -198,14 +198,14 @@ public class es_lab_venticinqueott {
                 String risultato4 = risultato3.concat(risultatoparte4);
                 String risultato5 = risultato4.concat(risultatoparte3);
                 String risultato6 = risultato5.concat(risultatoparte1);
-                String risultato7 = risultato6.concat(risultatoparte2); // non capisco perché invertire l'uno con il due qua
+                String risultato7 = risultato6.concat(risultatoparte2); // non capisco perché invertire l'uno con il due
 
                 System.out.println(risultato7);
                 input.close();
 
                 }
     }
-            }
+            
                 /* while (quoziente != 0) {
                    
 
@@ -224,7 +224,6 @@ public class es_lab_venticinqueott {
       
         // esercizio 6
 
-   
     
     
 
@@ -235,3 +234,125 @@ public class es_lab_venticinqueott {
 */
 
 
+// esercizio 2
+String stringa = "";
+String stringa2 = "";
+
+stringa = input.next();
+char char1 = stringa.charAt(0);
+char char2 = stringa.charAt(1);
+char char3 = stringa.charAt(2);
+char char4 = stringa.charAt(3);
+char char5 = stringa.charAt(4);
+
+
+int a1 = 0;
+int a2 = 0;
+int a3 = 0;
+int a4 = 0;
+int a5 = 0;
+int a = 0;
+int b = 4;
+int b1 = 0;
+int b2 = 0;
+int b3 = 0;
+int b4 = 0;
+int b5 = 0;
+
+if (stringa.length() <= 5 & stringa.length() > 0 & char1 == 43 | char1 == 45 | char2 == 43 | char2 == 45 | char3 ==43 | char3 == 45 | char4 == 43 | char4 == 45 | char5 == 43 | char5 == 45){
+                
+
+                    if (char1 == 43) {
+                        a1 = 1;
+                    } else if (char1 == 45) {
+                        a1 = -1;
+                    }
+
+                    if (char2 == 43) {
+                        a2 = 1;
+                    } else if (char2 == 45) {
+                        a2 = -1;
+                    }
+
+                    if (char3 == 43) {
+                        a3 = 1;
+                    } else if (char3 == 45) {
+                        a3 = -1;
+                    } 
+
+                    if (char4 == 43) {
+                        a4 = 1;
+                    } else if (char4 == 45) {
+                        a4 = -1;
+                    }
+
+                    if (char5 == 43) {
+                        a5 = 1;
+                    } else if (char4 == 45) {
+                        a5 = -1;
+                    }
+
+                    a = a1+a2+a3+a4+a5;
+
+                    System.out.println("The first variable has this value: " + a);
+
+                    
+                } else {
+                    System.out.println("Well, that's an error.");
+                    System.exit(0);
+                }
+
+                stringa2 = input.next();
+
+
+char char11 = stringa2.charAt(0);
+char char12 = stringa2.charAt(1);
+char char13 = stringa2.charAt(2);
+char char14 = stringa2.charAt(3);
+char char15 = stringa2.charAt(4);
+                if ( stringa2.length() <= 4 | stringa2.length() > 0 | char11 == 43 | char11 == 45 | char12 == 43 | char12 == 45 | char13 ==43 | char13 == 45 | char14 == 43 | char14 == 45 | char15 == 43 | char15 == 45){
+                // seconda stringa
+                if (char11 == 43) {
+                     b1 = 1;
+                } else if (char11 == 45) {
+                   b1 = -1;
+                }
+
+                if (char12 == 43) {
+                    b2 = 1;
+                } else if (char12 == 45) {
+                     b2 = -1;
+                }
+
+                if (char13 == 43) {
+                       b3 = 1;
+                } else if (char13 == 45) {
+                       b3 = -1;
+                } 
+
+                if (char14 == 43) {
+                       b4 = 1;
+                } else if (char14 == 45) {
+                        b4 = -1;
+                }
+
+                if (char15 == 43) {
+                      b5 = 1;
+                } else if (char14 == 45) {
+                    b5 = -1;
+                }
+
+                b = b+b1+b2+b3+b4+b5;
+
+                System.out.println("The second variable has this value: " + b);
+
+                } else {
+                    System.out.println("This is an error.");
+                    System.exit(0);
+                }
+
+                input.close();
+
+                }
+    }
+    

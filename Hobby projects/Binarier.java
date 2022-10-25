@@ -144,9 +144,8 @@ public class Binarier {
 
                         System.out.println(ANSI_SOL1 + ANSI_SOL11 + end + "║  " + ANSI_SOL2 + risultato7 + ANSI_SOL1 + ANSI_SOL11 + "                                   ║" + "\n" + end2 + ANSI_RESET + ANSI_RESET2);
                         System.out.print(ANSI_RESET + ANSI_RESET2);
-                input.close();
 
-                }
+                        input.close();
+            }
+        }
     }
-    
-}
