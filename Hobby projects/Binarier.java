@@ -1,103 +1,34 @@
 import java.util.Scanner;
-
-public class es_lab_venticinqueott {
-
-    public static void main (String[]Args) {
-
+public class Binarier {
+    public static void main (String[]Args){
         Scanner input = new Scanner(System.in);
- /* 
-        // primo esercizio: valore assoluto di un numero
-        System.out.print("Digit a number: ");
-        double numero1 = input.nextDouble();
-
-    if (numero1 < 0) {
-        double numero2 = numero1 - numero1 - numero1;
-        System.out.println("Valore assoluto, baby! " + numero2);
-        } else {
-            System.out.println(numero1);
-        }
-        
-    // esercizio due: leeggi due numeri interi, calcola la divisione tra interi
-    System.out.println("");
-    System.out.print("Enter now a brand new number: ");
-    int numero1es2num = input.nextInt();
-
-    System.out.print("Enter now the second term of your division: ");
-    int numero1es2den = input.nextInt();
-
-    if (numero1es2den == 0){
-        System.out.println("Oops, sorry, you can't make a division by zero");
-        System.exit(0);
-    } else {
-        System.out.println(numero1es2num / numero1es2den);
-
-        
-    }
-*/
-    // esercizio tre: leggere da tastiera messaggio, posizione, e stringa, e cambia la frase
-
-    
-    
-    /* 
-    String messaggio = "";
-    int posizione = 0;
-    String stringa = "";
-
-    System.out.println("Entra frase: ");
-    messaggio=input.next();
-
-    System.out.println("Posizione: ");
-    posizione = input.nextInt();
-    if (posizione > 0 & posizione < messaggio.length()-1) {
-        if (messaggio == "") {
-            System.out.println("Well that's the end of the road");
-        } else {
-        System.out.println("c");
-        input.nextLine();
-        stringa = input.nextLine();
-    
-        String nuovastringauno = messaggio.substring(0,posizione);
-        String nuovastringadue = messaggio.substring(posizione, messaggio.length());
-    
-        System.out.println(nuovastringauno + stringa + nuovastringadue);
-    }
-        } else {
-            System.out.println("Oops, this is not a valid string ;-;");
-            System.exit(0);
-        }
-    
-
-        */
-    // esercizio 4
-    /*
-    String caratteri;
-    int char1, char2, char3, char4;
-    System.out.print("Enter a string of four characters --> ");
-    caratteri = input.nextLine();
-    char1 =  caratteri.charAt(0);
-    char2 = caratteri.charAt(1);
-    char3 = caratteri.charAt(2);
-    char4 = caratteri.charAt(3);
-   
-
-    if (caratteri.length() == 4){
-    
-        if (char1 < 48 | char1 > 58 | char2 < 48 | char2 > 58 | char3 < 48 | char3 > 58 | char4 < 48 | char4 > 58) {
-            System.out.println("ERROR");
-        } else {
-            System.out.println("This is a valid string");
-        }
-    } else {
-        System.out.println("The string isn't made out of four characters.");
-        System.exit(0);
-    }
-*/
-    // esercizio 5
+        // esercizio 5
         int numero; 
 
+        final String ANSI_BOLD = "\u001B[1m"; // makes text afterwards bold
+            final String ANSI_BOLD_END = "\u001B[0m"; // makes the text return to its normal state
+            final String ANSI_ORANGE1 = "\u001B[38;2;207;188;0m";
+            final String ANSI_RESET = "\033[49m";
+            final String ANSI_RESET2 = "\033[39m";
+            final String ANSI_SOL1 = "\u001B[48;2;0;43;54m";
+            final String ANSI_RED = "\u001B[38;2;220;58;47m";
+            final String ANSI_SOL11 = "\u001B[38;2;253;246;227m";
+            final String ANSI_SOL2 = "\u001B[38;2;131;148;150m";
+
+        String start = """
+            ╔════════════════════════════════════════════╗
+            ║                                            ║
+            ║ Binarier                                   ║
+            ║ ┬┬┬┬┬┬┬┬ Transform any number into binary  ║
+            ║                                            ║
+            ╚════════════════════════════════════════════╝
+                """;
+
+        System.out.println(ANSI_SOL1 + ANSI_SOL11 + start + ANSI_RESET + ANSI_RESET2);
         System.out.println("This has been a one heck of an exercise.");
-        System.out.print("Enter now a number between 0 and 127 -->");
+        System.out.print("Enter now a number between 0 and 127 --> " + ANSI_BOLD + ANSI_ORANGE1);
         numero = input.nextByte();
+        System.out.print(ANSI_BOLD_END + ANSI_RESET + ANSI_RESET2);
         
         int quoziente = (int)numero;
         int resto;
@@ -106,7 +37,8 @@ public class es_lab_venticinqueott {
   
                     resto = quoziente%2;
         if (numero < 0 | numero > 127) {
-            System.out.println("This does not work");
+            System.out.println(ANSI_RED + "This does not work sadly." + ANSI_RESET + ANSI_RESET2);
+            System.exit(0);
             } else {
                 quoziente = numero / 2;
                 resto = quoziente%2;
@@ -200,38 +132,21 @@ public class es_lab_venticinqueott {
                 String risultato6 = risultato5.concat(risultatoparte1);
                 String risultato7 = risultato6.concat(risultatoparte2); // non capisco perché invertire l'uno con il due qua
 
-                System.out.println(risultato7);
+                System.out.println("The results are in! Your decimal number transformed into binary is...");
+
+                String end = """
+                    ╔════════════════════════════════════════════╗
+                        """;
+
+                        String end2 = """
+                    ╚════════════════════════════════════════════╝ 
+                                """;
+
+                        System.out.println(ANSI_SOL1 + ANSI_SOL11 + end + "║  " + ANSI_SOL2 + risultato7 + ANSI_SOL1 + ANSI_SOL11 + "                                   ║" + "\n" + end2 + ANSI_RESET + ANSI_RESET2);
+                        System.out.print(ANSI_RESET + ANSI_RESET2);
                 input.close();
 
                 }
     }
-            }
-                /* while (quoziente != 0) {
-                   
-
-                    risultato = resto + risultato + resto;
-                    /*  
-                    if (resto == 1) {
-                        System.out.print(resto);
     
-                    } else if (resto == 0) {
-                        System.out.print(resto);
-        
-                    }
-                    
-        }
-      
-      
-        // esercizio 6
-
-   
-    
-    
-
-   
-    // chiusura input
-
-    
-*/
-
-
+}
