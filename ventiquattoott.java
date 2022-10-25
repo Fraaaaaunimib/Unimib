@@ -66,7 +66,7 @@ if (indice4==-1){
             int n = tastiera.nextInt();
 */
 
-System.out.print(" We don't need no light, why is it on? - enter a number, please ");
+/* System.out.print(" We don't need no light, why is it on? - enter a number, please ");
 int n = tastiera.nextInt();
             if (n%2==0){
                 if (n%3==0) {
@@ -87,7 +87,7 @@ int n = tastiera.nextInt();
                 System.out.println(a*b - a);
 
                 // Esercizio 2 pagina 80 /* /* */
-                double a1 = tastiera.nextDouble();
+               /*  double a1 = tastiera.nextDouble();
                 int b2 = (int)a1;
                 System.out.println(a1 + " " + b2);
                 byte c1 = (byte)b2;
@@ -95,7 +95,7 @@ int n = tastiera.nextInt();
                 /* */
 
                 // esercizio 3 pagina 80
-                System.out.println("");
+               /*   System.out.println("");
                 double a2 = tastiera.nextDouble();
                 double b3 = (a2%2.0);
                 int c2 = (int)a2;
@@ -107,13 +107,50 @@ int n = tastiera.nextInt();
                 System.out.println(u+(v*w)+x);
                 System.out.println(u+(y%(v*w))+x);
                 System.out.println((u++ / v) + (u++ * w));
-                System.out.println(u++/v + u++*w); // they're different with parenthesis or not
+                System.out.println(u++/v + u++*w); // they're different with parenthesis or notyst
             
-     tastiera.close();   
+
+                // il ciclo While
+                int conteggio = 0;
+                System.out.print("Il ciclo While: ");
+                conteggio = tastiera.nextInt();
+
+                while(conteggio <=10){
+                    System.out.println(conteggio);
+                    conteggio++;
+                }
+                /* in questo caso, il ciclo While continua ad eseguire system.out e
+                 * ad aumentare di uno la variabile se hai inserito un numero minore o
+                 * uguale a 10, fino a quando il valore della variabile non arriva a 10.
+                 */
+                /* boolean conteggioo = false;
+                 while (conteggio >= 10 & conteggio < 90){
+                    System.out.println(conteggio);
+                    conteggio++;
+                 } */
+                // ciclo per le potenze
+
+                double n1 = 0;
+                    System.out.println("Inserisci un valore intero: ");
+                    n1 = tastiera.nextDouble();
+
+                    double contatore = 0;
+                    double potenza = 1;
+
+                    while(contatore <= n1){
+                        potenza = 2*potenza;
+                        System.out.println(contatore + " " + potenza);
+                        contatore++;
+                    }
+                       
+                        
+                        tastiera.close();
+                    }
+    
          
         }
 
-    }
+    
 
 
     
