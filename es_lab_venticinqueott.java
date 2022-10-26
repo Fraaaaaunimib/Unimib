@@ -310,7 +310,7 @@ char char12 = stringa2.charAt(1);
 char char13 = stringa2.charAt(2);
 char char14 = stringa2.charAt(3);
 char char15 = stringa2.charAt(4);
-                if ( stringa2.length() <= 4 | stringa2.length() > 0 | char11 == 43 | char11 == 45 | char12 == 43 | char12 == 45 | char13 ==43 | char13 == 45 | char14 == 43 | char14 == 45 | char15 == 43 | char15 == 45){
+                if ( stringa2.length() <= 4 & stringa2.length() > 0 | char11 == 43 | char11 == 45 | char12 == 43 | char12 == 45 | char13 ==43 | char13 == 45 | char14 == 43 | char14 == 45 | char15 == 43 | char15 == 45){
                 // seconda stringa
                 if (char11 == 43) {
                      b1 = 1;
@@ -351,8 +351,86 @@ char char15 = stringa2.charAt(4);
                     System.exit(0);
                 }
 
+                while (a != b) {
+
+                    if (a == b)
+                   System.out.println("Yay you've reached the end of the program, hurrah!");
+
+                    if (char1 == 43) {
+                        a1 = 1;
+                    } else if (char1 == 45) {
+                        a1 = -1;
+                    }
+
+                    if (char2 == 43) {
+                        a2 = 1;
+                    } else if (char2 == 45) {
+                        a2 = -1;
+                    }
+
+                    if (char3 == 43) {
+                        a3 = 1;
+                    } else if (char3 == 45) {
+                        a3 = -1;
+                    } 
+
+                    if (char4 == 43) {
+                        a4 = 1;
+                    } else if (char4 == 45) {
+                        a4 = -1;
+                    }
+
+                    if (char5 == 43) {
+                        a5 = 1;
+                    } else if (char4 == 45) {
+                        a5 = -1;
+                    }
+
+                    a = a1+a2+a3+a4+a5;
+
+                    System.out.println("The first variable has this value: " + a);
+
+                    if (char11 == 43) {
+                        b1 = 1;
+                   } else if (char11 == 45) {
+                      b1 = -1;
+                   }
+   
+                   if (char12 == 43) {
+                       b2 = 1;
+                   } else if (char12 == 45) {
+                        b2 = -1;
+                   }
+   
+                   if (char13 == 43) {
+                          b3 = 1;
+                   } else if (char13 == 45) {
+                          b3 = -1;
+                   } 
+   
+                   if (char14 == 43) {
+                          b4 = 1;
+                   } else if (char14 == 45) {
+                           b4 = -1;
+                   }
+   
+                   if (char15 == 43) {
+                         b5 = 1;
+                   } else if (char14 == 45) {
+                       b5 = -1;
+                   }
+   
+                   b = b+b1+b2+b3+b4+b5;
+   
+                   System.out.println("The second variable has this value: " + b);
+   
+                   } 
+
+                if (a == b)
+                System.out.println("Yay you've reached the end of the program, hurrah!");
+
                 input.close();
 
                 }
-    }
     
+            }
