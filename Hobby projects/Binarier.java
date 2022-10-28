@@ -25,7 +25,6 @@ public class Binarier {
                 """;
 
         System.out.println(ANSI_SOL1 + ANSI_SOL11 + start + ANSI_RESET + ANSI_RESET2);
-        System.out.println("This has been a one heck of an exercise.");
         System.out.print("Enter now a number between 0 and 127 --> " + ANSI_BOLD + ANSI_ORANGE1);
         numero = input.nextByte();
         System.out.print(ANSI_BOLD_END + ANSI_RESET + ANSI_RESET2);
