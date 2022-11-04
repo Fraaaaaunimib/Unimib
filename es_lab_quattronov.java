@@ -201,7 +201,7 @@ final String ANSI_RED = "\u001B[38;2;220;58;47m";
             String secondplayerdraw;
             String parola;
 
-            String secondplayerwin = ANSI_BOLD + ANSI_RED + secondplayer + ANSI_RESET + ANSI_RESET2 + ANSI_BOLD_END + "! Congratulations, this has been one of the best games we've ever seen here! Come back next time for an even better game!";
+           
 String start = """
         
     ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -240,11 +240,23 @@ String start = """
         System.out.println(ANSI_SOL1 + ANSI_SOL11 + "Alright, the results are in..." + ANSI_RESET + ANSI_RESET2 + "Remember, it's a very important game.");
         System.out.println();
 
-        Thread.sleep(3000);
+        try {
+            Thread.sleep(3000);
+          } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+          }
         System.out.print(ANSI_BOLD + ANSI_RED + "Ro..." + ANSI_RESET + ANSI_RESET2 + ANSI_BOLD_END);
-        Thread.sleep(1000);
+        try {
+            Thread.sleep(1000);
+          } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+          }
         System.out.print(ANSI_BOLD + ANSI_ORANGE1 + "sham..." + ANSI_RESET + ANSI_RESET2 + ANSI_BOLD_END);
-        Thread.sleep(1000);
+        try {
+            Thread.sleep(1000);
+          } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+          }
         System.out.print(ANSI_BOLD + ANSI_SOL11 + "bo!" + ANSI_RESET + ANSI_RESET2 + ANSI_BOLD_END);
 
         if (firstplayerdraw.equals("rock") && secondplayerdraw.equals("rock")){
@@ -260,12 +272,30 @@ String start = """
 
         }
 
-        if (firstplayerdraw.equals("rock") && secondplayerdraw.equals("paper")) {
+        if (firstplayerdraw.equals("paper") && secondplayerdraw.equals("rock")) {
             System.out.println("And the winner is... ");
-            Thread.sleep(1000);
+            String secondplayerwin = ANSI_BOLD + ANSI_RED + secondplayer + ANSI_RESET + ANSI_RESET2 + ANSI_BOLD_END + "! Congratulations, this has been one of the best games we've ever seen here! Come back next time for an even better game!";
+            try {
+                Thread.sleep(1000);
+              } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+              }
             System.out.println(secondplayerwin);
 
         }
+
+        if (firstplayerdraw.equals("scissors") && secondplayerdraw.equals("rock")) {
+            System.out.println("And the winner is... ");
+            String secondplayerwin = ANSI_BOLD + ANSI_RED + secondplayer + ANSI_RESET + ANSI_RESET2 + ANSI_BOLD_END + "! Congratulations, this has been one of the best games we've ever seen here! Come back next time for an even better game!";
+            try {
+                Thread.sleep(1000);
+              } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+              }
+            System.out.println(secondplayerwin);
+
+        }
+
        System.out.println("Scrivi ANCORA per continuare, STOP per fermarti");
        parola = sc.next();
 
