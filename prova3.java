@@ -1,31 +1,36 @@
 import java.util.Scanner;
 public class prova3 {
     public static void main (String[]args) {
-         // secondo criterio: richiesta all'utente
-    // scrive una stringa al contrario, fino a quando l'utente vuole
-    String parola = "";
-    Scanner tastiera = new Scanner(System.in);
-    
+
+    System.out.println(9*(3/9)-3*(2/6));
+
+    int a,b,c,d,e,risultato;
+    a=3;
+    b=4;
+    c=5;
+    d=4;
+    e=2;
+    risultato = (a*b)/d + (e*(d*c/e)) - d*(c/e);
+    //23-2*(5/1) = 10
+    System.out.println(risultato);
+    System.out.println(5+200*(4/8)-7*(-3+1));
+    System.out.println(4/8);
+    System.out.println(200*(4/8));
+    System.out.println(5+200*(4/8));
+    System.out.println(-7*(-3+1));
 
     System.out.println("");
-    
-    do{
-        System.out.println("Scrivi una stringa. ");
-    parola = tastiera.next();
 
-         // parola al contrario
-         int indice = parola.length()-1;
-         while (indice>= 0){
-            System.out.print(parola.charAt(indice));
-            indice--;
+    String s3 = "Corso";
 
-        }
-        System.out.println("Scrivi ANCORA per continuare, STOP per fermarti");
-        parola = tastiera.next();
+    String s2 = "Programmazione";
 
-       
-    } while(!parola.equals("STOP"));
+    s2 = s3+s2;
 
-    
+    System.out.println(s2);
+
+    int i = 0;
+while (i < 10)
+System.out.println("ciao"); 
     }
 }
