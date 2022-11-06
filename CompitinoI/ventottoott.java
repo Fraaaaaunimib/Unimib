@@ -99,6 +99,7 @@ public class ventottoott {
     } while(!parola.equals("STOP"));
 
 
+    tastiera.close();
     // terzo caso: sentinella
     String testo = "", linea = "";
     final char SENTINELLA = '#';

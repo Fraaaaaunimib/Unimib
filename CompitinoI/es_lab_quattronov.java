@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class es_lab_quattronov {
     public static void main(String[] args) {
         //due numeri interi
-        int a=0,b=0, c=0, i;
+       // int a=0,b=0, c=0, i;
 
         Scanner sc = new Scanner(System.in);
 
@@ -276,11 +276,305 @@ if (pesooggetto == 0) {
         }
         */
 
-        String string1 = sc.next();
-        String string2 = sc.next();
+    /*    int x=2, y=3;
 
-        
-       }
+        do {
        
+           do {
+       
+              x=x+y;
+       
+           } while(x<6);
+       
+           x=x-1;
+       
+        } while(x<=8);
+       
+        System.out.println(x);
+
+        int i2 = 1; 
+boolean trovato = false; 
+while ((i2 < 10) || !trovato) { 
+    if (i2 % 3 == 0) 
+       trovato = true; 
+    i2++; 
+    System.out.println(i2);
+
+
+    x=1;
+*/ /* 
+int x =-1;
+    do {
+   
+        x=x-2;
+   
+        do {
+   
+            x=x+1;
+   
+        } while(x<5);
+   
+    } while(x<=4);
+   
+    System.out.println(x);
+
+ i = 1; 
+boolean trovato = false; 
+while ((i < 10) && !trovato) { 
+    if (i % 3 == 0) 
+        trovato = true; 
+    i++; 
+    System.out.println(i);
+}
+
+System.out.print("Insert a number: ");
+int n2;
+i = 0;
+int n = sc.nextInt();
+
+do {
+    System.out.print(i+" ");
+    System.out.print("You may enter the same number you've entered previously: ");
+    n2 = sc.nextInt();
+    i++;
+} while (n2 != n);
+if (n2 == n) {
+    System.exit(0);
+}
+*/
+ //fattoriale
+ /*
+System.out.print("Enter a number to be inserted: ");
+int n5, n4;
+n5 = 1;
+int n3 = sc.nextInt();
+    if (n3 == 0){
+        System.out.println("1");
+        System.exit(0);
     }
+n4 = n3-1;
+n5 = n3*n4;
+System.out.println(n5);
+n3 = n3-1;
+
+
+while (n5 > 0 && n5 != 0){
+    n3 = n3-1;
+    n5 = n5*n3;
+    System.out.println(n5);
+
+    /*
+    scrive 8
+    7
+    1 = 7
+     */
+    /* 
+int base, exp;
+int contatore;
+
+     
+     int totale = 1;
+
+     /*
+      * potenza
+      base = 3
+      esponente = 3
+      base * base * base
+      */
+      /*
+     String parola;
+     do {
+        System.out.print("Leggi la base: ");
+        base = sc.nextInt();
+   
+        System.out.print("Leggi l'esponente: ");
+        exp = sc.nextInt();
+        contatore = exp -1; //devo mettere -1 perché conta da zero e non da uno
+        while (contatore > 0){
+            base = base * exp;
+            contatore--;
+        }
+        System.out.println(base);
+        System.out.print("Scrivi STOP per fermarti: ");
+        parola = sc.next();
+
+     } while (!parola.equals("STOP"));
+*/
+String s1,s2;
+int contatore1, contatoresbagliato1, contatoresbagliato2, contatore2;
+contatoresbagliato1 = 0;
+contatoresbagliato2 = 0;
+
+do {
+    do{
+     System.out.print("Scrivi una sequenza di cinque zeri e uno: ");
+     s1 = sc.next();
+     contatore1 = s1.length() -1;
+     contatoresbagliato1 = 0;
+    
+    while (contatore1 > 0){
+        if (s1.charAt(contatore1) != 48 && s1.charAt (contatore1) != 49){
+            contatoresbagliato1++;
+        }
+        contatore1--;
+    }
+    
+
+    if (contatoresbagliato1 == 1) {
+        System.out.println("Hai " + contatoresbagliato1 + " carattere non valido, riprova.");
+    }
+
+    if (contatoresbagliato1 > 0 && contatoresbagliato1 != 1) {
+        contatoresbagliato1 = contatoresbagliato1 + 1;
+        System.out.println("Hai " + contatoresbagliato1 + " caratteri non validi, riprova.");
+    }  
+
+    if (s1.length() > 5){
+        System.out.println("Hai messo troppi numeri, riprova");
+    }
+
+    if (s1.length() < 5){
+        System.out.println("Hai messo troppi pochi numeri, riprova");
+    }
+    } while (s1.length() > 5 || s1.length() < 5);
+
+    
+} while (contatoresbagliato1 > 0);
+
+do {
+    do{
+     System.out.print("Scrivi una sequenza di cinque zeri e uno un'altra volta: ");
+     s2 = sc.next();
+     contatore2 = s2.length() -1;
+     contatoresbagliato2 = 0;
+    
+    while (contatore2 > 0){
+        if (s2.charAt(contatore2) != 48 && s2.charAt (contatore2) != 49){
+            contatoresbagliato2++;
+        }
+        contatore2--;
+    }
+    
+
+    if (contatoresbagliato2 == 1) {
+        System.out.println("Hai " + contatoresbagliato2 + " carattere non valido, riprova.");
+    }
+    
+    if (contatoresbagliato2 > 0 && contatoresbagliato2 != 1) {
+        contatoresbagliato2 = contatoresbagliato2 + 1;
+        System.out.println("Hai " + contatoresbagliato2 + " caratteri non validi, riprova.");
+    }  
+
+    if (s2.length() > 5){
+        System.out.println("Hai messo troppi numeri, riprova");
+    }
+
+    if (s2.length() < 5){
+        System.out.println("Hai messo troppi pochi numeri, riprova");
+    }
+    } while (s2.length() > 5 || s2.length() < 5);
+
+    
+} while (contatoresbagliato2 > 0);
+
+
+    int s1value1 =0, s1value2=0, s1value3=0, s1value4=0, s1value5=0, s2value1=0, s2value2=0, s2value3=0, s2value4=0, s2value5 = 0;
+
+    if (s1.charAt(0) == 49){
+        s1value1 = 1;
+    }
+
+    if (s1.charAt(1) == 49){
+        s1value2 = 1;
+    }
+
+    if (s1.charAt(2) == 49){
+        s1value3 = 1;
+    }
+
+    if (s1.charAt(3) == 49){
+        s1value4 = 1;
+    }
+
+    if (s1.charAt(4) == 49){
+        s1value5 = 1;
+    }
+
+
+    if (s2.charAt(0) == 49){
+        s1value1 = 1;
+    }
+
+    if (s2.charAt(1) == 49){
+        s1value2 = 1;
+    }
+
+    if (s2.charAt(2) == 49){
+        s1value3 = 1;
+    }
+
+    if (s2.charAt(3) == 49){
+        s1value4 = 1;
+    }
+
+    if (s2.charAt(4) == 49){
+        s1value5 = 1;
+    }
+
+    int total1 = 0,total2 = 0,total3=0,total4=0,total5=0;
+
+    System.out.print("Vuoi l'unione o intersezione? ");
+    String choice = sc.next();
+
+    switch (choice){
+case "unione":
+ //unione
+ if (s1value1 == 1 || s2value1 == 1)
+ total1 = 1;
+
+ if (s1value2 == 1 || s2value2 == 1)
+ total2 = 1;
+
+ if (s1value3 == 1 || s2value3 == 1)
+ total3 = 1;
+
+ if (s1value4 == 1 || s2value4 == 1)
+ total4 = 1;
+
+ if (s1value5 == 1 || s2value5 == 1)
+ total5 = 1;
+
+ System.out.println("Il tuo valore finale: " + total1+total2+total3+total4+total5);
+break;
+
+case "intersezione":
+if (s1value1 == 1 && s2value1 == 1)
+ total1 = 1;
+
+ if (s1value2 == 1 && s2value2 == 1)
+ total2 = 1;
+
+ if (s1value3 == 1 && s2value3 == 1)
+ total3 = 1;
+
+ if (s1value4 == 1 && s2value4 == 1)
+ total4 = 1;
+
+ if (s1value5 == 1 && s2value5 == 1)
+ total5 = 1;
+ System.out.println("Il tuo valore finale: " + total1+total2+total3+total4+total5);
+break;
+
+default:
+System.out.println("No.");
+break;
+
+    }
+
+
+        sc.close();
+}
+}
+       
+    
     
