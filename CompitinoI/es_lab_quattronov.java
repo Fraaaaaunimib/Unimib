@@ -1,3 +1,4 @@
+package CompitinoI;
 import java.util.Scanner;
 public class es_lab_quattronov {
     public static void main(String[] args) {
@@ -278,7 +279,7 @@ if (pesooggetto == 0) {
         String string1 = sc.next();
         String string2 = sc.next();
 
-        if (string1 != )
+        
        }
        
     }

@@ -1,3 +1,4 @@
+package CompitinoI;
 import java.util.Scanner;
 
 public class es_lab_venticinqueott {

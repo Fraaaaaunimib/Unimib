@@ -1,3 +1,4 @@
+package CompitinoI;
 import java.util.Scanner;
 // import java.lang.Math;
 public class es_lab_diciottoott {

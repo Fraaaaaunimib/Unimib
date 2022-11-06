@@ -1,3 +1,4 @@
+package CompitinoI;
 public class prova1{
 
     public static final char d='s';
