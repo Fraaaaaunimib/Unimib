@@ -167,61 +167,129 @@ int numero = 0;
 */
 
 //esercizio 7
+/* 
 System.out.print("Thou may enter numbers: ");
 String numero1 = sc.next();
 
 System.out.print("Thou may write numbers onceforth: ");
 String numero2 = sc.next();
-char risultato1;
-int contatoredivisione = 0;
-int contatore = numero1.length();
-int numero1charAt;
-char risultato2;
-int numero2charAt;
-int risultato1ascii, risultato2ascii;
-String risultato1asciistring = "";
-String risultato1asciistring2 = "";
 
-String risultatototale = "";
-int risultatototale2;
-int risultatototale3;
+int numero1char=1, numero2char=1, numerorisultato1;
+String numerorisultato1string = "";
+String numerorisultato1string2 = "";
+String numerorisultato1string21 = "";
+String numerorisultato1string211 = "";
+String numerorisultato1string211risultato="";
+int numerorisultato1string21int = 1;
+int numerorisultatostring211int = 1;
+int contatore1 = numero1.length();
+int contatore2 = numero2.length();
+int contatore11 = numero1.length() -1;
+int contatore22 = numero2.length() -1;
+int contatore3;
 
-while (contatore > 0){
-    numero1charAt = numero2.length() - 1 - contatoredivisione; //va indietro nei numeri del numero2
-    numero2charAt = numero2.length() - 1 - contatoredivisione;
-   
-    if (numero1charAt < 0) {
-        return;
+/*
+ * prendi il numero in alto e la sua lunghezza
+ * prendi il numero in basso e la sua lunghezza
+ */
+
+ /* while (contatore1 > 0 && contatore2 > 0){
+
+  // il carattere della stringa
+  numero1char = numero1.charAt(contatore11) -48;
+  numero2char = numero2.charAt(contatore22) - 48;
+  numerorisultato1string = ""+(numero1char*numero2char);
+
+  if(contatore1 > 0 && contatore2 > 0){
+    numerorisultato1string2 = ""+numero1char*numero2char;
+      contatore3= numerorisultato1string2.length()-1;
+      numerorisultato1string21 = ""+numerorisultato1string2.charAt(contatore3);
+      
+      numerorisultato1string211 = numerorisultato1string2.substring(0,contatore3);
+      if (!numerorisultato1string211.equals("")){
+        System.out.println(numerorisultato1string21);
+      }
     }
-    risultato1 = numero1.charAt(numero1charAt);
-    risultato2 = numero2.charAt(numero2charAt);
+  // moltiplica i char
+      numerorisultato1string2 = ""+numero1char*numero2char;
+      numerorisultato1string211risultato = ""+(numerorisultatostring211int*numerorisultato1string21int);
+    System.out.println(numerorisultato1string2);
 
-    risultato1ascii = risultato1 - 48;
-    risultato2ascii = risultato2 -48;
-    risultatototale2 = risultato1ascii*risultato2ascii;
-risultato1asciistring =""+risultatototale2;
-if (risultato1asciistring.length() == 0){
-    risultatototale2 = risultato1ascii*risultato2ascii;
-    System.out.println(risultato1asciistring);
-}
+    if (numerorisultato1string2.length() > 0) {
+      numerorisultato1string21int = numerorisultato1string2.charAt(1) - 48;
+      System.out.println(numerorisultato1string21int);
+    }
+    System.out.println(numerorisultato1string211risultato);
 
-if (risultato1asciistring.length() > 0){
-    risultato1asciistring2 = risultato1asciistring.substring(risultato1asciistring.length());
-    System.out.println(risultato1asciistring2);
-}
+    
+    contatore1--;
+    contatore2--; 
+    contatore11--;
+    contatore22--;
+    if (numerorisultato1string2.length() > 1){
+      
 
-    contatoredivisione++;
-    contatore--;
-
-    System.out.println(risultatototale2);
-    System.out.println(risultato1asciistring);
-    System.out.println(risultato1asciistring2);
+    }
+    //diminuisce di uno i contatori
+    
   
-}
-sc.close();
-            }
-        }
+  }
 
+ */
+
+ //esercizio 6
+ String stringa1, stringa2, stringacomune = "";
+
+        System.out.print("Thou shall write here a string: ");
+        stringa1 = sc.nextLine();
+
+        System.out.print("Thou shall write here a string again: ");
+        stringa2 = sc.nextLine();
+
+        int length1 = 0, length2 = 0;
+        length1 = stringa1.length();
+        length2 = stringa2.length();
+        int contatore1 = 0;
+        char char1, char2;
+        int posizione = 0;
+        int contatoresim = 0;
+
+        while (length1 > 0 && length2 > 0){
+
+            char1 = stringa1.charAt(contatore1);
+            char2 = stringa2.charAt(contatore1);
+            contatore1++; //lo devo mettere fuori perchè se fosse stato nell'if non si sarebbe aggiornato
+            posizione++;
+            
+            if (char1 == char2) {
+                stringacomune = ""+stringacomune+char1; //i need not to put equals
+                contatoresim = posizione;
+                System.out.println(contatoresim);
+        }
+            length1--;
+            length2--;
+    }
+
+    if (contatore1 == 1) {
+        System.out.println("You have one similarity");
+    }
+
+    if (contatore1 > 1) {
+        contatore1 = contatore1 - 1;
+        System.out.println("You have " + contatore1 + " similarities");
+        System.out.println(contatoresim);
+    }
+
+    if (contatore1 == 0) {
+        System.out.println("You have no similarities");
+    }
+
+    System.out.println("Here's what you have in common: "+stringacomune);
+
+}
+            
         
+
+}
         
 
