@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class es_lab_ottonov {
     public static void main (String[]Args) {
+
         Scanner sc = new Scanner(System.in);
 
         /* //esercizio 1
@@ -126,7 +127,98 @@ public class es_lab_ottonov {
          
          lettore.close();
          */
-                     sc.close();
+
+
+// esercizio 5
+/*
+int numero = 0;
+
+  System.out.print("Inserisci un numero valido per la congettura di Collatz: ");
+  numero = sc.nextInt();
+  int contatore = numero;
+
+  for (contatore=numero;contatore <= numero; contatore--) {
+
+    if (numero == 1){
+      System.exit(0);
+      contatore = 0;
+    }
+
+    while (numero%2 == 0) {
+      numero = numero/2;
+      contatore--;
+
+      if (numero == 1){
+        System.out.print(numero + " ");
+        System.exit(0);
+        contatore = 0;
+      }
+      System.out.print(numero + " ");
+    }
+
+    while (numero >= 1 && numero%2 == 1) {
+      numero = (3*numero)+1;
+      contatore--;
+      System.out.print(numero + " ");
+    }
+
+    
+  }
+*/
+
+//esercizio 7
+System.out.print("Thou may enter numbers: ");
+String numero1 = sc.next();
+
+System.out.print("Thou may write numbers onceforth: ");
+String numero2 = sc.next();
+char risultato1;
+int contatoredivisione = 0;
+int contatore = numero1.length();
+int numero1charAt;
+char risultato2;
+int numero2charAt;
+int risultato1ascii, risultato2ascii;
+String risultato1asciistring = "";
+String risultato1asciistring2 = "";
+
+String risultatototale = "";
+int risultatototale2;
+int risultatototale3;
+
+while (contatore > 0){
+    numero1charAt = numero2.length() - 1 - contatoredivisione; //va indietro nei numeri del numero2
+    numero2charAt = numero2.length() - 1 - contatoredivisione;
+   
+    if (numero1charAt < 0) {
+        return;
+    }
+    risultato1 = numero1.charAt(numero1charAt);
+    risultato2 = numero2.charAt(numero2charAt);
+
+    risultato1ascii = risultato1 - 48;
+    risultato2ascii = risultato2 -48;
+    risultatototale2 = risultato1ascii*risultato2ascii;
+risultato1asciistring =""+risultatototale2;
+if (risultato1asciistring.length() == 0){
+    risultatototale2 = risultato1ascii*risultato2ascii;
+    System.out.println(risultato1asciistring);
+}
+
+if (risultato1asciistring.length() > 0){
+    risultato1asciistring2 = risultato1asciistring.substring(risultato1asciistring.length());
+    System.out.println(risultato1asciistring2);
+}
+
+    contatoredivisione++;
+    contatore--;
+
+    System.out.println(risultatototale2);
+    System.out.println(risultato1asciistring);
+    System.out.println(risultato1asciistring2);
+  
+}
+sc.close();
             }
         }
 
