@@ -135,15 +135,16 @@ static double eval(final String str) {
 
 
 char operator;
-        double number1, number2, result, resto;  //variables
-
+        double number1, number2, result, resto, number1save = 0;  //variables
+        String parola = "";
         Scanner Input = new Scanner(System.in); //creates a new scanner object
 
 System.out.println(start);
+do{
         System.out.print("┇ Enter here the first number. ┇   ┠──> ");
             number1 = Input.nextDouble();
 
-            System.out.print("┇ Enter here which operation you want to make. ┇ [+, -, *, /, q for sqrt, p for pow, a for average, w for expression typing]   ┠──> ");
+            System.out.print("┇ Enter here which operation you want to make. ┇ [+, -, *, /, q for sqrt, p for pow, a for average, w for expression typing, ! for factorial, r for random strange thing, f for factorization, c for Collatz]   ┠──> ");
         operator = Input.next().charAt(0); //asks for an operator
        
 
@@ -212,11 +213,124 @@ System.out.println(start);
                 case 'w':
                 System.out.print("┇ Enter here a mathematical expression as you would on any other mathematician program. ┇    ┠──> ");
                 System.out.println("┇ Here is the result: ┇ " +eval(Input.next()));
-break;
+
+                case '!':
+                long fatt = 1;
+                int contatore = 1;
+                while (contatore <= number1){
+                    fatt = fatt*contatore;
+                    contatore++;
+                }
+        
+                System.out.println("┇ The factorial result of " + number1 + " is: "+ fatt + " ┇");
+        
+                fatt = 1;
+                for (contatore=1;contatore<=number1;contatore++) {
+                    fatt = fatt*contatore;
+                }
+        
+                System.out.println("[This is extra stuff: this is the same code but with a for cicle:] " + fatt);
+                
+                break;
+
+                case 'r':
+                int n = 2;
+                do{
+                if (number1 < 0 || number1 == 0) {
+                System.out.println("┇ You can't have a number less than 0. ┇");
+                System.out.print("┇ Write here again your number:     ┠──> ");
+                number1 = Input.nextDouble();
+                number1save = number1;
+                }
+                
+                } while (number1 < 0 || number1 == 0);
+        
+                System.out.print("┇ This is some random numbers written: ┇ ");
+                while (number1 > 0){
+                    n = 3*n-2;
+                    number1--;
+                    System.out.print(", " + n);
+                }
+                break;
+
+                case 'f':
+                long residuoDaFattorizzare;
+		        long divisore;
+                long contatore1 = 0;
+		 
+		 System.out.print("┇ " + number1 + ", factorised, is:   ┠──> ");
+		 divisore = 2;
+		 residuoDaFattorizzare = (long)(number1);
+		 while(residuoDaFattorizzare > 1)  // continua se la fattorizzazione non e' completa
+		 {
+		 	while(residuoDaFattorizzare % divisore == 0)  // ciascun divisore potrebbe essere applicato piu' volte
+		 	{
+		 		// sicuramente ho trovato un divisore
+		 		if(residuoDaFattorizzare == number1)     // in questo caso si tratta del primo fattore
+		 			System.out.print(" " + divisore);   // stampa senza il simbolo di moltiplicazione
+		 		else
+        {
+          contatore1++;
+		 			System.out.print(" * " + divisore); // stampo premettendo il simbolo di moltiplicazione
+        }
+		 			
+		 		residuoDaFattorizzare = residuoDaFattorizzare / divisore;
+		 	}
+		 	
+		 	// ho esaurito l'applicazione del divisore
+		 	divisore++;
+		 }
+                break;
+
+                case 'c':
+                int contatore2 = (int)(number1);
+
+                System.out.print("┇ This is the Collatz congecture of " + number1 + " ┠──>  ");
+
+                     for (contatore2=(int)(number1);contatore2 <= number1; contatore2--) {
+
+                     if (number1 == 1){
+                   System.exit(0);
+                            contatore2 = 0;
+                      }
+
+                      while (number1%2 == 0) {
+                       number1 = number1/2;
+                      contatore2--;
+
+                           if (number1 == 1){
+                       System.out.print(number1 + " ");
+                       System.out.println("");
+                       System.exit(0);
+                        contatore2 = 0;
+                          }
+                       System.out.print(number1 + " ");
+                      }
+
+                  while (number1 >= 1 && number1%2 == 1) {
+                  number1 = (3*number1)+1;
+                  contatore2--;
+                  System.out.print(number1 + " ");
+                 }
+
+    
+                }
+                System.out.println("");
+                break;
+
             
             }
 
-            System.out.println(" ");
+
+  System.out.println();
+  System.out.println("┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬┬");
+   System.out.println("Want to play again? Just write anything you want to start again, or STOP if you want to not play anymore");
+   System.out.print("┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴┴");
+   System.out.print("");
+       parola = Input.next();
+        } while (!parola.equals("STOP"));
+        
+        System.out.println(" ");
 
             String end = """
                     ╔════════════════════════════════════════════════════════════════════════════════════╗                        

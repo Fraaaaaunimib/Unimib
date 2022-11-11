@@ -71,7 +71,7 @@ public class es_lab_ottonov {
 */
 
         //esercizio 3
-        /*
+        
         int m = 0;
         int n = 2;
         
@@ -91,13 +91,14 @@ public class es_lab_ottonov {
             m--;
             System.out.println(n);
         }
-        */
+        /* 
 
         //esercizio 3
-        /*
+        
         long numero;
 		 long residuoDaFattorizzare;
 		 long divisore;
+     long contatore = 0;
 		 Scanner lettore = new Scanner(System.in);
 		 
 		 System.out.print("Quale intero vuoi fattorizzare? ");
@@ -112,9 +113,12 @@ public class es_lab_ottonov {
 		 	{
 		 		// sicuramente ho trovato un divisore
 		 		if(residuoDaFattorizzare == numero)     // in questo caso si tratta del primo fattore
-		 			System.out.print(" " + divisore);   // stampo senza il simbolo di moltiplicazione
+		 			System.out.print(" " + divisore + " per " + contatore + " volte ");   // stampa senza il simbolo di moltiplicazione
 		 		else
+        {
+          contatore++;
 		 			System.out.print(" * " + divisore); // stampo premettendo il simbolo di moltiplicazione
+        }
 		 			
 		 		residuoDaFattorizzare = residuoDaFattorizzare / divisore;
 		 	}
@@ -126,11 +130,11 @@ public class es_lab_ottonov {
 
          
          lettore.close();
-         */
+         
 
 
 // esercizio 5
-/*
+/* 
 int numero = 0;
 
   System.out.print("Inserisci un numero valido per la congettura di Collatz: ");
@@ -164,7 +168,7 @@ int numero = 0;
 
     
   }
-*/
+
 
 //esercizio 7
 /* 
