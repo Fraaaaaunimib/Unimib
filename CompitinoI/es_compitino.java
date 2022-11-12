@@ -116,7 +116,7 @@ while (contatore != 0){
     
 
 //esercizio 3
-
+/*
 int contatore = 0;
 String s = "";
 int i = 0;
@@ -221,8 +221,124 @@ while (i < s.length()){
 double media = (double)(somma/s.length());
 
 System.out.println("La somma dei caratteri Unicode è: " + somma + ", mentre la media è: " + media);
-    sc.close();
+*/
+
+//carta oro 1
+/* 
+System.out.println("Esercizio 1 carta oro 1 - scrivi un numero per fare una successione ricorsiva: ");
+int an = sc.nextInt();
+int a0 = 2;
+int ar;
+int contatore = 0;
+do{
+
+    ar = (3*a0)-2;
+    a0 = ar;
+    contatore++;
+    System.out.println("3*"+a0+"-2="+ar);
+
+} while (contatore < an);
+
+*/
+
+//carta oro 1-2
+/*
+System.out.println("Esercizio 2 carta oro 1 - scrivi un numero per questo insieme: ");
+double epsilon = sc.nextDouble();
+double epsilon2;
+double n = 0;
+do {
+
+    if (1-epsilon < 0){
+        epsilon2 = (1-epsilon) - (1-epsilon) - (1-epsilon);
     }
-    
+ if ((n)/(n+1) > (1-epsilon) && (n)/(n+1) >= 1) {
+    System.out.println("Non va bene questo valore di n, provo ad aumentare...");
+    n++;
+ }
+
+ if ((n)/(n+1) < (1-epsilon) && (n)/(n+1) <= 1) {
+    System.out.println("Ok, l'abbiamo trovato. Stampo il valore:" + (n)/(n+1));
+ }
+} while ((n)/(n+1) == 1);
+
+*/
+
+//carta oro 2-1
+/* 
+System.out.println("Esercizio 1 carta oro 2 - scrivi un'espressione");
+String expression1 = sc.next();
+String numbers ="";
+String operator = " ";
+int i = 0;
+int operatorchar = 0;
+int result = 0;
+int numbers1 = 0;
+int ascii;
+String numberschar = "";
+
+System.out.println((expression1.charAt(1)));
+for (i = 0;i<expression1.length()-1;i++){
+    if (expression1.charAt(i) >= '0' && expression1.charAt(i) <= '9'){
+        numbers1 = numbers1 + expression1.charAt(i) -48;
+     
+    }
+
+try {
+    if (expression1.charAt(i) == '+' || expression1.charAt(i) == '-' || expression1.charAt(i) == 43){
+        operator = "";
+        operator = ""+operator + expression1.charAt(i);
+        operatorchar = expression1.indexOf(expression1.charAt(i));
+        
+    }
+} catch (StringIndexOutOfBoundsException e) {
+    System.out.println(e);
 }
 
+    numberschar = numbers.substring(0,operatorchar);
+
+    if (operator.charAt(i) != ' '){
+        if (operator.charAt(i) == '+'){
+            result = numbers1 + result;
+            System.out.println(result);
+            }
+        
+            if (operator.charAt(i) == '+'){
+            result = result - numbers1;
+            System.out.println(result);
+            }
+    }
+    */
+
+
+
+//esercizio carta oro 2-2
+
+String s1;
+String s2;
+int contatore1sbagliato = 0;
+int i, i2;
+
+do {
+
+System.out.print("Leggi la prima: ");
+s1 = sc.next();
+
+for (i=0;i<s1.length();i++){
+    if (s1.charAt(i) < 97 || s1.charAt(i) > 122){
+        contatore1sbagliato++;
+    }
+}
+
+if (contatore1sbagliato > 0)
+System.out.println("Riscrivilo con le minuscole.");
+} while (contatore1sbagliato > 0);
+System.out.print("Scrivi la seconda: ");
+s2 = sc.next();
+
+for (i=0;i<s1.length();i++){
+System.out.println("" + s1.charAt(i) + s2.charAt(i));
+}
+sc.close();
+    }
+}
