@@ -171,19 +171,95 @@ if (parola == "Stop"){
     System.out.println("Ave Caesar.");
     System.exit(0);
 }
-} while (parola != "STOP");
+} while (parola != "STOP" && parola != "stop" && parola != "Stop");
 
 break;
 
 case 'a':
 somma = 0;
 parola = "";
-valid = false;
-do{
-    do{
+numero = 0;
+String result = "";
+int residuo;
 
+valid = false;
+
+    do{
+     System.out.print("Write here your awesome arabic number if you please so. Facimus te Latinum! ");
+     numero = tastiera.nextInt();
+
+     if (numero < 0){
+        System.out.println("That's way too small");
+        valid = false;
+     }
+
+     if (numero > 3999){
+        System.out.println("Way too high darling");
+     }
+
+     if (numero > 0 || numero <= 3999)
+     valid = true;
     } while (valid == false);
 
+    expression = "" + numero;
+
+    if (expression.length() == 4){
+        residuo = numero;
+        if (expression.charAt(0) == '0' || expression.charAt(0) == ' ' ){
+            System.out.println("No good.");
+            System.exit(0);
+        }
+
+        if (expression.charAt(0) == '1'){
+            result = result + 'M';
+            residuo = numero - 1000;
+        }
+
+        if (expression.charAt(0) == '2'){
+            result = result + "MM";
+            residuo = numero - 2000;
+        }
+
+        if (expression.charAt(0) == '3'){
+            result = result + "MMM";
+            residuo = numero - 3000;
+        }
+
+        if (residuo >= 1900){
+            result = "MCM";
+        }
+
+        if (residuo - 500 >= 0){
+            result = result + "D";
+            residuo = residuo - 500;
+        } 
+
+        if (residuo - 500 < 0){
+            if (residuo - 100 >= 0){
+                result = result + "C";
+                residuo = residuo - 100;
+            }
+
+            if (residuo - 100 >= 0){
+                result = result + "C";
+                residuo = residuo - 100;
+        }
+
+        if (residuo - 100 >= 0){
+            result = result + "C";
+            residuo = residuo - 100;
+    }
+    if (residuo - 100 >= 0){
+        result = result + "C";
+        residuo = residuo - 100;
+}
+
+    if (residuo - 50 >= 0){
+
+    }
+
+}
+System.out.println(" " + residuo + " " + result);
 
     System.out.println("Do you want to restart, or to just stop?");
     parola = tastiera.next();
@@ -202,13 +278,13 @@ do{
         System.out.println("Ave Caesar.");
         System.exit(0);
     }
-} while (parola != "STOP");
-}
+} while (parola != "STOP" && parola != "stop" && parola != "Stop");
+
 
 
     }
 
+    }
 
-tastiera.close();
 }
 

@@ -343,7 +343,7 @@ System.out.println("" + s1.charAt(i) + s2.charAt(i));
 */
 
 Scanner tastiera = new Scanner(System.in);
-
+/* 
 String expression;
 int numero;
 int i = 0;
@@ -446,6 +446,125 @@ if (i < expression.length() -1){
 }
 
 System.out.println(somma);
-sc.close();
+/
+/
+
+System.out.println("Scrivi un numero palindromo: ");
+String numero = sc.next();
+String numerocontrario = "";
+boolean sbagliato = false;
+
+do{
+for (int i = 0;i < numero.length()-1;i++){
+    if (numero.charAt(i) >= 'a' && numero.charAt(i) <= 'z' || numero.charAt(i) >= 'A' && numero.charAt(i) <= 'Z'){
+        sbagliato = true;
     }
 }
+
+if (sbagliato == true)
+ System.out.println("Since *when* palindrome numbers are made out of letters? Duh");
+} while (sbagliato == true);
+
+for (int i = numero.length()-1; i >=0;i--){
+    numerocontrario = numerocontrario + "" + numero.charAt(i);
+}
+
+if (numerocontrario.equals(numero) == true){
+    System.out.println("Numero palindromo: " + numero);
+} else {
+    System.out.println("No no no no....");
+}
+
+*/
+
+// bracket writing
+boolean valid = false;
+String expression;
+String parola = "";
+boolean validpar1 = false;
+boolean validpar2 = false;
+boolean validpar3 = false;
+do {
+    parola = "";
+System.out.print("Write all the brackets you want here! Beware though... thou shall be valid programmer brackets!");
+expression = tastiera.next();
+
+for (int i = 0; i < expression.length(); i++) {
+
+    for(int i2 = 0; i2 < expression.length() -1; i2++) {
+    if (expression.charAt(i2) != '(' && expression.charAt(i2) != ')' && expression.charAt(i2)  != '[' && expression.charAt(i2) != ']' && expression.charAt(i2) != ']' && expression.charAt(i2) !='{' && expression.charAt(i2) != '}' && expression.length() == 1){
+        valid = false;
+    } else {
+        valid = true;
+    }
+
+    }
+    for (int i3 =0;i3<expression.length()-1;i3++){
+    if (expression.charAt(i3) == '(' && expression.charAt(i3+1) == ')' && valid == true){
+
+        validpar1 = true;
+    } else {
+
+        validpar1 = false;
+    }
+
+    if (expression.charAt(i3) == '[' && expression.charAt(i3+1) == ']' && valid == true && validpar1 == false){
+
+    validpar2 = true;
+    } else {
+  
+    validpar2 = false;
+    }
+
+    if (expression.charAt(i3) == '{' && expression.charAt(i3+1) == '}' && valid == true && validpar1 == false && validpar2 == true) {
+
+    validpar3 = false;
+    } else {
+
+    validpar3 = false;
+    }
+
+    if (validpar1 == true){
+        System.out.println("First one is right");
+    }
+
+    if (validpar2 == true){
+        System.out.println("Second one is right");
+    }
+
+    if (validpar3 == true){
+        System.out.println("Third one is right");
+    }
+
+     if (validpar1 == false){
+        System.out.println("First one is e");
+    }
+
+    if (validpar2 == false){
+        System.out.println("Second one is e");
+    }
+
+    if (validpar3 == false){
+        System.out.println("Third one is e");
+    }
+    }
+
+}
+
+if (valid == false)
+    System.out.println("Invalid bracket... better luck next time! you perhaps want to try again.");
+
+    System.out.print("Write \"STOP\" if you want to end this program");
+    parola = tastiera.next();
+
+    if (parola == "STOP")
+    System.exit(0);
+
+} while (valid == false || parola != "STOP");
+
+if (valid == true)
+System.exit(0);
+sc.close(); 
+}
+
+    }
