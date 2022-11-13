@@ -486,7 +486,7 @@ boolean validpar2 = false;
 boolean validpar3 = false;
 do {
     parola = "";
-System.out.print("Write all the brackets you want here! Beware though... thou shall be valid programmer brackets!");
+System.out.print("Write all the brackets you want here! Beware though... thou shall be valid programmer brackets! ");
 expression = tastiera.next();
 
 for (int i = 0; i < expression.length(); i++) {
@@ -500,7 +500,8 @@ for (int i = 0; i < expression.length(); i++) {
 
     }
     for (int i3 =0;i3<expression.length()-1;i3++){
-    if (expression.charAt(i3) == '(' && expression.charAt(i3+1) == ')' && valid == true){
+        if (expression.length() > 4){
+    if (expression.charAt(i3) == '(' && expression.charAt(i3+1) == ')' && valid == true || validpar1 == true){
 
         validpar1 = true;
     } else {
@@ -508,7 +509,7 @@ for (int i = 0; i < expression.length(); i++) {
         validpar1 = false;
     }
 
-    if (expression.charAt(i3) == '[' && expression.charAt(i3+1) == ']' && valid == true && validpar1 == false){
+    if (expression.charAt(i3) == '[' && expression.charAt(i3+1) == ']' && valid == true  || validpar2 == true){
 
     validpar2 = true;
     } else {
@@ -516,9 +517,9 @@ for (int i = 0; i < expression.length(); i++) {
     validpar2 = false;
     }
 
-    if (expression.charAt(i3) == '{' && expression.charAt(i3+1) == '}' && valid == true && validpar1 == false && validpar2 == true) {
+    if (expression.charAt(i3) == '{' && expression.charAt(i3+1) == '}' && valid == true || validpar3 == true) {
 
-    validpar3 = false;
+    validpar3 = true;
     } else {
 
     validpar3 = false;
@@ -549,9 +550,18 @@ for (int i = 0; i < expression.length(); i++) {
     }
     }
 
+    if (expression.length() == 2){
+        if (expression.charAt(i3) == '(' && expression.charAt(i3+1) == ')' || expression.charAt(i3) == '[' && expression.charAt(i3+1) == ']' || expression.charAt(i3) == '{' && expression.charAt(i3+1) == '}'){
+            System.out.println("Heeeey this is valid :3");
+            System.exit(0);
+    }
+
+
 }
 
-if (valid == false)
+}
+}
+if (valid == false || validpar1 == false || validpar2 == false || validpar3 == false)
     System.out.println("Invalid bracket... better luck next time! you perhaps want to try again.");
 
     System.out.print("Write \"STOP\" if you want to end this program");
@@ -568,3 +578,4 @@ sc.close();
 }
 
     }
+
