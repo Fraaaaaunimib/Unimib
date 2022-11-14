@@ -208,7 +208,7 @@ if (contatoredieci -2 >= 0){
     System.out.print(contatoredue + " monete da 2€, " + contatoreuno-- + " monete da 1€, " + contatoreflat + " monete da 0.5€, " + contatoreventi);
     System.out.print(" monete da 0.2€, " + contatoredieci + " monete da 0.1€, " + contatorecinque + " monete da 0,05€, " + contatoreduee + " monete da 0,02€, " + contatoreunoo + " monete da 0,01€.");
     System.out.println();
-*/
+
 
 String parola = "";
 do {
@@ -244,6 +244,210 @@ if (contatoredue == 0 && contatoretre == 0 && contatorecinque == 0){
 System.out.print("Write \"STOP\" if you want to stop this program, or qrite anything else if you want to restart. ");
 parola = sc.next();
 } while (!parola.equals("STOP"));
-sc.close();
+
+
+
+//Paola ha a disposizione 100 Euro, e non può comprare più di tre prodotti.
+
+final int buono = 100;
+final int prodottimax = 3;
+
+boolean soldibene = true;
+int prodotti = prodottimax;
+int soldispesi = buono;
+int soldiinsert;
+
+System.out.print("Hai questo buono da 100€ che puoi spendere soltanto su tre prodotti.");
+System.out.println("");
+
+while (soldibene == true && soldispesi >= 0 && prodotti >= 0){
+    System.out.print("Quanto vale il prodotto che vuoi comprare? ");
+    soldiinsert = sc.nextInt();
+     soldispesi = soldispesi - soldiinsert;
+     prodotti--;
+
+     if(soldispesi >= 0 && prodotti >= 0){
+        System.out.println("Hai deciso di acquistare un oggetto da " + soldiinsert + "€, ti rimangono " + soldispesi + "€. Puoi comprare ancora " + prodotti + " prodotti.");
+     }
+
+     if (soldispesi <= 0){
+        System.out.println("Non hai più soldi da spendere, basta così");
+        System.exit(0);
+     }
+}
+
+
+if (soldispesi <= 0){
+    System.out.println("Non hai più soldi da spendere, basta così");
+    System.exit(0);
+}
+
+
+String parola = "";
+String digitato = "";
+boolean esegui = true;
+char carattere;
+
+while (esegui == true){
+System.out.print("Write here a string, until you don't write the word \"fine\" the program won't end. ");
+digitato = sc.nextLine();
+for (int i = 0; i <digitato.length();i++){
+    carattere = digitato.charAt(i);
+    if (digitato.charAt(i) == 'f' && digitato.charAt(i+1) == 'i' && digitato.charAt(i+2) == 'n' && digitato.charAt(i+3) == 'e'){
+        esegui = false;
+    } 
+
+    if (esegui == false) {
+    System.out.println("I'm sure you wrote \"fine\" somewhere, and that \"somewhere\" is at position " + (i + 1));
+    System.exit(0);
+    }
+
+ 
 }
 }
+
+int deposito;
+int prelievo;
+int solditotali = 0;
+int mese = 0;
+String parola = "";
+String meseword = "";
+
+while (parola != "STOP" && mese <= 11) {
+    mese++;
+
+    if (mese == 1)
+    meseword = "gennaio";
+
+    if (mese == 2)
+    meseword = "febbraio";
+
+    if (mese == 3)
+    meseword = "marzo";
+
+    if (mese == 4)
+    meseword = "aprile";
+
+    if (mese == 5)
+    meseword = "maggio";
+
+    if (mese == 6)
+    meseword = "giugno";
+
+    if (mese == 7)
+    meseword = "luglio";
+
+    if (mese == 8)
+    meseword = "agosto";
+
+    if (mese == 9)
+    meseword = "settembre";
+
+    if (mese == 10)
+    meseword = "ottobre";
+
+    if (mese == 11)
+    meseword = "novembre";
+
+    if (mese == 12)
+    meseword = "dicembre";
+
+
+System.out.print("Mese " + mese + " - " + meseword + " - deposito o prelievo! Digita 1 se vuoi fare un deposito, 2 se vuoi fare un prelievo --> ");
+int choice = sc.nextInt();
+
+if (choice >= 'a' && choice <= 'z' || choice <= 'A' && choice <= 'Z') {
+    System.out.println("Non siamo a scuola, matematica non si fa con le lettere... metti un numero!");
+    mese = mese - 2;
+}
+
+switch (choice){
+    case 1:
+    System.out.print("Ok, hai deciso di fare un deposito. Quant'è l'ammontare di ciò che vuoi depositare? ");
+    deposito = sc.nextInt();
+    solditotali = solditotali + deposito;
+
+    if (mese == 12)
+    break;
+    System.out.println("Questo è quanto hai sul tuo conto corrente: " + solditotali);
+    break;
+
+    case 2:
+    System.out.print("Ok, hai deciso di prelevare. Quant'è l'ammontare di ciò che vuoi prelevare? ");
+    prelievo = sc.nextInt();
+    solditotali = solditotali - prelievo;
+
+    if (mese == 12)
+    break;
+
+    System.out.println("Questo è quanto hai sul tuo conto corrente: " + solditotali);
+    break;
+}
+if (mese < 12){
+System.out.print("Se vuoi continuare, possiamo arrivare fino a dicembre e poi interromperci, o se digiti \"STOP\" ci si fermerà subito.");
+parola = sc.next();
+}
+
+if (parola.equals("STOP")){
+    System.out.print("Ok, hai deciso di interrrompere il tuo conto. Siamo arrivati ad avere sul tuo conto " + solditotali + "€. Buh-bye!");
+    System.exit(0);
+}
+
+if (mese == 12){
+    System.out.println("Benissimo, abbiamo fatto l'ammontare del tuo estratto conto annuale. Il tuo conto è arrivato a " + solditotali + "€.");
+}
+}
+
+*/
+int max = 99999;
+int min = 11111;
+double computernumberexp = (Math.random()  * (max - min) + min);
+
+int computernumber = (int)computernumberexp;
+String computernumberfinder = "" + computernumber;
+boolean valid = true;
+int personnumber = 0;
+String personnumberfinder = "" + personnumber;
+int tries = 0;
+
+int foundnumber;
+int foundnumberposition;
+System.out.println("Indovina un numero random generato dal computer! ");
+System.out.println("Hai 10 tentativi prima che ti sbatta fuori, quindi fai attenzione....");
+System.out.println("Il numero random è un numero sempre di 5 cifre. Pronto a immettere un numero?");
+
+while (valid == true && tries < 10){
+    tries++;
+    System.out.println(tries + " tentativo. Ne hai 10.");
+    System.out.print("Inserisci il numero che tu pensa sia quello corretto: ");
+    personnumber = sc.nextInt();
+    personnumberfinder = "" + personnumber;
+
+    for (int i = 0; i < personnumberfinder.length(); i++){
+        if (computernumberfinder.charAt(i) == personnumberfinder.charAt(i)){
+            foundnumber = computernumberfinder.charAt(i);
+            System.out.print("Hai indovinato questo numero! " + (foundnumber -48) + " alla posizione ");
+            foundnumberposition = i+1;
+            System.out.println(foundnumberposition);
+        }
+    }
+
+    if (personnumber == computernumber){
+        System.out.println("Hai trovato il numero! Il numero era: " + computernumber);
+        System.exit(0);
+    }
+
+    System.out.print("Riprovaci, sarai più fortunato la prossima volta. ");
+    }
+
+    if (tries > 10){
+        System.out.println("Hai finito i tentativi!! Questo era il numero che dovevi indovinare: "+computernumber);
+        System.exit(0);
+    }
+
+    sc.close();
+}
+
+
+}
+
