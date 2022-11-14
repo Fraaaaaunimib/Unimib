@@ -95,7 +95,7 @@ if (circular == false || square == false || graph == false){
     System.out.println("Nope.");
 }
 
-*/
+
 
 
 System.out.print("Write here how much cash you have, and then I'll convert it into mone: ");
@@ -157,12 +157,22 @@ for (; contatorecinque < numero && contatore > 1.000000;contatorecinque++){
     if (numero-0.05 < 0){
         contatorecinque++;
     }
+
+    if (contatorecinque%2 == 0){
+        contatorecinque = contatorecinque -2;
+        contatoredieci++;
+    }
     numero = numero - 0.05;
 }
 
 for (; contatoreduee < numero && contatore > 1.000000;contatoreduee++){
     if (numero-0.02 < 0){
         contatoreduee++;
+    }
+
+    if (contatoreduee%5 == 0){
+        contatoreduee = contatoreduee - 5;
+        contatoredieci++;
     }
     numero = numero - 0.02;
 }
@@ -171,14 +181,69 @@ for (; contatoreunoo < numero && contatore > 1.000000;contatoreunoo++){
     if (numero-0.01 < 0){
         contatoreunoo++;
     }
+
     numero = numero - 0.01;
 }
     
+if (contatorecinque -10 >= 0){
+    contatorecinque = contatorecinque -2;
+    contatoredieci++;
+}
+
+if (contatoreduee -5 >= 0){
+    contatoreduee = contatoreduee - 5;
+    contatorecinque++;
+}
+
+if (contatorecinque == 2){
+    contatorecinque = 0;
+    contatoredieci++;
+}
+
+if (contatoredieci -2 >= 0){
+    contatoredieci = contatoredieci - 2;
+    contatoreventi++;
+}
 
     System.out.print(contatoredue + " monete da 2€, " + contatoreuno-- + " monete da 1€, " + contatoreflat + " monete da 0.5€, " + contatoreventi);
     System.out.print(" monete da 0.2€, " + contatoredieci + " monete da 0.1€, " + contatorecinque + " monete da 0,05€, " + contatoreduee + " monete da 0,02€, " + contatoreunoo + " monete da 0,01€.");
     System.out.println();
+*/
 
+String parola = "";
+do {
+System.out.println("Ugly numbers: ");
+int number = sc.nextInt();
+int contatoredue=0,contatoretre=0,contatorecinque=0;
+if (number%3 == 0){
+contatoretre++;
+}
+
+if (number%2==0){
+    contatoredue++;
+}
+
+if (number%5 == 0){
+    contatorecinque++;
+}
+
+if (number%7 == 0){
+    contatoredue = 0;
+    contatorecinque = 0;
+    contatoretre = 0;
+}
+
+if(contatoredue > 0 || contatoretre >0 || contatorecinque >0){
+    System.out.println("This is an ugly number");
+}
+
+if (contatoredue == 0 && contatoretre == 0 && contatorecinque == 0){
+    System.out.println("Retry.");
+}
+
+System.out.print("Write \"STOP\" if you want to stop this program, or qrite anything else if you want to restart. ");
+parola = sc.next();
+} while (!parola.equals("STOP"));
 sc.close();
 }
 }
