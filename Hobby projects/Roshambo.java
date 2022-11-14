@@ -66,6 +66,7 @@ while (changed == true) {
     
         System.out.print(ANSI_ORANGE1 + "First player, go! Draw your figure ┣━━> " + ANSI_RESET);
         firstplayerdraw = sc.next();
+        System.out.print("\b\b\b\b\b\b\b");
 
         System.out.print(ANSI_RED + "2P, ready to roll... now! ┣━━> " + ANSI_RESET);
         secondplayerdraw = sc.next();
