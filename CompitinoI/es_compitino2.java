@@ -398,7 +398,7 @@ if (mese == 12){
 }
 }
 
-*/
+
 int max = 99999;
 int min = 11111;
 double computernumberexp = (Math.random()  * (max - min) + min);
@@ -445,6 +445,354 @@ while (valid == true && tries < 10){
         System.exit(0);
     }
 
+
+int numero, numerorisultato = 1, numerotot = 1;
+
+System.out.print("Fai la somma dei primi numeri dispari dall'uno al numero che metti --> ");
+numero = sc.nextInt();
+
+while (numerorisultato < numero){
+    numerorisultato = numerorisultato + 2;
+    numerotot = numerotot + numerorisultato;
+    
+}
+
+System.out.println(numerotot);
+
+
+
+int n, n2 = 1, n3 = 0;
+
+System.out.print("Scrivi fino a quale numero le potenze di due devono arrivare --> ");
+n = sc.nextInt();
+
+for (n2 = 1; n2 <= n; n2++){
+    n2 = (int)(Math.pow(n2, 2));
+    System.out.print(n2 + " ");
+    n3 = n3 + n2;
+
+}
+System.out.println(n3);
+
+
+int contatore = 0;
+System.out.println("Conta gli spazi in questa stringa --> ");
+String stringa = sc.nextLine();
+
+for (int i = 0; i < stringa.length();i++){
+    if (stringa.charAt(i) == ' ') {
+        contatore++;
+    }
+}
+
+System.out.println("Ci sono " + contatore + " spazi in ciò che hai digitato");
+
+
+
+System.out.print("Inverti questa stringa che scrivi: ");
+String stringa = sc.nextLine();
+
+String stringa2 = "";
+
+for (int i = stringa.length() - 1; i >= 0; i--) {
+    stringa2 = stringa2 + stringa.charAt(i);
+}
+
+System.out.println("Ecco la stringa invertita: " + stringa2);
+
+
+boolean valid = true;
+String uno="",due="",tre="",quattro="",cinque="",sei="",sette="",otto="";
+int contatorec = 0, contatoret = 0;
+int i = 1;
+do {
+System.out.print("Tira una moneta, e scrivi cosa ti esce, se ti esce croce scrivi \"c\", se ti esce testa scrivi \"t\". " + i + "° tentativo --> " );
+if (i == 1){
+uno = sc.next();
+    if (uno.equals("c"))
+    contatorec++;
+
+    if (uno.equals("t"))
+    contatoret++;
+}
+  
+if (i == 2) {
+due = sc.next();
+if (due.equals("c"))
+    contatorec++;
+
+    if (due.equals("t"))
+    contatoret++;
+}
+
+if (i == 3){
+tre = sc.next();
+if (tre.equals("c"))
+    contatorec++;
+
+    if (tre.equals("t"))
+    contatoret++;
+}
+ 
+if (i == 4){
+quattro = sc.next();
+if (quattro.equals("c"))
+    contatorec++;
+
+    if (quattro.equals("t"))
+    contatoret++;
+}
+  
+if (i == 5){
+cinque = sc.next();
+if (cinque.equals("c"))
+    contatorec++;
+
+    if (cinque.equals("t"))
+    contatoret++;
+}
+  
+if (i == 6){
+sei = sc.next();
+if (sei.equals("c"))
+    contatorec++;
+
+    if (sei.equals("t"))
+    contatoret++;
+}
+   
+if (i == 7) {
+sette = sc.next();
+if (sette.equals("c"))
+    contatorec++;
+
+    if (sette.equals("t"))
+    contatoret++;
+}
+    
+if (i == 8) {
+otto = sc.next();
+if (otto.equals("c"))
+    contatorec++;
+
+    if (otto.equals("t"))
+    contatoret++;
+}
+    
+
+
+if (uno.length() > 1 || due.length() > 1 || tre.length() > 1 || quattro.length() > 1 || cinque.length() > 1 || sei.length() > 1 || sette.length() > 1 || otto.length() > 1){
+System.out.println("Ti ho appena detto di mettere solo un carattere, non metterne di più!");
+valid = false;
+i--;
+}
+
+
+i++;
+} while (valid == false || i <= 9);
+
+System.out.println("Prima giocata è " + uno);
+System.out.println("Seconda giocata è " + due);
+System.out.println("Terza giocata è " + tre);
+System.out.println("Quarta giocata è " + quattro);
+System.out.println("Quinta giocata è " + cinque);
+System.out.println("Sesta giocata è " + sei);
+System.out.println("Settima giocata è " + sette);
+System.out.println("Numero di croci: " + contatorec + " e numero di teste: " + contatoret);
+
+// contatorec:8 = x:100
+// x = contatorec*100 /8
+
+int percentualec = (contatorec*100)/8;
+int percentualet = (contatoret*100)/8;
+
+System.out.println("Percentuali di croci: " + percentualec + "% e percentuale di teste: " + percentualet + "%");
+
+
+
+
+
+int max = 0, min = -1;
+int n = 0;
+int i=0;
+int totale = 0;
+do {
+System.out.print("Scrivi una sequenza di numeri, scrivi un numero negativo per interrompere: --> ");
+n = sc.nextInt();
+
+if (n <0){
+    break;
+}
+if (n > max) {
+    max = n;
+
+}
+
+if (n < max) {
+    min = n;
+   
+}
+
+
+totale = totale + n;
+i++;
+
+
+
+} while (n > 0);
+
+if (n < 0)
+System.out.println("Il massimo è " + max + ", il minimo è " + min + ", e la media tra tutti i numeri che hai messo è " + (totale/i));
+
+
+int righe;
+boolean valid = true;
+int i;
+
+do{
+System.out.println("Scrivi di quante righe deve essere lungo il tuo triangolo --> ");
+righe = sc.nextInt();
+
+if (righe > 5) {
+System.out.println("Nah nah nah, numero non valido... riprovaci!");
+valid = false;
+}
+
+if (righe < 1){
+    System.out.println("Nah nah nah, numero non valido... riprovaci!");
+    valid = false;
+
+}
+} while (valid == false);
+    if (righe == 1)
+    System.out.println("*");
+
+    if (righe == 2){
+        System.out.println("*");
+        System.out.println("**");
+    }
+
+    if (righe == 3){
+        System.out.println("*");
+        System.out.println("**");
+        System.out.println("*");
+    }
+
+    if (righe == 4){
+        System.out.println("*");
+        System.out.println("**");
+        System.out.println("**");
+        System.out.println("*");
+    }
+
+    if (righe == 5){
+        System.out.println("*");
+        System.out.println("**");
+        System.out.println("***");
+        System.out.println("**");
+        System.out.println("*");
+
+    }
+
+    
+
+    double altezza = 0;
+    int i;
+    double velocità = 0;
+    boolean valid = true;
+    int rimbalzocount = 0;
+    boolean valid2 = false;
+    boolean valid3 = true;
+    do{
+    System.out.print("Scrivi a che velocità la pallina deve andare ogni volta --> ");
+    velocità = sc.nextDouble();
+
+    if (velocità < 0){
+       valid = false;
+       System.out.println("Come puoi avere una velocità negativa?");         
+    }
+    } while (valid == false);
+altezza = velocità;
+    System.out.println("Tempo: 0 Altezza: 0");
+    System.out.println("Tempo: 1 Altezza: " + velocità);
+    System.out.println("Tempo: 2 Altezza: " + (altezza + velocità - 96));
+
+    for (i=2;valid2 == false;i++){
+        if (altezza > 0){
+            velocità = velocità - 96;
+            altezza = altezza + velocità;
+            
+            if (altezza < 0){
+                valid3 = false;
+            }
+
+            if (altezza > 0){
+                valid3 = true;
+            }
+
+            if (valid3 == true) {
+            System.out.println("Tempo: " + i + " Altezza: " + altezza);
+            }
+        }
+
+        if (altezza < 0){
+            altezza = altezza + 204;
+        }
+        if (altezza == 0){
+            i++;
+            rimbalzocount++;
+            System.out.println("Rimbalzo!");
+            
+            if (rimbalzocount == 5){
+                System.out.println("Fine.");
+                System.exit(0);
+                valid2 = true;
+            }
+
+
+            altezza = altezza*-0.5;
+            velocità = velocità*-0.5;
+            continue;
+        }
+
+
+        if (rimbalzocount == 5){
+            System.out.println("Fine.");
+            System.exit(0);
+        }
+
+        if (altezza < 0){
+            altezza = altezza*-0.5;
+            velocità = velocità*-0.5;
+            System.out.println("Rimbalzo!");
+            rimbalzocount++;
+        }
+    }
+
+    */
+
+    final int chiave = 10;
+    System.out.print("Scrivi un messaggio normale, e verrà codificato nella maniera speciale -->");
+    String stringOriginale = sc.next();
+int carOriginale;
+int carCodificato;
+char carCodificato2;
+String stringCodificato = "";
+
+    for (int i =0; i < stringOriginale.length();i++){
+        carOriginale = stringOriginale.charAt(i);
+        if (carOriginale + chiave > 126) {
+            carCodificato = 32 + ((carOriginale + chiave) - 127);
+        } else {
+            carCodificato = (carOriginale + chiave);
+        }
+
+        carCodificato2 = (char)carCodificato;
+        stringCodificato = "" + stringCodificato + carCodificato2;
+
+    }
+
+    System.out.println(stringCodificato);
     sc.close();
 }
 
