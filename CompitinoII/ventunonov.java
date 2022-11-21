@@ -1,6 +1,8 @@
 package CompitinoII;
+import java.util.Scanner;
 public class ventunonov {
     
+    Scanner sc = new Scanner(System.in);
     public static void saluta(double raggio){ //metodo: si scrive come il metodo main, e ogni volta che viene chiamato il main, esegue il codice
         // le variabili sono soltanto all'interno del metodo
         // ( ) : dove dichiarare delle variabili
@@ -26,10 +28,20 @@ public class ventunonov {
         System.out.println(risultato);
     }
 
-
     
 }
+
+
+public static int minore(int uno, int due){
+        if (uno < due)
+            return uno;
+        else
+            return due;
+
+
+}
 public static void main(String[] args) {
+    System.out.print(minore(0,2));
     noVocali ("aaergegbebtbehgrwd");; //chiama il metodo saluta - nelle () metti il valore della variabile
 }
 }
