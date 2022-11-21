@@ -71,8 +71,9 @@ public class quattronov {
         System.out.println("Con il for invece esce questo: " + fatt);
         
         sc.close();
+        sc.close();
         }
-
+        
         }
 
     

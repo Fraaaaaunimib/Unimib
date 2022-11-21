@@ -290,6 +290,8 @@ int contatore3;
 
     System.out.println("Here's what you have in common: "+stringacomune);
 
+    sc.close();
+
 }
             
         

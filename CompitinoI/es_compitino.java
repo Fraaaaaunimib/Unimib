@@ -575,6 +575,7 @@ if (valid == false || validpar1 == false || validpar2 == false || validpar3 == f
 if (valid == true)
 System.exit(0);
 sc.close(); 
+tastiera.close();
 }
 
     }
