@@ -45,10 +45,34 @@ public static void main (String[]args ){
      * F = C * 1.8 +32
      */
 
-     public static String scelta(){
-
+     public static String caseC(){
         double temperatura;
-        char selezione;
+        String e = "";
+        Scanner tastiera = new Scanner(System.in);
+        System.out.println("Converting Celsius to Fahrenheit");
+        System.out.print("You may enter a Celsius temperature, thou shall may be converted into the unholy Fahrenheit. --> ");
+        temperatura = tastiera.nextDouble();
+
+        System.out.println("We have an unholy result, sir --> " + venticinquenov.convCtoF(temperatura) + "°F");
+        tastiera.close();
+        return e;
+        
+     }
+
+     public static String caseF(){
+        double temperatura;
+        String e = "";
+        Scanner tastiera = new Scanner(System.in);
+        System.out.println("Converting Fahrenheit to Celsius");
+        System.out.print("You may enter a Fahrenheit temperature, thou shall may be converted into the holy Celsius. --> ");
+        temperatura = tastiera.nextDouble();
+
+        System.out.println("We have a result, sir --> " + convFtoC(temperatura) + "°C");
+        tastiera.close();
+        return e;
+     }
+
+     public static String scelta(){
 
         Scanner tastiera = new Scanner(System.in);
         System.out.println("Thou may select if you want to convert C to F, F to C, or straight up exit.");
@@ -60,19 +84,11 @@ public static void main (String[]args ){
 
         switch (scelta){
             case "C":
-                System.out.println("Converting Celsius to Fahrenheit");
-                System.out.print("You may enter a Celsius temperature, thou shall may be converted into the unholy Fahrenheit. --> ");
-                temperatura = tastiera.nextDouble();
-
-                System.out.println("We have an unholy result, sir --> " + venticinquenov.convCtoF(temperatura) + "°C");
+                System.out.println(caseC());
                 break;
 
             case "F":
-                System.out.println("Converting Fahrenheit to Celsius");
-                System.out.print("You may enter a Fahrenheit temperature, thou shall may be converted into the holy Celsius. --> ");
-                temperatura = tastiera.nextDouble();
-
-                System.out.println("We have a result, sir --> " + convFtoC(temperatura) + "°C");
+                System.out.println(caseF());
                 break;
 
             case "E":
@@ -88,7 +104,7 @@ public static void main (String[]args ){
                 break;
         }
 
-
+        tastiera.close();
         return "a";
      }
      
@@ -101,7 +117,6 @@ public static void main (String[]args ){
      }
      public static void main (String[] args){
         Scanner tastiera = new Scanner(System.in);
-        double temperatura;
         String selezione;
 
         do {
