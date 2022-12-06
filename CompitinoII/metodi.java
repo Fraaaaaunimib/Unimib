@@ -155,10 +155,57 @@ public class metodi {
         return 0;
     }
 
-    public static void finePartitaCasuale100(int indovinato, int tentativi, int numeroPartita, boolean indovinatoo){
+public static void finePartitaCasuale100(int indovinato[], int tentativi, int numeroPartita, boolean indovinatoo){
+        indovinato = new int [numeroPartita];
         if (indovinatoo == true){
-            System.out.println("Non hai indovinato il numero dopo " + tentativi + " tentativi.");
+            String tentativoString [] = new String [numeroPartita];
+          
+                tentativoString [numeroPartita] = "Hai indovinato il numero " + indovinato + " dopo " + tentativi + " tentativi. Hai giocato " + numeroPartita + " volte.";
+
+                if (numeroPartita == 0)
+                System.out.println(tentativoString [numeroPartita]);
+
+                if (numeroPartita == 1)
+                System.out.println(tentativoString [numeroPartita]);
+                System.out.println(tentativoString [numeroPartita - 1]);
+
+                if (numeroPartita == 2)
+                System.out.println(tentativoString [numeroPartita]);
+                System.out.println(tentativoString [numeroPartita - 1]);
+                System.out.println(tentativoString [numeroPartita - 2]);
+
+                if (numeroPartita == 3)
+                System.out.println(tentativoString [numeroPartita]);
+                System.out.println(tentativoString [numeroPartita - 1]);
+                System.out.println(tentativoString [numeroPartita - 2]);
+                System.out.println(tentativoString [numeroPartita - 3]);
+            }
+
+
+            if (indovinatoo == false){
+                String tentativoString [] = new String [numeroPartita];
+              
+                    tentativoString [numeroPartita] = "Non hai indovinato il numero " + indovinato + " dopo " + tentativi + " tentativi. Hai giocato " + numeroPartita + " volte.";
+    
+                    if (numeroPartita == 0)
+                    System.out.println(tentativoString [numeroPartita]);
+    
+                    if (numeroPartita == 1)
+                    System.out.println(tentativoString [numeroPartita]);
+                    System.out.println(tentativoString [numeroPartita - 1]);
+    
+                    if (numeroPartita == 2)
+                    System.out.println(tentativoString [numeroPartita]);
+                    System.out.println(tentativoString [numeroPartita - 1]);
+                    System.out.println(tentativoString [numeroPartita - 2]);
+    
+                    if (numeroPartita == 3)
+                    System.out.println(tentativoString [numeroPartita]);
+                    System.out.println(tentativoString [numeroPartita - 1]);
+                    System.out.println(tentativoString [numeroPartita - 2]);
+                    System.out.println(tentativoString [numeroPartita - 3]);
+                }
+    
         }
     }
     
-}

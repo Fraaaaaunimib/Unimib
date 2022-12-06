@@ -7,10 +7,13 @@ public class es_lab_seidic {
 
     public static void main (String[] args) {
         Scanner sc = new Scanner(System.in);
+        boolean tenta = true;
         System.out.println("DEBUG: " + metodi.estraiNumeroCasuale100());
 
         System.out.println("Indovina il numero! (p.s. è tra 1 e 100!)");
-        int result = 0, volte = 0, choice = 0, arraychoice[];
+
+        do {
+        int result = 0, volte = 0, choice = 0, arraychoice[], numeroPartita = 0;
         arraychoice = new int[10];
         String show = "";
 
@@ -71,7 +74,7 @@ public class es_lab_seidic {
             else
             show = ("Il numero " + choice + " è più piccolo di quello da indovinare, ma ti avevo già detto che " + arraychoice[volte-1] + " era più piccolo!");
             System.out.println(show);
-            volte++;
+            
             }
 
             if (result == 1){
@@ -83,12 +86,10 @@ public class es_lab_seidic {
                 metodi.confrontaNumeriArrayCasuale100(choice, arraychoice, volte, show);
 
                 if (volte == 0) {
-                if (arraychoice[volte] == choice) {
-                System.out.println("E' esattamente lo stesso numero che hai messo prima ;-;");
-                }
+                
             show = ("Il numero " + choice + " è più grande di quello da indovinare, ma ti avevo già detto che " + arraychoice[volte] + " era più grande!");
             } else {
-            if (arraychoice[volte] == choice) {
+            if (arraychoice[volte-1] == choice) {
             System.out.println("E' esattamente lo stesso numero che hai messo prima ;-;");
             }
             show = ("Il numero " + choice + " è più grande di quello da indovinare, ma ti avevo già detto che " + arraychoice[volte-1] + " era più grande!");
@@ -103,20 +104,62 @@ public class es_lab_seidic {
         
     }
 
+    int numeroIndovinato[] = new int [10];
         if (valid == true){
             System.out.println("Congratulazioni! Hai vinto yeeeeee");
-            System.exit(0);
+            
+
+            // cose per il riepilogo
+            numeroIndovinato[numeroPartita] = numero;
+
+            for (int i = 0; i < numeroPartita; i++) {
+            System.out.println(numeroIndovinato[i]);
+            }
         }
 
         if (valid == false){
             System.out.println("Peccato...");
-            System.exit(0);
+            
+
+
+            // cose per il riepilogo
+            numeroIndovinato[numeroPartita] = numero;
+            for (int i = 0; i < numeroPartita; i++){
+            System.out.println(numeroIndovinato[i]);
+            }
         }
 
-        
+        boolean validfinalchoice = false;
+        while (validfinalchoice == false){
+        System.out.print("Vuoi provarci ancora? SI per provarci ancora, NO per uscire. .°.> ");
+        String finalchoice = sc.next();
 
-        sc.close();
+
+        
+        if (finalchoice.equals("SI"))
+        {
+            tenta = false;
+            validfinalchoice = true;
+        } else if (finalchoice.equals("NO")){
+            tenta = true;
+            System.out.println("Buh bye!");
+            validfinalchoice = true;
+        } else {
+            tenta = false;
+            validfinalchoice = false;
+            System.out.println("Perché non inserici SI e NO come detto prima?");
+
+        }
+        
+    }
+    
+    } while (tenta == false);
+    sc.close();
+
+
+}  
     }
 
-}
+
+    
 
