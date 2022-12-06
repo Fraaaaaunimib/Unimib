@@ -207,5 +207,27 @@ public static void finePartitaCasuale100(int indovinato[], int tentativi, int nu
                 }
     
         }
+
+
+    public static String estraiStringaCasuale(){
+        String parole[] = new String[10];
+        String returno = "";
+
+        parole[0] = "automobile";
+        parole[1] = "casa";
+        parole[2] = "camerata";
+        parole[3] = "infiammato";
+        parole[4] = "nome";
+        parole[5] = "stampante";
+        parole[6] = "estudiante";
+        parole[7] = "amaranto";
+        parole[8] = "altalena";
+        parole[9] = "trampolino";
+
+        int selected =(int)(Math.random()*10);
+        returno = "" + parole[selected];
+
+        return returno;
+    }
     }
     
