@@ -101,5 +101,64 @@ public class metodi {
 
         return somma;
     }
+
+    public static int estraiNumeroCasuale100(){
+        int numero = 0;
+        boolean valid = false;
+
+        while (valid == false) {
+        numero = (int)(Math.random()*100);
+        if (numero < 1 || numero > 100)
+        valid = false;
+        else
+        valid = true;
+        }
+
+        return numero;
+    }
+
+    public static int confrontaNumeriCasuale100(int numeroInserito, int numeroDaIndovinare, boolean valid){
+        int result = 0;
+        if (numeroInserito < numeroDaIndovinare){
+        result = -1;
+        System.out.println("Il numero " + numeroInserito + " è più piccolo di quello da indovinare.");
+        valid = false;
+        }
+
+        if (numeroInserito > numeroDaIndovinare){
+        result = 1;
+        System.out.println("Il numero " + numeroInserito + " è più grande di quello da indovinare.");
+        valid = false;
+        }
+
+        if (numeroInserito == numeroDaIndovinare){
+        result = 0;
+        System.out.println("Congratulazioni! Hai vinto!");
+        valid = true;
+        }
+
+        return result;
+    }
+
+    public static int confrontaNumeriArrayCasuale100(int numeroInserito, int Array[], int i, String show){
+        if (numeroInserito > Array[i]){
+            show = ("Il numero " + numeroInserito + " è più piccolo di quello da indovinare, ma ti avevo già detto che " + Array[i] + " era più piccolo!");
+            int a = -1;
+            return a;
+        }
+
+        if (numeroInserito < Array[i]){
+            show = ("Il numero " + numeroInserito + " è più grande di quello da indovinare, ma ti avevo già detto che " + Array[i] + " era più grande!");
+            int a = 1;
+            return a;
+        }
+        return 0;
+    }
+
+    public static void finePartitaCasuale100(int indovinato, int tentativi, int numeroPartita, boolean indovinatoo){
+        if (indovinatoo == true){
+            System.out.println("Non hai indovinato il numero dopo " + tentativi + " tentativi.");
+        }
+    }
     
 }
