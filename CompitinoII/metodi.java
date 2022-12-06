@@ -86,5 +86,20 @@ public class metodi {
         return bin;
     }
             
+    public static int potenze(int m, int n, boolean pari){
+        int somma = 0;
+        int i = 0;
+        if (pari){
+            for (i=2;i<=n;i+=2) {
+                somma += Math.pow(i,m);
+            }
+        } else {
+            for (i = 1;i<= n; i+=2){
+                somma += Math.pow(i,m);
+            }
+        }
+
+        return somma;
+    }
     
 }
