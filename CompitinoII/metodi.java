@@ -1,5 +1,6 @@
 package CompitinoII;
 
+import java.util.Random;
 public class metodi {
 
     public static int sommaDueInteri(int x, int y){
@@ -228,6 +229,51 @@ public static void finePartitaCasuale100(int indovinato[], int tentativi, int nu
         returno = "" + parole[selected];
 
         return returno;
+    }
+
+    public static int[][] generaMatriceCasuale(int a, int b, int [][]matrice){
+        // a = righe; b = colonne
+
+        for (int i = 0; i < a; i++) { //per le righe
+            for (int j = 0; j < b; j++) { //per le colonne
+                matrice[i][j] = (int)(Math.random()*99); //numeri random
+                System.out.print(" " + matrice[i][j] + " ");
+            }
+                System.out.println("");
+        }
+        return matrice;
+    }
+
+    public static int[][] trasponiMatrice(int a, int b, int[][] matrice, int [][] trasposta){
+        // a = righe; b = colonne
+        for (int i = 0; i < b; i++){
+            for (int j = 0; j < a; j++) {
+                trasposta[i][j] = matrice[j][i];
+                System.out.print(" " + trasposta[i][j] + " ");
+        }
+        System.out.println("");
+    
+    }
+        return trasposta;
+    }
+
+    public static int sceltaMenuSeiDic(int scelta){
+
+       if (scelta == 1)
+        return 1;
+
+        if (scelta == 2)
+        return 2;
+
+        if (scelta == 3)
+        return 3;
+
+        if (scelta == 4)
+        return 4;
+
+        return 0;
+    
+                
     }
     }
     

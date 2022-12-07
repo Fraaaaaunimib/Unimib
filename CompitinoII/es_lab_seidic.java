@@ -164,7 +164,7 @@ public class es_lab_seidic {
 
     //esercizio 2
 
-
+    /*
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String returno = "";
@@ -271,7 +271,7 @@ if (charFound == false){
  * ad ogni turno dì quanti turni rimangono
  * fai i turni "custom", ovvero fai scegliere quanti turni vuoi (con anche messaggi particolari)
  * trasformalo in un hobby project
- */
+
 
 
 
@@ -286,5 +286,146 @@ if (found == false){
 sc.close();    
 }
 
+*/
+
+// esercizio 3
+/* 
+public static void main (String args[]) {
+    Scanner sc = new Scanner(System.in);
+
+    
+    boolean spacevalid = true, startfinish = true;
+    int numero1 = 0, numero2 = 0, contatoreoperandi = 0;
+    char [] operandi = new char[999];
+    int [] operatore = new int[999];
+    int [] posizioneoperandi = new int [999];
+    String a = "";
+
+    do{
+    System.out.print("Scrivi un'espressione (senza spazi): ");
+    a = sc.nextLine();
+
+    
+    //spaces check
+    for (int i = 0; i < a.length(); i++) {
+        if (a.charAt(i) ==' ' || a.charAt(i) <= '0' && a.charAt(i) >= '9' && a.charAt(i) != '-' && a.charAt(i) != '+') {
+            spacevalid = false;
+
+            break;
+        } else {
+            spacevalid = true;
+        }
+        if (a.charAt(a.length() - 1) == '-' || a.charAt(a.length() - 1) == '+' && a.charAt(0) == '-' && a.charAt(0) == '+') {
+            startfinish = false;
+            break;
+        }
+
+        //check position of the operators
+        if (a.charAt(i) == '-' || a.charAt(i) == '+'){
+        contatoreoperandi++;
+        posizioneoperandi[i] = i;
+        operandi[i] = a.charAt(i);
+        System.out.println(operandi[i]);
+        }
+
+
+        if(i == 0 && posizioneoperandi[i] == 0){
+            operatore[i] = Integer.parseInt(a.substring(0, posizioneoperandi[i]));
+            System.out.println(posizioneoperandi[i]);
+        } else{
+        System.out.println(posizioneoperandi[i]);
+        operatore[i] = Integer.parseInt(a.substring(operandi[i-1], operandi[i]));
+        }
+        System.out.println(operatore [i]);
+
+    }
+
+    
+
+    if (spacevalid == false && startfinish == true) { 
+        System.out.println("Hai aggiunto degli spazi... o qualcos'altro che non è un numero");
+    }
+
+    if (spacevalid == false && startfinish == false){
+        System.out.println("Hai aggiunto qualche carattere non valido, e hai iniziato senza un numero.");
+    }
+
+    if (spacevalid == true && startfinish == false){
+        System.out.println("L'espressione deve iniziare e finire con un numero.");
+    }
+
+    if (spacevalid == true && startfinish == true){
+        System.out.println("Tutto a posto!");
+    }
+
+    } while (spacevalid == false || startfinish == false);
+
+sc.close();
+}
+*/
+
+//esercizio 4
+/*
+public static void main (String args[]) {
+    int a = 0, b = 0;
+    Scanner sc = new Scanner(System.in);
+
+    System.out.print("Quante righe deve essere la matrice? ");
+    a = sc.nextInt();
+
+    System.out.print("Quante colonne deve avere la matrice? ");
+    b = sc.nextInt();
+
+
+    int matrice [][] = new int [a][b];
+    int trasposta [][] = new int [b][a];
+    // matrice --> nome[righe][colonne]
+
+
+    System.out.println("Qua la matrice che è stata scelta: ");
+    for (int i = 0; i < a; i++) { //per le righe
+        for (int j = 0; j < b; j++) { //per le colonne
+            matrice[i][j] = (int)(Math.random()*99); //numeri random
+            System.out.print(" " + matrice[i][j] + " ");
+        }
+            System.out.println("");
+    }
+
+    System.out.println("");
+    System.out.println("Qua è la matrice trasposta: ");
+
+    for (int i = 0; i < b; i++){
+        for (int j = 0; j < a; j++) {
+            trasposta[i][j] = matrice[j][i];
+            System.out.print(" " + trasposta[i][j] + " ");
+    }
+    System.out.println("");
+
 }
 
+System.out.println("");
+System.out.println("Adesso con i metodi:");
+
+metodi.generaMatriceCasuale(a,b,matrice);
+
+System.out.println("Adesso trasposta con i metodi:");
+metodi.trasponiMatrice(a,b,matrice,trasposta);
+sc.close();
+}
+
+*/
+
+// esercizio 5
+
+public static void main(String[]args){
+    Scanner sc = new Scanner(System.in);
+System.out.println("Scegli:");
+System.out.println("1 - Inserisci/cambia la parola chiave");
+System.out.println("2 - Cifra un messaggio");
+System.out.println("3 - Decifra un messaggio");
+System.out.println("4 - Esci dal programma");
+
+int scelta = sc.nextInt();
+int scelta = metodi.sceltaMenuSelDic()
+}
+}
