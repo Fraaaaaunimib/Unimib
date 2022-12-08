@@ -271,6 +271,9 @@ public static void finePartitaCasuale100(int indovinato[], int tentativi, int nu
         if (scelta == 4)
         return 4;
 
+        if (scelta == 5)
+        return 5;
+
         return 0;
     
                 
