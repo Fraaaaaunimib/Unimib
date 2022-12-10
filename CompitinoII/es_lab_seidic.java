@@ -495,6 +495,11 @@ if (scelta1 == 5){
     parolaCifrata2 = cifraMessaggio2Debug(parolaCifrata1, parolaData, parolaChiave); //prints step by step all the cyphered variables
     System.out.println(parolaCifrata2);
 
+    System.out.println();
+    System.out.println("Decifro il messaggio:");
+    parolaMessaggio = decifraMessaggioDebug(parolaCifrata2, parolaCifrata1);
+    System.out.println(parolaMessaggio);
+
     
 }
 }
@@ -853,8 +858,69 @@ public static String Matrix(int c, int d){
     }
 
 
-public static String decifraMessaggio (String CifraMessaggio2, String parolaChiave, String parolaData){
-String messaggio = "";
+public static String decifraMessaggioDebug (String CifraMessaggio2, String CifraMessaggio1){
+String messaggio = "", savedLetter1 = "", savedLetter2 = "";
+int contaMessaggio2 = 0, ContaMessaggio = 0;
+boolean foundLetterContaMessaggio2 = false, foundLetterContaMessaggio1 = false;
+
+// CifraMessaggio2 = cyphered message
+// CifraMessaggio1 = message cyphered only with the parolaChiave letters
+
+    //conta in che posizione sono le lettere nell'alfabeto
+    char ch[] = new char[27];
+    ch[0] = 'a';
+    ch[1] = 'b';
+    ch[2] = 'c';
+    ch[3] = 'd';
+    ch[4] = 'e';
+    ch[5] = 'f';
+    ch[6] = 'g';
+    ch[7] = 'h';
+    ch[8] = 'i';
+    ch[9] = 'j';
+    ch[10] = 'k';
+    ch[11] = 'l';
+    ch[12] = 'm';
+    ch[13] = 'n';
+    ch[14] = 'o';
+    ch[15] = 'p';
+    ch[16] = 'q';
+    ch[17] = 'r';
+    ch[18] = 's';
+    ch[19] = 't';
+    ch[20] = 'u';
+    ch[21] = 'v';
+    ch[22] = 'w';
+    ch[23] = 'x';
+    ch[24] = 'y';
+    ch[25] = 'z';
+
+
+for (int i = 0; i < CifraMessaggio2.length(); i++){
+
+    //count in whcih position is the letter of CifraMessaggio1
+    for (int a = 0; foundLetterContaMessaggio2 == false; a++){
+        if (ch[a] == CifraMessaggio1.charAt(i)) {
+        savedLetter1 = "" + CifraMessaggio1.charAt(i);
+        foundLetterContaMessaggio2 = true;
+        ContaMessaggio = a;
+        break;
+        }
+    }
+
+    //find in the column the first iteration of the letter
+    for (int a = 0; foundLetterContaMessaggio1 == false; a++){
+        if (ch[a] == CifraMessaggio2.charAt(i)){
+        savedLetter2 = "" + CifraMessaggio2.charAt(i);
+        foundLetterContaMessaggio1 = true;
+        contaMessaggio2 = a;
+        break;
+        }
+
+        
+    }
+    messaggio += Matrix(0, contaMessaggio2-2);
+}
 return messaggio;
 }
 }
