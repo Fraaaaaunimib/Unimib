@@ -40,6 +40,76 @@ public static void main(String[]args){
     boolean menu = false, menuInsert = true, alreadySubstitutedKey = false, alreadyInsertedMsg = false; //controls the menu
 int scelta1 = 0; //choices variables for the menu
 
+
+ // ANSI strings - check https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences for all details
+
+ final String ANSI_BOLD = "\u001B[1m"; // makes text afterwards bold
+
+ final String ANSI_BOLD_END = "\u001B[0m"; // makes the text return to its normal state
+
+ final String ANSI_ITALIC = "\u001B[3m"; // makes the text italic
+
+ final String ANSI_GREEN1 = "\u001B[38;2;62;142;146m"; // colour variable: \u001B[38;2 <-- this tells to just colour the text;R;G;Bm <-- rgb values
+
+ //final String ANSI_GREENB = "\u001B[48;2;62;244;197m"; // prints the background as green
+
+ final String ANSI_ORANGE1 = "\u001B[38;2;207;188;0m";
+
+ //final String ANSI_BLACK = "\u001B[38;2;0,0,0m";
+ //final String ANSI_WHITEB = "\u001B[48;2;240;240;240m";
+
+ final String ANSI_WHITE = "\u001B[38;2;255;255;255m";
+
+ final String ANSI_SOL1 = "\u001B[48;2;0;43;54m";
+
+ final String ANSI_SOL11 = "\u001B[38;2;253;246;227m";
+
+ final String ANSI_BLUE = "\u001B[38;2;38;139;218m";
+
+ final String ANSI_SOL2 = "\u001B[38;2;131;148;150m";
+
+ final String ANSI_YELLOW = "\u001B[38;2;181;137;0m";
+
+ final String ANSI_BLACKB = "\u001B[48;2;0;0;0m";
+
+ final String ANSI_GRAYB = "\u001B[48;2;35;35;50m";
+
+ final String ANSI_RED = "\u001B[38;2;220;58;47m";
+
+ // string to reset the colours to default values
+ final String ANSI_RESET = "\033[49m";
+ final String ANSI_RESET2 = "\033[39m";
+
+
+//alphabet array
+char ch[] = new char[27];
+ch[0] = 'a';
+ch[1] = 'b';
+ch[2] = 'c';
+ch[3] = 'd';
+ch[4] = 'e';
+ch[5] = 'f';
+ch[6] = 'g';
+ch[7] = 'h';
+ch[8] = 'i';
+ch[9] = 'j';
+ch[10] = 'k';
+ch[11] = 'l';
+ch[12] = 'm';
+ch[13] = 'n';
+ch[14] = 'o';
+ch[15] = 'p';
+ch[16] = 'q';
+ch[17] = 'r';
+ch[18] = 's';
+ch[19] = 't';
+ch[20] = 'u';
+ch[21] = 'v';
+ch[22] = 'w';
+ch[23] = 'x';
+ch[24] = 'y';
+ch[25] = 'z';
+
     while (menu == false){
    menuInsert = true;
 System.out.println("Scegli:");
@@ -53,7 +123,7 @@ System.out.println("5 - debug");
 scelta = sc.next();
 
 if (scelta.charAt(0) < '1' || scelta.charAt(0) > '5'){
-    System.out.println("Hai inserito una scelta invalida! Devi inserire un numero tra 1 e 5.");
+    System.out.println(ANSI_RED +"Hai inserito una scelta invalida! Devi inserire un numero tra 1 e 5.😶‍🌫️" + ANSI_RESET + ANSI_RESET2);
     menuInsert = false;
 }
 //method to return the number of the menu
@@ -65,32 +135,54 @@ switch (scelta1){ //DEV notes: substituted the 5 If's with a switch.
 case 1:
 
 if (parolaChiave.equals("") && alreadySubstitutedKey == false || parolaChiave == "" && alreadySubstitutedKey == false){ 
-System.out.print("Inserisci la parola chiave: " );
+System.out.print("Inserisci la parola chiave: " + ANSI_BOLD);
     parolaChiave = sc.next();
+    System.out.print(ANSI_BOLD_END);
     alreadySubstitutedKey = false;
     menuInsert = false;
+
+    for (int i = 0; i < parolaChiave.length(); i++){
+        if (parolaChiave.charAt(i) < 'a' || parolaChiave.charAt(i) > 'z'){
+            System.out.println(ANSI_RED + "Non si accettano caratteri che non siano lettere.😰" + ANSI_RESET + ANSI_RESET2);
+            parolaChiave = "";
+            menuInsert = false;
+            break;
+        }
+    }
 break;
 
 } else if (alreadySubstitutedKey == true || !parolaChiave.equals("") || parolaChiave != ""){
-    System.out.print("Hai già inserito una parola chiave, che è: " + parolaChiave + ". Vuoi sostituirla, o mantenere l'attuale? [S] per sostituire, [N] per mantenere l'attuale. --> ");
+    System.out.print(ANSI_ORANGE1 + "Hai già inserito una parola chiave, che è: " + parolaChiave + ". Vuoi sostituirla, o mantenere l'attuale? [S] per sostituire, [N] per mantenere l'attuale. --> " + ANSI_BLUE);
     String sceltaCase1 = sc.next();
+    System.out.print(ANSI_RESET + ANSI_RESET2);
+
 
     switch (sceltaCase1){
     case "S":
-    System.out.print("Quale parola chiave vuoi? --> ");
+    System.out.print("Quale parola chiave vuoi? --> " + ANSI_BOLD);
         parolaChiave = sc.next();
-        menuInsert = false;
+        System.out.print(ANSI_BOLD_END);
+        menuInsert = false; //universal switch: causes the program to return to the start of it
 
         break;
 
         case "N":
-        System.out.println("La parola chiave rimarrà: " + parolaChiave + " .");
+        System.out.println(ANSI_GREEN1 + "La parola chiave rimarrà: " + parolaChiave + " ." + ANSI_RESET + ANSI_RESET2);
         menuInsert = false;
         break;
 
         default:
-        System.out.println("Mi dispiace, ma questa non è una lettera consentita.");
+        System.out.println(ANSI_RED + "Mi dispiace, ma questa non è una lettera consentita.😒" + ANSI_RESET + ANSI_RESET2);
         break;
+    }
+
+    for (int i = 0; i < parolaChiave.length(); i++){
+        if (parolaChiave.charAt(i) < 'a' || parolaChiave.charAt(i) > 'z'){
+            System.out.println(ANSI_RED + "Non si accettano caratteri che non siano lettere.😰" + ANSI_RESET + ANSI_RESET2);
+            parolaChiave = "";
+            menuInsert = false;
+            break;
+        }
     }
 }
     break;
@@ -98,20 +190,71 @@ break;
     case 2:
     parolaData = "";
     System.out.println("Cifra un messaggio ");
-    System.out.print("Inserisci la parola da cifrare: ");
+    System.out.print("Inserisci la parola da cifrare: " + ANSI_BOLD);
     parolaData = sc.next();
+    System.out.print(ANSI_BOLD_END);
 
- 
+    for (int i = 0; i < parolaChiave.length(); i++){
+        if (parolaData.charAt(i) < 'a' || parolaData.charAt(i) > 'z'){
+            System.out.println(ANSI_RED + "Non si accettano caratteri che non siano lettere.😰" + ANSI_RESET + ANSI_RESET2);
+            parolaData = "";
+            menuInsert = false;
+            break;
+        }
+    }
+
+    //error handler
+ try {
     parolaCifrata1 = CifraMessaggio1(parolaChiave, parolaData); //transforms the word from normal word into remade word with keyword letters
     parolaCifrata2 = CifraMessaggio2(parolaCifrata1, parolaData, parolaChiave); //transforms the word from keyword letters word into cyphered word
-    System.out.println(parolaCifrata2);
-    menuInsert = false;
+    System.out.println("Ecco il messaggio cifrato: " + ANSI_BLUE + parolaCifrata2 + ANSI_RESET + ANSI_RESET2);
+    menuInsert = false; 
+ } catch (StringIndexOutOfBoundsException e){ //error handler
+    System.out.print(ANSI_RED + "C'è stato un problema, ecco qua dei dettagli: ");
+
+    if (parolaChiave.equals("") || parolaChiave == ""){
+        System.out.println(ANSI_ORANGE1 + ANSI_BOLD +"Non hai inserito alcuna parola chiave. Ricordati di inserirne prima una, prima di cercare di cifrare un messaggio!" + ANSI_BOLD_END + ANSI_RESET + ANSI_RESET2);
+        menuInsert = false;
+        break;
+    } else {
+        System.out.println(ANSI_ORANGE1 + ANSI_BOLD +"Errore generico." + ANSI_BOLD_END + ANSI_RESET + ANSI_RESET2);
+    }
+ }
     break;
 
     case 3:
     System.out.println("Decifra un messaggio");
     System.out.print("Inserisci la parola da decifrare: ");
+    if (!parolaCifrata2.equals("") || parolaCifrata2 != ""){
+        System.out.print(ANSI_ORANGE1 +"Sembra che tu abbia già salvato un messaggio: " + parolaCifrata2 + " . Vuoi sostituirlo, o mantenere l'attuale? [S] per sostituire, [N] per mantenere l'attuale. --> " + ANSI_BLUE);
+        String switchCase3 = sc.next();
+         System.out.print(ANSI_RESET + ANSI_RESET2);
+
+        switch (switchCase3){
+        case "S":
+        System.out.print("Inserisci la parola da decifrare: " + ANSI_BOLD);
+        parolaCifrata2 = sc.next();
+        System.out.print(ANSI_BOLD_END);
+        menuInsert = false;
+        break;
+
+        case "N":
+        System.out.println(ANSI_GREEN1 + "Va bene, verrà mantenuto " + parolaCifrata2 + " come messaggio da decriptare."+ANSI_RESET + ANSI_RESET2);
+        menuInsert = false;
+        break;
+        }
+    } else {
     parolaCifrata2 = sc.next();
+    }
+
+    for (int i = 0; i < parolaChiave.length(); i++){
+        if (parolaCifrata2.charAt(i) < 'a' || parolaCifrata2.charAt(i) > 'z'){
+            System.out.println(ANSI_RED + "Non si accettano caratteri che non siano lettere.😰" + ANSI_RESET + ANSI_RESET2);
+            parolaCifrata2 = "";
+            menuInsert = false;
+            break;
+        }
+    }
 
     parolaMessaggio = decifraMessaggio(parolaCifrata2, parolaChiave, parolaData, parolaCifrata1);
     System.out.println("Il messaggio " + parolaCifrata2 + " decifrato equivale a: " + parolaMessaggio);
@@ -132,13 +275,14 @@ break;
      */
 
     case 4:
-    System.out.println("Esci dal programma");
+    System.out.println(ANSI_RED + "Esci dal programma" + ANSI_RESET + ANSI_RESET2);
     menu = true;
     System.exit(0);
     break;
 
     case 5:
     System.out.println("Debug menu");
+    System.out.println("Cypher debug menu - Codename Vah Medoh");
     parolaChiave = "cane";
     parolaData = "programmazione";
 
@@ -159,6 +303,16 @@ break;
     parolaMessaggio = decifraMessaggioDebug(parolaCifrata2, parolaChiave, parolaData, parolaCifrata1);
 
     System.out.println("");
+
+    System.out.println("Stampo l'array n con valore alfabeto");
+    parolaChiave = "n";
+    for (int i = 0; i < ch.length; i++){
+    parolaData = "" + ch[i];
+    parolaCifrata1 = CifraMessaggio1(parolaChiave,parolaData);
+    parolaCifrata2 = CifraMessaggio2(parolaCifrata1, parolaData, parolaChiave);
+    parolaMessaggio = decifraMessaggio(parolaCifrata2, parolaChiave, parolaData, parolaCifrata1);
+    System.out.println(parolaMessaggio);
+    }
     menuInsert = false;
     break;
 
@@ -711,6 +865,35 @@ public static String decifraMessaggio (String CifraMessaggio2, String parolaChia
       ch[23] = 'x';
       ch[24] = 'y';
       ch[25] = 'z';
+
+      //n alphabet array
+      char chn[] = new char [27];
+      chn [0]='n';
+      chn[1]='o';
+      chn[2]='p';
+      chn[3]='q';
+      chn[4]='r';
+      chn[5]='s';
+      chn[6]='t';
+      chn[7]='u';
+      chn[8]='v';
+      chn[9]='w';
+      chn[10]='x';
+      chn[11]='y';
+      chn[12]='z';
+      chn[13]='a';
+      chn[14]='b';
+      chn[15]='c';
+      chn[16]='d';
+      chn[17]='e';
+      chn[18]='f';
+      chn[19]='g';
+      chn[20]='h';
+      chn[21]='i';
+      chn[22]='j';
+      chn[23]='k';
+      chn[24]='l';
+      chn[25]='m';
       
       for (int i = 0; i < CifraMessaggio1.length(); i++){
         haveICountedtheSecond = false;
@@ -720,18 +903,8 @@ public static String decifraMessaggio (String CifraMessaggio2, String parolaChia
             enterCheckLetterMode = true;
             doubleAMode = false; sameMode = false; aOnlyMode = false;
     
-            if (savedletter1 == 'n' && savedletter2 == 'b'){
-                messaggio += "" + "o";
-                enterCheckLetterMode = false;
-                haveICountedtheSecond = true;
-                skipFirst = true;
-                doubleAMode = true;
-                sameMode = true;
-                // if you put enterCheckLetterMode = false, haveICountedtheSecond = true and skipFirst = true it skips the checks for the rest of the string
-                // enterCheckLetterMode = checks letter by letter
-                // haveICountedtheSecond = gives you true if it already counted the letter of the cyphered part
-                // skipFirst = handy when you need to skip checking on the first string, e.g. when resetting the circle
-            }
+           
+            
     
             // doubleAMode
             if (savedletter1 == 'a' && savedletter2 == 'a'){
@@ -765,6 +938,20 @@ public static String decifraMessaggio (String CifraMessaggio2, String parolaChia
                         break;
                     }
                 }
+               }
+
+               //special n mode
+               if (savedletter1 == 'n'  && sameMode == false && doubleAMode == false){
+                for (int b = 0; b < ch.length; b++){
+                    if(savedletter2 == chn[b]){
+                        messaggio += "" + ch[b];
+                        break;
+                    }
+                }
+                enterCheckLetterMode = false;
+                skipFirst = true;
+                sameMode = true;
+                haveICountedtheSecond = true;
                }
             for (int j = 0; enterCheckLetterMode == true;j++){ //checks letter by letter
                 
@@ -814,9 +1001,9 @@ public static String decifraMessaggio (String CifraMessaggio2, String parolaChia
     
             }
        
-      }
-
-    return messaggio;
     }
+    return messaggio;
+}
+
 }
 
