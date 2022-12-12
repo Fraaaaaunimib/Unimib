@@ -2,21 +2,21 @@
 import java.util.Scanner;
 public class Cypher {
     
-    public static int sceltaMenuSeiDic(int scelta){
+    public static int sceltaMenuSeiDic(String scelta){
 
-        if (scelta == 1)
+        if (scelta == "1" || scelta.equals("1"))
          return 1;
  
-         if (scelta == 2)
+         if (scelta.equals("2") || scelta == "2")
          return 2;
  
-         if (scelta == 3)
+         if (scelta == "3" || scelta.equals("3"))
          return 3;
  
-         if (scelta == 4)
+         if (scelta == "4" || scelta.equals("4"))
          return 4;
  
-         if (scelta == 5)
+         if (scelta == "5" || scelta.equals("5"))
          return 5;
  
          return 0;
@@ -28,7 +28,7 @@ public static void main(String[]args){
     Scanner sc = new Scanner(System.in);
 
     //variabili
-    String parolaChiave = "", parolaData = "", parolaCifrata1 = "", parolaCifrata2 = "", parolaMessaggio = "";
+    String parolaChiave = "", parolaData = "", parolaCifrata1 = "", parolaCifrata2 = "", parolaMessaggio = "", scelta = "";
     /*
      * parolaChiave = posizione 1
      * parolaData = word which you put
@@ -37,10 +37,11 @@ public static void main(String[]args){
      * parolaMessaggio = your message which should be decrypted
      */
 
-    boolean menu = false; //controls the menu
-int scelta = 0, scelta1 = 0; //choices variables for the menu
+    boolean menu = false, menuInsert = true, alreadySubstitutedKey = false, alreadyInsertedMsg = false; //controls the menu
+int scelta1 = 0; //choices variables for the menu
 
     while (menu == false){
+   menuInsert = true;
 System.out.println("Scegli:");
 System.out.println("1 - Inserisci/cambia la parola chiave");
 System.out.println("2 - Cifra un messaggio");
@@ -49,43 +50,94 @@ System.out.println("4 - Esci dal programma");
 System.out.println("5 - debug");
 // menu
 //control if number > 1 & number < 5
-scelta = sc.nextInt();
+scelta = sc.next();
 
+if (scelta.charAt(0) < '1' || scelta.charAt(0) > '5'){
+    System.out.println("Hai inserito una scelta invalida! Devi inserire un numero tra 1 e 5.");
+    menuInsert = false;
+}
 //method to return the number of the menu
+while (menuInsert == true){
 scelta1 = sceltaMenuSeiDic(scelta);
 
+switch (scelta1){ //DEV notes: substituted the 5 If's with a switch.
 
-if (scelta1 == 1) { //change the keyword
-    System.out.println("Inserisci la parola chiave" );
+case 1:
+
+if (parolaChiave.equals("") && alreadySubstitutedKey == false || parolaChiave == "" && alreadySubstitutedKey == false){ 
+System.out.print("Inserisci la parola chiave: " );
     parolaChiave = sc.next();
-}
+    alreadySubstitutedKey = false;
+    menuInsert = false;
+break;
 
-if (scelta1 == 2) { //cypher the message
+} else if (alreadySubstitutedKey == true || !parolaChiave.equals("") || parolaChiave != ""){
+    System.out.print("Hai già inserito una parola chiave, che è: " + parolaChiave + ". Vuoi sostituirla, o mantenere l'attuale? [S] per sostituire, [N] per mantenere l'attuale. --> ");
+    String sceltaCase1 = sc.next();
+
+    switch (sceltaCase1){
+    case "S":
+    System.out.print("Quale parola chiave vuoi? --> ");
+        parolaChiave = sc.next();
+        menuInsert = false;
+
+        break;
+
+        case "N":
+        System.out.println("La parola chiave rimarrà: " + parolaChiave + " .");
+        menuInsert = false;
+        break;
+
+        default:
+        System.out.println("Mi dispiace, ma questa non è una lettera consentita.");
+        break;
+    }
+}
+    break;
+
+    case 2:
+    parolaData = "";
     System.out.println("Cifra un messaggio ");
     System.out.print("Inserisci la parola da cifrare: ");
     parolaData = sc.next();
 
+ 
     parolaCifrata1 = CifraMessaggio1(parolaChiave, parolaData); //transforms the word from normal word into remade word with keyword letters
     parolaCifrata2 = CifraMessaggio2(parolaCifrata1, parolaData, parolaChiave); //transforms the word from keyword letters word into cyphered word
     System.out.println(parolaCifrata2);
-    
-}
+    menuInsert = false;
+    break;
 
-if (scelta1 == 3) {
+    case 3:
     System.out.println("Decifra un messaggio");
     System.out.print("Inserisci la parola da decifrare: ");
-    parolaData = sc.next();
+    parolaCifrata2 = sc.next();
 
-    
-}
+    parolaMessaggio = decifraMessaggio(parolaCifrata2, parolaChiave, parolaData, parolaCifrata1);
+    System.out.println("Il messaggio " + parolaCifrata2 + " decifrato equivale a: " + parolaMessaggio);
+    menuInsert = false;
+    break;
+    /*
+     * DEBUG:
+     * thequickfoxjumpedoverthelazydog
+     * canecanecanecanecanecanecanecan
+     * vhruwipohoknwmcifoiittuinamcfot
+     *
+     * breaks in:
+     * column n - position c - gives "c" when it is "p"
+     * column n - position i - gives "i" when it is "v" 
+     * column n - position z - gives "m" when it is "z"
+     * column e - position y - gives "c" when it is "y"
+     * Try why " abcdefghijklmnopqrstuwxyz" with key " abcdefghijklmnopqrstuwxyz" does not work.
+     */
 
-if (scelta1 == 4) {
+    case 4:
     System.out.println("Esci dal programma");
     menu = true;
     System.exit(0);
-}
+    break;
 
-if (scelta1 == 5){
+    case 5:
     System.out.println("Debug menu");
     parolaChiave = "cane";
     parolaData = "programmazione";
@@ -105,8 +157,12 @@ if (scelta1 == 5){
     System.out.println(parolaCifrata2);
 
     parolaMessaggio = decifraMessaggioDebug(parolaCifrata2, parolaChiave, parolaData, parolaCifrata1);
-    System.out.println(parolaMessaggio);
-    
+
+    System.out.println("");
+    menuInsert = false;
+    break;
+
+}
 }
 }
 sc.close();
@@ -404,7 +460,6 @@ public static String Matrix(int c, int d){
         matrix[1][i]= "" + ch;
         ch++;
     }
-    System.out.print("\n");
 
     ch = 'a';
     int i = 0;
@@ -466,7 +521,7 @@ public static String Matrix(int c, int d){
 
 public static String decifraMessaggioDebug (String CifraMessaggio2, String parolaChiave, String parolaData, String CifraMessaggio1){
 String messaggio = "";
-boolean skipFirst = false, haveICountedtheSecond = false, enterCheckLetterMode = true;
+boolean skipFirst = false, haveICountedtheSecond = false, enterCheckLetterMode = true, resetTheCicle = false, doubleAMode = false, sameMode = false, aOnlyMode = false;
 CifraMessaggio1 = CifraMessaggio1(parolaChiave, parolaData);
 char savedletter1 = ' ', savedletter2 = ' ';
 int savedletter1number = 0, savedletter2number = 0;
@@ -508,57 +563,260 @@ System.out.println("Stampo il messaggio decriptato: ");
   ch[25] = 'z';
   
   for (int i = 0; i < CifraMessaggio1.length(); i++){
+    haveICountedtheSecond = false;
+    skipFirst = false;
     savedletter1 = CifraMessaggio1.charAt(i);
         savedletter2 = CifraMessaggio2.charAt(i);
         enterCheckLetterMode = true;
+        doubleAMode = false; sameMode = false; aOnlyMode = false;
 
-        for (int j = 0; enterCheckLetterMode == true;j++){
+        if (savedletter1 == 'n' && savedletter2 == 'b'){
+            messaggio += "" + "o";
+            enterCheckLetterMode = false;
+            haveICountedtheSecond = true;
+            skipFirst = true;
+            doubleAMode = true;
+            sameMode = true;
+            // if you put enterCheckLetterMode = false, haveICountedtheSecond = true and skipFirst = true it skips the checks for the rest of the string
+            // enterCheckLetterMode = checks letter by letter
+            // haveICountedtheSecond = gives you true if it already counted the letter of the cyphered part
+            // skipFirst = handy when you need to skip checking on the first string, e.g. when resetting the circle
+        }
+
+        // doubleAMode
+        if (savedletter1 == 'a' && savedletter2 == 'a'){
+            messaggio += "" + "a";
+            enterCheckLetterMode = false;
+            haveICountedtheSecond = true;
+            skipFirst = true;
+            doubleAMode = true;
             
-            if (!savedletter2string.equals(""))
+           }
+
+           //sameMode
+           if (savedletter1 == savedletter2 && doubleAMode == false){
+            messaggio += "" + "a";
+            enterCheckLetterMode = false;
+            haveICountedtheSecond = true;
+            skipFirst = true;
+            sameMode = true;
+           }
+
+        // aOnlyMode: uses the alphabet array instead than the matrix
+           if (savedletter1 == 'a' && doubleAMode == false && sameMode == false){
+            enterCheckLetterMode = false;
+            haveICountedtheSecond = true;
+            skipFirst = true;
+
+            // for to check letter by letter the alphabet array
+            for (int b = 0; b < ch.length; b++){
+                if (ch[b] == savedletter2){
+                    messaggio += "" + ch[b];
+                    break;
+                }
+            }
+           }
+        for (int j = 0; enterCheckLetterMode == true;j++){ //checks letter by letter
+            
+            if (!savedletter2string.equals("")) {
             j = 0;
-            skipFirst = false;
-            if (savedletter1 == ch[j] && haveICountedtheSecond == false){
+            skipFirst = true; //if it hasn't checked yet the second string then check it, and do not check the first string
+            }
+            if (savedletter1 == ch[j] && skipFirst == false){
                 savedletter1number = j;
                 skipFirst = true;
+                resetTheCicle = true;
                 
             }
 
-            if (savedletter1 == ch[j] && skipFirst == true){
+            if (savedletter1 == ch[j] && resetTheCicle == true){
             j= 0;
-            haveICountedtheSecond = true;
+            haveICountedtheSecond = true; //resets the cicle back to zero in order to go back to the first letter of the alphabet and recheck all the letters
             }
-             if (savedletter2 == ch [j]){
+            resetTheCicle = false;
+              if (savedletter2 == ch [j]){
                 savedletter2number = j;
-                savedletter2string = "" + savedletter2;
+                savedletter2string = "" + savedletter2; //transforms the char to string
 
-                for (int a = 0; a < ch.length-1; a++){
+                if (savedletter1 == 'a' && savedletter2 == 'a'){
+                    messaggio += "" + "a";
+                    enterCheckLetterMode = false;
+                    break; //old debug check mode, useless
+                   }
+                for (int a = 0; a < ch.length-1; a++){ //checks letter by lette rinn the matrix
                     matrixsavedletter = Matrix(savedletter1number, a);
                     if (savedletter2string.equals(matrixsavedletter) && a != 0){
-                        savedletter2number = a;
-                        messaggio += "" + ch[a];
+                       if (savedletter1 == 'a' && savedletter2 == 'a'){
+                        messaggio += "" + "a";
                         enterCheckLetterMode = false;
-                        savedletter1 = ' '; savedletter2 = ' '; savedletter1number = 0; savedletter2number = 0; savedletter2string = ""; matrixsavedletter = "";
+                        break; //old debug checkk mode, useless
+                       }
+                        savedletter2number = a; //keep track of the position of the letter in the alphabet
+                        messaggio += "" + ch[a]; //add the letter to the message
+                        enterCheckLetterMode = false; //exit from this mode, and return to the original method mode
+                        savedletter1 = ' '; savedletter2 = ' '; savedletter1number = 0; savedletter2number = 0; savedletter2string = ""; matrixsavedletter = ""; //reset all the variables
                         break;
                     }
 
-                    if (a == 0 && savedletter2string.equals(matrixsavedletter)){
-                        savedletter2number = a;
-                        break;
-                }
-
-                
-                
                 }
                 
             }
 
         }
-
-        
-        
+   
   }
   System.out.print(" " + messaggio + " ");
 return messaggio;
 }
+
+public static String decifraMessaggio (String CifraMessaggio2, String parolaChiave, String parolaData, String CifraMessaggio1){
+    String messaggio = "";
+    boolean skipFirst = false, haveICountedtheSecond = false, enterCheckLetterMode = true, resetTheCicle = false, doubleAMode = false, sameMode = false, aOnlyMode = false;
+    CifraMessaggio1 = CifraMessaggio1(parolaChiave, parolaData);
+    char savedletter1 = ' ', savedletter2 = ' ';
+    int savedletter1number = 0, savedletter2number = 0;
+    String savedletter2string = "", matrixsavedletter = "";
+    
+    System.out.println("Stampo il messaggio decriptato: ");
+     /*
+      * 1. recreate the parolaCifrata1
+      * 2. scan letter by letter the cyphered message, scan the matrix letter by letter, 
+      */
+    
+      //conta in che posizione sono le lettere nell'alfabeto
+      char ch[] = new char[27];
+      ch[0] = 'a';
+      ch[1] = 'b';
+      ch[2] = 'c';
+      ch[3] = 'd';
+      ch[4] = 'e';
+      ch[5] = 'f';
+      ch[6] = 'g';
+      ch[7] = 'h';
+      ch[8] = 'i';
+      ch[9] = 'j';
+      ch[10] = 'k';
+      ch[11] = 'l';
+      ch[12] = 'm';
+      ch[13] = 'n';
+      ch[14] = 'o';
+      ch[15] = 'p';
+      ch[16] = 'q';
+      ch[17] = 'r';
+      ch[18] = 's';
+      ch[19] = 't';
+      ch[20] = 'u';
+      ch[21] = 'v';
+      ch[22] = 'w';
+      ch[23] = 'x';
+      ch[24] = 'y';
+      ch[25] = 'z';
+      
+      for (int i = 0; i < CifraMessaggio1.length(); i++){
+        haveICountedtheSecond = false;
+        skipFirst = false;
+        savedletter1 = CifraMessaggio1.charAt(i);
+            savedletter2 = CifraMessaggio2.charAt(i);
+            enterCheckLetterMode = true;
+            doubleAMode = false; sameMode = false; aOnlyMode = false;
+    
+            if (savedletter1 == 'n' && savedletter2 == 'b'){
+                messaggio += "" + "o";
+                enterCheckLetterMode = false;
+                haveICountedtheSecond = true;
+                skipFirst = true;
+                doubleAMode = true;
+                sameMode = true;
+                // if you put enterCheckLetterMode = false, haveICountedtheSecond = true and skipFirst = true it skips the checks for the rest of the string
+                // enterCheckLetterMode = checks letter by letter
+                // haveICountedtheSecond = gives you true if it already counted the letter of the cyphered part
+                // skipFirst = handy when you need to skip checking on the first string, e.g. when resetting the circle
+            }
+    
+            // doubleAMode
+            if (savedletter1 == 'a' && savedletter2 == 'a'){
+                messaggio += "" + "a";
+                enterCheckLetterMode = false;
+                haveICountedtheSecond = true;
+                skipFirst = true;
+                doubleAMode = true;
+                
+               }
+    
+               //sameMode
+               if (savedletter1 == savedletter2 && doubleAMode == false){
+                messaggio += "" + "a";
+                enterCheckLetterMode = false;
+                haveICountedtheSecond = true;
+                skipFirst = true;
+                sameMode = true;
+               }
+    
+            // aOnlyMode: uses the alphabet array instead than the matrix
+               if (savedletter1 == 'a' && doubleAMode == false && sameMode == false){
+                enterCheckLetterMode = false;
+                haveICountedtheSecond = true;
+                skipFirst = true;
+    
+                // for to check letter by letter the alphabet array
+                for (int b = 0; b < ch.length; b++){
+                    if (ch[b] == savedletter2){
+                        messaggio += "" + ch[b];
+                        break;
+                    }
+                }
+               }
+            for (int j = 0; enterCheckLetterMode == true;j++){ //checks letter by letter
+                
+                if (!savedletter2string.equals("")) {
+                j = 0;
+                skipFirst = true; //if it hasn't checked yet the second string then check it, and do not check the first string
+                }
+                if (savedletter1 == ch[j] && skipFirst == false){
+                    savedletter1number = j;
+                    skipFirst = true;
+                    resetTheCicle = true;
+                    
+                }
+    
+                if (savedletter1 == ch[j] && resetTheCicle == true){
+                j= 0;
+                haveICountedtheSecond = true; //resets the cicle back to zero in order to go back to the first letter of the alphabet and recheck all the letters
+                }
+                resetTheCicle = false;
+                  if (savedletter2 == ch [j]){
+                    savedletter2number = j;
+                    savedletter2string = "" + savedletter2; //transforms the char to string
+    
+                    if (savedletter1 == 'a' && savedletter2 == 'a'){
+                        messaggio += "" + "a";
+                        enterCheckLetterMode = false;
+                        break; //old debug check mode, useless
+                       }
+                    for (int a = 0; a < ch.length-1; a++){ //checks letter by lette rinn the matrix
+                        matrixsavedletter = Matrix(savedletter1number, a);
+                        if (savedletter2string.equals(matrixsavedletter) && a != 0){
+                           if (savedletter1 == 'a' && savedletter2 == 'a'){
+                            messaggio += "" + "a";
+                            enterCheckLetterMode = false;
+                            break; //old debug checkk mode, useless
+                           }
+                            savedletter2number = a; //keep track of the position of the letter in the alphabet
+                            messaggio += "" + ch[a]; //add the letter to the message
+                            enterCheckLetterMode = false; //exit from this mode, and return to the original method mode
+                            savedletter1 = ' '; savedletter2 = ' '; savedletter1number = 0; savedletter2number = 0; savedletter2string = ""; matrixsavedletter = ""; //reset all the variables
+                            break;
+                        }
+    
+                    }
+                    
+                }
+    
+            }
+       
+      }
+
+    return messaggio;
+    }
 }
 
