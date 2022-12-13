@@ -982,7 +982,7 @@ public static String decifraMessaggio (String CifraMessaggio2, String parolaChia
                        }
                     for (int a = 0; a < ch.length-1; a++){ //checks letter by lette rinn the matrix
                         matrixsavedletter = Matrix(savedletter1number, a);
-                        if (savedletter2string.equals(matrixsavedletter) && a != 0){
+                         if (savedletter2string.equals(matrixsavedletter) && a != 0){
                            if (savedletter1 == 'a' && savedletter2 == 'a'){
                             messaggio += "" + "a";
                             enterCheckLetterMode = false;
