@@ -1,80 +1,11 @@
-package CompitinoII;
-
 import java.util.Scanner;
-public class es_lab_tredicidic {
-
-    /* 
-    public static int[] creaArray(){
-int [] array = new int[100];
-        return array;
-    }
-
-    public static void aggiungiElemento(int[] array, int numeroElementi, int elemento){
-
-        if (array[numeroElementi] != 0) {
-System.out.println("There's already an element at this position, which is: "+ array[numeroElementi]);
-        } else {
-            array[numeroElementi] = elemento;
-            System.out.println("The " + array[numeroElementi] + " object is in the array at the position " + numeroElementi);
-        }
-    }
-
-    public static void rimuoviElemento (int []array, int numeroElementi, int elemento){
-
-        if (array[numeroElementi] != 0){
-            array[numeroElementi] = 0;
-            System.out.println("An element has been removed in the place " + numeroElementi);
-        } else {
-            System.out.println("There's nothing in this position, so you can't remove anything.");
-        }
-    }
-
-    
-    public static void main(String[] args) {
-        boolean menu = true;
-
-        int [] array = creaArray();
-        Scanner sc = new Scanner(System.in);
-
-   while (menu == true){
-        System.out.print("In which position do you want to add an item? ");
-        int numeroElementi = sc.nextInt();
-
-        System.out.print("And what do you want to add in this position? ");
-        int elemento = sc.nextInt();
-        aggiungiElemento(array, numeroElementi, elemento);
-    
-  
-
-        System.out.print("In which position do you want to remove an item? ");
-        numeroElementi = sc.nextInt();
-
-        System.out.print("And what do you want to remove from this position? ");
-        elemento = sc.nextInt();
-        rimuoviElemento(array, numeroElementi, elemento);
-
-        System.out.print("Do you want to continue adding/removing stuff, or do you want to stop doing this? [S] if you want to continue, [N] if you want to exit.");
-        String scelta = sc.next();
-
-        if (scelta.equals("S")){
-            menu = true;
-        }
-
-        if (scelta.equals("N")){
-            menu = false;
-        }
-
-   }
-        sc.close();
-    }
-
-    */
-
+public class Tinkertherobot {
     public static void main (String[]args ){
         int [][] array_Matrix = creaMondo();
-        int posizioneRobotSud = 0, posizioneRobotEst = 0;
+        int posizioneRobotSud = 0, posizioneRobotEst = 0, savedx = 0, savedy = 0;
+        String savedint = "";
         Scanner sc = new Scanner(System.in);
-        boolean foundObjective = false;
+        boolean foundObjective = false, alreadyCreatedMatrix = false;
         System.out.print("At which position is the objectve? ");
         System.out.print("Row: ");
         int row = sc.nextInt();
@@ -82,12 +13,23 @@ System.out.println("There's already an element at this position, which is: "+ ar
         if (row == 1)
         row = 0;
 
+        if (row > 20){
+            System.out.println("Way too big!");
+            row = 19;
+        }
+
         System.out.print("Column: ");
         int column = sc.nextInt();
         if (column == 1)
         column = 0;
         else
         column = column - 1;
+        if (column > 20){
+            System.out.println("Way too big!");
+            column = 19;
+    }
+
+        while (foundObjective == false){
 
         System.out.print("And what track do you want to do? ");
         String track = sc.next();
@@ -98,14 +40,21 @@ System.out.println("There's already an element at this position, which is: "+ ar
 
         boolean placed = aggiungiObiettivo(array_Matrix, row, column);
 
+        if (alreadyCreatedMatrix == false)
         aggiungiOstacolo(array_Matrix);
-       aggiungiPercorsoRobot(arraychar, array_Matrix);
+       savedint = aggiungiPercorsoRobot(arraychar, array_Matrix, foundObjective, savedx, savedy);
+       int savei = 0;
+       for (int i = 0; i < savedint.length();i++){
+        if (savedint.charAt(i) == '&'){
+            
+        }
+       }
 
 
         System.out.println("");
 
         stampaMondo(array_Matrix, posizioneRobotSud, posizioneRobotEst);
-  
+        }
         }
 
         public static int[][]creaMondo(){
@@ -136,6 +85,8 @@ System.out.println("There's already an element at this position, which is: "+ ar
 
                 if (array[x][y] == 0){
                     array[x][y] = 2;
+                } else if (array[x][y] == 1){
+                    array[x][y] = 1;
                 } else {
                     array[x][y]= 0;
                     i--;
@@ -170,9 +121,18 @@ System.out.println("There's already an element at this position, which is: "+ ar
             }
 
 
-            public static void aggiungiPercorsoRobot(char[] arrayChar, int [][] arrayMatrix){
-                int x = 0, y = 0;
-                arrayMatrix[0][0] = 3;
+            public static String aggiungiPercorsoRobot(char[] arrayChar, int [][] arrayMatrix, boolean foundObjective, int savedx, int savedy){
+                String savednumber = "";
+                int x = 0, y = 0, savedAll = 0;
+
+                if (savedx == 0 && savedy == 0){
+                    x = 0;
+                    y = 0;
+                    arrayMatrix[0][0] = 3;
+                } else if (savedx != 0 && savedy != 0){
+                    x = savedx;
+                    y = savedy;
+                }
                 for (int i = 0; i < arrayChar.length; i++){
 
                     
@@ -233,19 +193,23 @@ System.out.println("There's already an element at this position, which is: "+ ar
                     }
 
                     if (arrayMatrix[y][x] == 0)
+                    foundObjective = false;
                     arrayMatrix[y][x]= 3;
 
                     if (arrayMatrix[y][x] == 1){
+                        foundObjective = true;
                         System.out.println("Congratulations! You've found the objective you've placed!");
                     }
 
                     if (arrayMatrix[y][x] == 2){
+                        foundObjective = false;
                         System.out.println("No no no... what about the obstacle that's right in front of your eyes?");
                     }
 
 
                 }
+                    
+                savednumber = "" + x + "&" + y;
+                return savednumber;
             }
-            }
-
-
+}
