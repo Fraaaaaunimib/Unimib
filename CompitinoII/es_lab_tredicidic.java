@@ -68,7 +68,7 @@ System.out.println("There's already an element at this position, which is: "+ ar
         sc.close();
     }
 
-    */
+    
 
     public static void main (String[]args ){
         int [][] array_Matrix = creaMondo();
@@ -246,6 +246,108 @@ System.out.println("There's already an element at this position, which is: "+ ar
 
                 }
             }
+            
+
+            public static void main (String[] args) {
+                Scanner sc = new Scanner(System.in);
+
+                System.out.print("Please insert how many rows do you want: ");
+                int n = sc.nextInt();
+
+                System.out.print("Please insert how many colummns do you want: ");
+                int m = sc.nextInt();
             }
+
+            public static int []creaMatrice (int n, int m){
+                int [] matrice = new int  [n*m];
+                return matrice;
+            }
+
+            public static void scriviElemento(int [] array, int n, int m, int i, int j, int elemento){
+
+            }
+            
+             
+            public static void main (String [] args){
+                Scanner sc = new Scanner(System.in);
+
+                int a = 0;
+                int b = 0;
+
+                a = sc.nextInt();
+                b = sc.nextInt();
+
+                System.out.println(somma(a,b));
+      
+            }
+
+            public static int somma(int a, int b){
+                if (a + b == a) 
+                return 1;
+                else {
+                    System.out.println(a + " " + b);
+                return somma(a+1,b-1);
+                
+                }
+
+            }
+            
+
+            public static void main(String[]args){
+                Scanner sc = new Scanner(System.in);
+                int a = sc.nextInt();
+                int b = sc.nextInt();
+
+                System.out.println(mcd(a,b));
+            }
+
+            public static int mcd (int a, int b){
+
+                /*
+                 * mcd tra 12 e 4
+                 * mcd tra 12 e 4 è 4
+                 * 12/1 = 12
+                 * 12/2 = 6
+                 * 12/3 = 4
+                 * 12/4 = 3 
+                 
+                int i = a;
+                int j = b;
+                if (a > b) // pongo i > j
+                {
+                   i = a;
+                   j = b;
+                }
+          
+                Algoritmo di Euclide
+                int tmpInt;
+                while ((tmpInt = i % j) != 0)
+                if ((tmpInt = i % j) != 0){
+                    mcd(i, tmpInt);
+                }
+               
+                    return j;
+
+                    */
+
+    public static void main(String[]args){
+       char [][] matrix = new char [3][3];
+        creaNuovaConfigurazione(matrix);
+
+    }
+
+    public static void creaNuovaConfigurazione(char [][] matrix){
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; j < 3; j++){
+                matrix[i][j] = ' ';
+            }
+        }
+    }
+
+    
+                 }
+             
+            
+            
 
 
