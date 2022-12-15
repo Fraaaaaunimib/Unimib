@@ -332,7 +332,14 @@ System.out.println("There's already an element at this position, which is: "+ ar
 
     public static void main(String[]args){
        char [][] matrix = new char [3][3];
-        creaNuovaConfigurazione(matrix);
+       boolean finished = false;
+       creaNuovaConfigurazione(matrix);
+       while (finished == false){
+        stampaMatrix(matrix);
+        mossaComputer(matrix);
+        mossaUser(matrix);
+
+       }
 
     }
 
@@ -344,6 +351,84 @@ System.out.println("There's already an element at this position, which is: "+ ar
         }
     }
 
+    public static void mossaComputer(char [][] matrix){
+        for (int i = 0; i < 2; i++){
+            for (int  j = 0; j < 2; j++){
+                if (matrix[j][j+1] == 'O'){
+                    matrix[j][j+2] = 'X';
+                }
+                else if (matrix[j+1][j] == 'O'){
+                    matrix[j+2][j] = 'X';
+                }
+            }
+        }
+        if (matrix[1][1] == ' '){
+            matrix[1][1] = 'X';
+        } else if ( matrix[0][0] == 'O'){
+            matrix[2][2]= 'X';
+        } else if (matrix [2][2] == 'O'){
+            matrix[0][0] = 'X';
+        } else if (matrix[0][0] == ' '){
+            matrix[0][0] = 'X';
+        } else if (matrix[0][2] == ' '){
+            matrix[0][2] = 'X';
+        } else if (matrix[2][0] == ' '){
+            matrix[2][0] = 'X';
+        } else if (matrix[2][2] == ' '){
+            matrix[2][2] = 'X';
+        } else {
+
+            boolean clean = false;
+            for (; clean == false;){
+                int a = (int)(Math.random()*2);
+                int b = (int)(Math.random()*2);
+                if (matrix[a][b] == ' '){
+                    matrix[a][b] = 'X';
+                    clean = true;
+                }
+            }
+        }
+    }
+
+    public static void mossaUser(char[][]matrix){
+        boolean valid = false, validInput = false;
+        Scanner sc = new Scanner(System.in);
+        int a = 0, b = 0;
+        while (valid == false){
+            while (validInput == false){
+        System.out.println("Which move you want to do? ");
+        a = sc.nextInt();
+        b = sc.nextInt();
+
+        if (a > 0 && a < 3 && b > 0 && b < 3){
+            validInput = true;
+        } else {
+            System.out.println("Nope, not valid.");
+        }
+            }
+
+        a--;
+        b--;
+
+        if (matrix[a][b] == 'X'){
+            System.out.println("Nope, this is not valid.");
+        } else if (matrix[a][b] == ' '){
+        matrix[a][b] = 'O';
+        valid = true;
+        }
+    }
+    }
+
+    public static void stampaMatrix(char[][]matrix){
+        System.out.println(" _    _    _ ");
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; j < 3; j++){
+                System.out.print(" " + matrix[i][j] + " | ");
+            }
+            System.out.println("");
+            System.out.println(" _    _    _ ");
+        }
+    }
     
                  }
              
