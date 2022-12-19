@@ -29,6 +29,8 @@ public class Tinkertherobot {
             column = 19;
     }
 
+    boolean placed = aggiungiObiettivo(array_Matrix, row, column);
+    
         while (foundObjective == false){
 
         System.out.print("And what track do you want to do? ");
@@ -38,7 +40,7 @@ public class Tinkertherobot {
 
         int counts = 0, counto = 0, counte = 0, countn = 0;
 
-        boolean placed = aggiungiObiettivo(array_Matrix, row, column);
+        
 
         if (alreadyCreatedMatrix == false)
         aggiungiOstacolo(array_Matrix);
@@ -71,7 +73,7 @@ public class Tinkertherobot {
                 array[row][column] = 1;
             } else {
                 canIPlace = false;
-                System.out.println("Sorry, your objetive cannot be put in this position!");
+                System.out.println("Sorry, your objective cannot be put in this position!");
             }
             return canIPlace;
         }

@@ -5,7 +5,6 @@ How does this work?
 This program has a 3x3 char matrix, which includes all empty characters. If you do play against the computer, you are the "O" and the "X" is the computer.
 You can make it also so that you play against another person, which uses yet another methods.
 
-This program makes use of multiple methods, try/catch expressions, booleans and a lot more - probably the most advanced program I've made yet.
 */
 import java.util.Scanner;
 public class tris{
