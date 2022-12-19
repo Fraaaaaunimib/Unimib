@@ -116,30 +116,16 @@ if (scelta == 2){
         winPC = vediVincita(matrix, finished);
         winUser = vediVincitaUser(matrix, finished);
      stampaMatrix(matrix, winPC, winUser, finished);
-     winPC = vediVincita(matrix, finished);
-     winUser = vediVincitaUser(matrix, finished);
-     if (wrongMove == false){
-             winPC = vediVincita(matrix, finished);
-     winUser = vediVincitaUser(matrix, finished);
      mossaUser(matrix, name1, wrongMove);
-     winPC = vediVincita(matrix, finished);
-     winUser = vediVincitaUser(matrix, finished);
-     }
-     winPC = vediVincita(matrix, finished);
-     winUser = vediVincitaUser(matrix, finished);
-     stampaMatrix(matrix, winPC, winUser, finished);
-     if (wrongMove == false) {
-        winPC = vediVincita(matrix, finished);
-        winUser = vediVincitaUser(matrix, finished);
-     mossaUser2(matrix, name2, wrongMove);
-     winPC = vediVincita(matrix, finished);
-     winUser = vediVincitaUser(matrix, finished);
-     }
-     winPC = vediVincita(matrix, finished);
-     winUser = vediVincitaUser(matrix, finished);
      vediNonVincita = vediNonVincita(matrix);
      winPC = vediVincita(matrix, finished);
      winUser = vediVincitaUser(matrix, finished);
+     stampaMatrix(matrix, winPC, winUser, finished);
+     mossaUser2(matrix, name2, finished);
+     vediNonVincita = vediNonVincita(matrix);
+     winPC = vediVincita(matrix, finished);
+     winUser = vediVincitaUser(matrix, finished);
+     vediNonVincita = vediNonVincita(matrix);
   
 
      if (winPC == true){
@@ -218,9 +204,25 @@ public static void creaNuovaConfigurazione(char [][] matrix){
 }
 
 public static void mossaComputer(char [][] matrix){
-    boolean alreadyInserted = false;
+    boolean alreadyInserted = false, alreadyInsertedUser = false;
     for (int i = 0; i < 2; i++){
         for (int  j = 0; j < 2; j++){
+
+            if (matrix[i][j] =='O'){
+                alreadyInsertedUser = true;
+            }
+
+            if (alreadyInsertedUser == true){
+                for (; alreadyInserted == false;){
+                    int a = (int)(Math.random()*2);
+                    int b = (int)(Math.random()*2);
+                    if (matrix[a][b] == ' ' && alreadyInserted == false){
+                        matrix[a][b] = 'X';
+                        alreadyInserted = true;
+                        break;
+                    }
+                }
+            }
             try {
             if (matrix[j][j+1] == 'O' && alreadyInserted == false){
                 matrix[j][j+2] = 'X'; //check every column; if the cell below the chosen one is full, then put one below

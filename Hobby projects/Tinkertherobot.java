@@ -55,7 +55,7 @@ public class Tinkertherobot {
 
         System.out.println("");
 
-        stampaMondo(array_Matrix, posizioneRobotSud, posizioneRobotEst);
+        stampaMondo(array_Matrix);
         }
         }
 
@@ -96,7 +96,7 @@ public class Tinkertherobot {
             }
             }
 
-            public static void stampaMondo (int [][] array_Matrix, int posizioneRobotSud, int posizioneRobotEst){
+            public static void stampaMondo (int [][] array_Matrix){
                 System.out.println("**********************");
 
                 for (int i = 0; i < 20; i++){
@@ -127,6 +127,14 @@ public class Tinkertherobot {
                 String savednumber = "";
                 int x = 0, y = 0, savedAll = 0;
 
+                for (int i = 0; i < arrayMatrix.length; i++){
+                    for (int j =0; j < arrayMatrix.length; j++){
+                        if (arrayMatrix[i][j] == 3){
+                            x = 0;
+                            y = 0;
+                        }
+                    }
+                }
                 if (savedx == 0 && savedy == 0){
                     x = 0;
                     y = 0;
@@ -140,8 +148,12 @@ public class Tinkertherobot {
                     
                     if (arrayChar[i] == 's'){
                         y++;
+
+                        if (arrayMatrix[y][x] == 1){
+                            foundObjective = true;
+                        }
                         try {
-                        if (arrayMatrix[y][x] == 2){
+                        if (arrayMatrix[y][x] == 2 || arrayMatrix[y][x] == 1){
                             y--;
                         }
                         if (x == 20){
@@ -154,8 +166,12 @@ public class Tinkertherobot {
 
                     if (arrayChar[i] == 'e'){
                         x++;
+
+                        if (arrayMatrix[y][x] == 1){
+                            foundObjective = true;
+                        }
                         try {
-                        if (arrayMatrix[y][x] == 2){
+                    if (arrayMatrix[y][x] == 2  || arrayMatrix[y][x] == 1){
                             x--;
                         }
                         if (x == 20){
@@ -169,9 +185,14 @@ public class Tinkertherobot {
                     if (arrayChar[i] == 'o'){
                         x--;
                         try {
-                        if (arrayMatrix[y][x] == 2){
+
+                            if (arrayMatrix[y][x] == 1){
+                                foundObjective = true;
+                            }
+                        if (arrayMatrix[y][x] == 2  || arrayMatrix[y][x] == 1){
                             x++;
                         }
+                        
                         if (x == 0){
                             x++;
                         }
@@ -182,11 +203,12 @@ public class Tinkertherobot {
 
                     if (arrayChar[i] == 'n'){
                         y--;
-                        try {
-                        if (arrayMatrix[y][x] == 2){
-                            y++;
+
+                        if (arrayMatrix[y][x] == 1){
+                            foundObjective = true;
                         }
-                        if (y == 0){
+                        try {
+                        if (arrayMatrix[y][x] == 2  || arrayMatrix[y][x] == 1){
                             y++;
                         }
                     } catch (StringIndexOutOfBoundsException e) {
@@ -198,9 +220,12 @@ public class Tinkertherobot {
                     foundObjective = false;
                     arrayMatrix[y][x]= 3;
 
-                    if (arrayMatrix[y][x] == 1){
+                    if (arrayMatrix[y+1][x+1] == 1 || foundObjective == true){
                         foundObjective = true;
+                        stampaMondo(arrayMatrix);
                         System.out.println("Congratulations! You've found the objective you've placed!");
+                        System.exit(0);
+                        break;
                     }
 
                     if (arrayMatrix[y][x] == 2){
