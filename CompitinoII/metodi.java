@@ -1,4 +1,5 @@
-package CompitinoII;
+//questo file ha in sè alcuni metodi che possono essere "shared"
+
 
 import java.util.Random;
 public class metodi {

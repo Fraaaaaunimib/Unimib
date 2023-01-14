@@ -1,4 +1,3 @@
-package CompitinoII;
 
 import java.util.Scanner;
 public class diciannovedic{
