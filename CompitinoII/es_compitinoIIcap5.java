@@ -380,6 +380,135 @@ public class es_compitinoIIcap5{
 
             break;
 
+            case 7:
+            System.out.print("Scrivi che numero vuoi rimuovere: ");
+            a = sc.nextInt();
+
+            System.out.print("Quanti numeri vuoi scrivere? ");
+            int b = sc.nextInt();
+
+            int[] case7Array = new int[b];
+            
+            for (int i = 0; i < case7Array.length; i++){
+                System.out.print("Scrivi un numero: ");
+                case7Array[i] = sc.nextInt();
+            }
+            rimuovi(a,case7Array);
+            break;
+
+            case 8:
+            /*
+             * 1: dolci alla menta
+             * 2: cioccolatini alle mandorle
+             * 3: biscotti al cioccolato
+             * 4: dolci al cioccolato
+             * 5: lecca lecca senza zucchero
+             */
+            String[] ordini = new String[5];
+            ordini[0] = "Dolci alla menta";
+            ordini[1] = "Cioccolatini alle mandorle";
+            ordini[2] = "Biscotti al cioccolato";
+            ordini[3] = "Dolci al cioccolato";
+            ordini[4] = "Lecca lecca senza zucchero";
+
+            String[] ordine = new String[5];
+            ordine[0] = "Dolce alla menta";
+            ordine[1] = "Cioccolatino alle mandorle";
+            ordine[2] = "Biscotto al cioccolato";
+            ordine[3] = "Dolce al cioccolato";
+            ordine[4] = "Lecca lecca senza zucchero";
+
+             int[] ordine1 = new int[5];
+             int[] ordine2 = new int[5];
+
+             for (int i = 0; i<ordine1.length;i++){
+                System.out.print("Quanti " + ordini[i].toLowerCase() + " vuoi? ");
+                ordine1[i] = sc.nextInt();
+             }
+             System.out.println("");
+             System.out.println("Dobbiamo fare due ordini, e non uno.");
+             for (int i = 0; i<ordine2.length;i++){
+                System.out.print("Quanti " + ordini[i].toLowerCase() + " vuoi? ");
+                ordine2[i] = sc.nextInt();
+             }
+             System.out.println("");
+
+             int[]arrayTotale = new int[5];
+             arrayTotale = combinaOrdini(ordine1, ordine2);
+
+             for(int i = 0; i< arrayTotale.length;i++){
+                if (arrayTotale[i] == 1){
+                    System.out.println("Abbiamo 1 " + ordine[i] + " nel tuo ordine.");
+                } else if (arrayTotale[i] > 1){
+                    System.out.println("Abbiamo " + arrayTotale[i] + " " + ordine[i] + " nel tuo ordine.");
+                }
+             }
+            break;
+
+            case 9:
+             System.out.println("Selection sort demo");
+             System.out.println("I nostri numeri sono 7, 5, 11, 2, 16, 4, 18, 14, 12, 30");
+
+             int [] c= {7,5,11,2,16,4,18,14,12,30};
+             System.out.print("Valori dell'array prima dell'ordinamento: ");
+             for (int i = 0; i < c.length; i++){
+                System.out.print(c[i] + " ");
+             }
+             System.out.println();
+
+             selectionSort(c);
+             System.out.print("Valori dell'array dopo dell'ordinamento: ");
+             for (int i = 0; i < c.length; i++){
+                System.out.print(c[i] + " ");
+             }
+             System.out.println();
+
+            break;
+
+            case 10:
+            System.out.println("Selection sort parziale demo - si usa lo stesso array dell'esercizio 9");
+            boolean inizioValido = false;
+            int inizio = 0;
+            int fine = 0;
+            while (inizioValido == false){
+            System.out.print("Da che indice bisogna iniziare? ");
+            inizio = sc.nextInt();
+                if (inizio <= 0){
+                    System.out.println("L'inizio non può essere minore di zero.");
+
+                } else{
+                    inizioValido = true;
+                }
+            }
+            boolean fineValido = false;
+            while (fineValido == false){
+            System.out.print("Fino a quale fine? ");
+            fine = sc.nextInt();
+                if (fine <= inizio){
+                    System.out.println("L'inizio non può essere minore di zero.");
+
+                } else{
+                    fineValido = true;
+                }
+            }
+
+            int [] c1= {7,5,11,2,16,4,18,14,12,30};
+            System.out.print("Valori dell'array prima dell'ordinamento: ");
+             for (int i = 0; i < c1.length; i++){
+                System.out.print(c1[i] + " ");
+             }
+             System.out.println();
+
+             selectionSortParziale(c1,inizio,fine);
+             System.out.print("Valori dell'array dopo dell'ordinamento: ");
+             for (int i = 0; i < c1.length; i++){
+                System.out.print(c1[i] + " ");
+             }
+             System.out.println();
+            break;
+
+            case 12:
+            break;
             case 0:
             System.exit(0);
             break;
@@ -695,17 +824,107 @@ for (int i = 0; i < in.length; i++){
     }
     intAlphabet = Integer.parseInt(alphabetTracker[i][1]);
     if (intAlphabet >= 2) {
+        System.out.print(alphabetTracker[i][0]);
         //stampa prima occorrenza della lettera
         alphabetTracker[i][1] = "-69420";
-        System.out.print(alphabetTracker[i][0]);
-
+        String reportedletter = alphabetTracker[i][0];
         for (int a = 0; a < in.length; a++){
-            if (alphabetTracker[i][0].equals(alphabetTracker[a][0])){
-                
+            intAlphabet = Integer.parseInt(alphabetTracker[a][1]);
+            if (intAlphabet >= 2 &&  intAlphabet != -69420 && alphabetTracker[a][0].equals(reportedletter)){
+                alphabetTracker[a][1] = "-69420";
             }
         }
     }
+    
+}
+System.out.println("");
+}
+
+public static void rimuovi (int v, int [] in){
+    int [] in2 = new int[in.length];
+    int lengthOfNoNum = 0;
+    for (int i = 0; i < in.length;  i++){
+        if (in[i] != v){
+            in2[i] = in[i];
+            lengthOfNoNum++;
+        }
+    }
+
+    int []in3 = new int[lengthOfNoNum];
+   
+    for (int i = 0; i < in2.length;i++){
+        try{
+        if (in2[i] != 0){
+            in3[i] = in2[i];
+        }
+
+        if (in2[i] == 0 && in[i] == 0){
+            in3[i]= in[i];
+        }
+        System.out.print(in3[i]);
+    } catch(Exception e){
+    }
+
+
 }
 }
 
+public static int[] combinaOrdini(int[] ordine1, int[] ordine2){
+    int[] arrayTotale = new int[ordine1.length];
+
+    for (int i = 0; i < arrayTotale.length;i++){
+        arrayTotale[i] = ordine1[i] + ordine2[i];   
+    }
+
+    return arrayTotale;
+}
+
+public static void selectionSort(int[] unArray){
+    for (int i = 0; i < unArray.length -1;i++){
+        //posiziona il valore corretto in unArray[i]
+        int indiceDelSuccessivoPiuPiccolo = getIndiceDelPiuPiccolo(i,unArray);
+        scambio(i, indiceDelSuccessivoPiuPiccolo, unArray);
+    }
+}
+
+public static int getIndiceDelPiuPiccolo(int  indiceInizio, int[] a){
+    int minimo = a[indiceInizio];
+    int indiceDelMinimo = indiceInizio;
+
+    for (int indice = indiceInizio + 1; indice < a.length; indice++){
+        if (a[indice] < minimo){
+            minimo = a[indice];
+            indiceDelMinimo = indice;
+        }
+    }
+    return indiceDelMinimo;
+}
+
+public static void scambio(int i, int j, int[] a){
+    int temp = a[i];
+    a[i] = a[j];
+    a[j] = temp;
+}
+
+public static void selectionSortParziale(int[] unArray, int inizio, int fine){
+    for (int i = inizio; i < fine;i++){
+        //posiziona il valore corretto in unArray[i]
+        int indiceDelSuccessivoPiuPiccolo = getIndiceDelPiuPiccolo(i,unArray);
+        scambio(i, indiceDelSuccessivoPiuPiccolo, unArray);
+    }
+}
+
+public static void ricercaSequenziale(int numero, int[] array, int lunghezza){
+    /*
+     * ricerca sequenziale: 
+     * - si guardano gli elementi dell'array dal primo all'ultimo per veder ese l'elemento richiesto è uguale a qualche elemento presente nell'array
+     * - ricerca termina qando nell'array viene trovato l'elemento desiderato, o raggiunge la fine.
+     * Ordinato 2,4,6,8 - come si trova il cinque?
+     */
+
+     int[] arraySequential = new int[lunghezza];
+     for (int i = 0; i < array.length; i++){
+        
+     }
+}
 }
