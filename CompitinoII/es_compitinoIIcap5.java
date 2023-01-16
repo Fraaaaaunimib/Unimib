@@ -322,6 +322,64 @@ public class es_compitinoIIcap5{
             System.out.println(quantita + " " + fioriScelta.toLowerCase() + " costano " + fioriPrezzo[fioriSceltato]*quantita + " €.");
 
             break;
+
+            case 4:
+            int[] FrequenzaCarattere = new int[10];
+            System.out.print("Scrivi un numero di telefono: ");
+            int nome = sc.nextInt();
+            String nome2 = "" + nome;
+
+            for (int i = 0; i < nome2.length(); i++){
+                char nomeChar = nome2.charAt(i);
+                int value = Character.getNumericValue(nomeChar);
+
+                FrequenzaCarattere[value]++;
+            }
+
+            for (int i = 0; i < FrequenzaCarattere.length;i++){
+                if (FrequenzaCarattere[i] != 0 && FrequenzaCarattere[i] != 1)
+                System.out.println("Ci sono " + FrequenzaCarattere[i] + " numeri, uguali a " + i + ".");
+                else if (FrequenzaCarattere[i] == 1)
+                System.out.println("C'è una occorrenza di " + i + ".");
+            }
+            break;
+
+            case 5:
+            int dimensioneArray = 1;
+            boolean isCase5Finished = false;
+            System.out.print("Quanti numeri vuoi scrivere? ");
+            a = sc.nextInt();
+            int[] StrettamenteCrescente = new int[a];
+            int[] arrayCase5 = new int[a];
+            for (int i = 0; i < arrayCase5.length;i++){
+                System.out.print("Inserisci un valore nella posizione " + i + " dell'array.");
+                StrettamenteCrescente[i] = sc.nextInt();
+            }
+            System.out.print("L'array ha i seguenti valori: ");
+            for (int i = 0; i<arrayCase5.length-1;i++){
+                System.out.print(" " + StrettamenteCrescente[i] + ", ");
+            }
+            System.out.println(", " + StrettamenteCrescente[arrayCase5.length-1]);
+            
+            if (strettamenteCrescente(StrettamenteCrescente) == true){
+                System.out.println("Tutti i numeri sono in ordine!");
+            } else if (strettamenteCrescente(StrettamenteCrescente) == false){
+                System.out.println("Nope, non tutti i numeri sono in ordine.");
+            }
+            break;
+
+            case 6:
+            System.out.print("Scrivi una frase, verranno verificate dopo le lettere duplicate: ");
+            nome2 = sc.next();
+            char[] nome2Char = new char[nome2.length()];
+            for (int i = 0; i < nome2.length(); i++){
+                nome2Char[i] = nome2.charAt(i);
+                System.out.print(nome2Char[i] + " ");
+            }
+            rimuoviDuplicati(nome2Char);
+
+            break;
+
             case 0:
             System.exit(0);
             break;
@@ -587,4 +645,67 @@ public static int areaQuadrato(int lato){
     area = areaRettangolo(lato,lato);
     return area;
 }
+
+public static boolean strettamenteCrescente(int[]in){
+    boolean strettamenteCrescente = false;
+    for (int i = 1; i<in.length;i++){
+        if (in[i-1] < in[i]){
+            strettamenteCrescente = true;
+        } else {
+            strettamenteCrescente = false;
+            return strettamenteCrescente;
+        }
+    }
+
+    return strettamenteCrescente;
+}
+
+public static void rimuoviDuplicati(char[] in){
+    String[][] alphabetTracker = new String[in.length][2];
+
+    for (int i = 0; i < in.length; i++){
+        alphabetTracker[i][0] = "" + in[i];
+        System.out.print(alphabetTracker[i][0] + " ");
+    }
+
+    for (int i = 0; i < in.length; i++){
+        alphabetTracker[i][1] = "0";
+    }
+
+    int intAlphabet = 0;
+System.out.println("");
+    for (int i = 0; i < in.length; i++){
+        for (int a = 0; a < in.length;a++){
+            intAlphabet = 0;
+            if (in[i] == alphabetTracker[a][0].charAt(0)){
+                for (int b = 0; b<in.length; b++){
+                    if (alphabetTracker[b][0].charAt(0) == in[i]){
+                            intAlphabet++;
+                    }
+                }
+                alphabetTracker[a][1] = "" + intAlphabet;
+            }
+        }
+    }
+    System.out.println();
+    boolean alreadyPrinted = false;
+for (int i = 0; i < in.length; i++){
+    if(alphabetTracker[i][1].equals("1")){
+        System.out.print(alphabetTracker[i][0]);
+    }
+    intAlphabet = Integer.parseInt(alphabetTracker[i][1]);
+    if (intAlphabet >= 2) {
+        //stampa prima occorrenza della lettera
+        alphabetTracker[i][1] = "-69420";
+        System.out.print(alphabetTracker[i][0]);
+
+        for (int a = 0; a < in.length; a++){
+            if (alphabetTracker[i][0].equals(alphabetTracker[a][0])){
+                
+            }
+        }
+    }
+}
+}
+
 }
