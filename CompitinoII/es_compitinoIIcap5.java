@@ -508,6 +508,88 @@ public class es_compitinoIIcap5{
             break;
 
             case 12:
+            System.out.println("Scrivi un numero che vuoi trovare: ");
+            a = sc.nextInt();
+             
+            System.out.println("Quanti numeri vuoi inserire? ");
+            int lunghezza = sc.nextInt();
+            int[] arrayCase12 = new int[lunghezza];
+
+            for (int i = 0;i<arrayCase12.length;i++){
+                System.out.println("Scrivi un numero: ");
+                arrayCase12[i] = sc.nextInt();
+            }
+            ricercaSequenziale(a,arrayCase12,lunghezza);
+            break;
+
+            case 13:
+            double[][]figura = new double[4][5];
+            for (int i = 0; i<4;i++){
+                for (int ab = 0; ab<5;ab++){
+                    System.out.print("Scrivi un numero a riga " + i + " e a colonna " + ab + ": ");
+                    figura[i][ab] = sc.nextDouble();
+                }
+            }
+            System.out.print("Scrivi una soglia: ");
+            double soglia = sc.nextDouble();
+
+            cercaFigura(figura, soglia);
+            break;
+
+            case 14:
+            figura = new double[4][5];
+
+            System.out.println("Debug?");
+            int sceltaCase142 = sc.nextInt();
+
+            switch (sceltaCase142){
+
+                case 1:
+                figura[0][0] = 1.2;
+                figura[0][1] = 1.3;
+                figura[0][2] = 4.5;
+                figura[0][3] = 6.0;
+                figura[0][4] = 2.7;
+                figura[1][0] = 1.7;
+                figura[1][1] = 3.3;
+                figura[1][2] = 4.4;
+                figura[1][3]=10.5;
+                figura[1][4]=17.0;
+                figura[2][0]=1.1;
+                figura[2][1]=4.5;
+                figura[2][2]=2.1;
+                figura[2][3]=25.3;
+                figura[2][4]=9.2;
+                figura[3][0]=1.0;
+                figura[3][1]=9.5;
+                figura[3][2]=8.3;
+                figura[3][3]=2.9;
+                figura[3][4]=2.1;
+                
+
+                System.out.println("Array iniziale: ");
+                for (int i = 0; i < 4; i++){
+                    for (int ae = 0; ae < 5; ae++){
+                        System.out.print(" " + figura[i][ae] + " ");
+                    }
+                    System.out.println();
+                }
+
+                break;
+                case 2:
+            for (int i = 0; i<4;i++){
+                for (int ab = 0; ab<5;ab++){
+                    System.out.print("Scrivi un numero a riga " + i + " e a colonna " + ab + ": ");
+                    figura[i][ab] = sc.nextDouble();
+                }
+            }
+            break;
+            default:
+            System.out.println("e");
+            break;
+        }
+            blur(figura);
+        
             break;
             case 0:
             System.exit(0);
@@ -924,7 +1006,144 @@ public static void ricercaSequenziale(int numero, int[] array, int lunghezza){
 
      int[] arraySequential = new int[lunghezza];
      for (int i = 0; i < array.length; i++){
-        
+        if (numero == array[i]){
+            System.out.println("Trovato " + numero + "!");
+        }
      }
+}
+
+public static int[][] cercaFigura(double[][] figura, double soglia){
+    int[][] Array = new int [4][5]; 
+
+    double media = 0;
+    double totale = 0;
+    int numtotali = 0;
+System.out.println("Array iniziale:");
+    for (int i = 0; i < 4; i++){
+        for (int a = 0; a < 5; a++){
+            numtotali++;
+            totale = totale + figura[i][a];
+            System.out.print(" " + figura[i][a] + " ");
+        }
+        System.out.println();
+    }
+
+media = totale/numtotali;
+
+    System.out.println("La soglia è " + soglia  +", e la media è: " + media + ". I numeri che eccedono di " + soglia + " il numero + " + media + " sono: ");
+
+    for (int i = 0; i < 4;i++){
+        for (int a = 0; a < 5; a++){
+            if (figura[i][a] > soglia+media){
+                Array[i][a] = 1;
+            }
+            System.out.print(" " + Array[i][a] + " ");
+        }
+        System.out.println();
+    }
+    return Array;
+}
+
+public static void blur(double[][]immagine){
+    Scanner sc = new Scanner(System.in);
+int pixelSceltoRiga = 0;
+int pixelSceltoColonna = 0;
+
+    double[][]risultato = new double[4][5];
+    for (int x = 0; x < 4; x++){
+        for (int y = 0; y < 5; y++){
+
+            pixelSceltoRiga = x;
+            pixelSceltoColonna = y;
+
+   
+    double totaleNumeri = 0;
+    int[][] arrayBlur = new int[4][5];
+    arrayBlur[pixelSceltoRiga][pixelSceltoColonna] = 4;
+    if (pixelSceltoRiga > 0){
+    arrayBlur[pixelSceltoRiga-1][pixelSceltoColonna] = 2;
+    if (pixelSceltoColonna > 0)
+    arrayBlur[pixelSceltoRiga-1][pixelSceltoColonna-1] = 1;
+    
+    } 
+    if (pixelSceltoColonna > 0){
+    arrayBlur[pixelSceltoRiga][pixelSceltoColonna-1] = 2;
+    if (pixelSceltoRiga > 0){
+        arrayBlur[pixelSceltoRiga-1][pixelSceltoColonna-1] = 1;
+        if (pixelSceltoColonna < 4 && pixelSceltoRiga < 3)
+        arrayBlur[pixelSceltoRiga-1][pixelSceltoColonna+1] = 1;
+    }
+    if (pixelSceltoRiga == 0){
+        if (pixelSceltoColonna < 4 && pixelSceltoRiga < 3){
+        arrayBlur[pixelSceltoRiga+1][pixelSceltoColonna+1] = 1;
+        arrayBlur[pixelSceltoRiga+1][pixelSceltoColonna-1] = 1;
+        }
+    }
+    }
+
+    if (pixelSceltoRiga < 3){
+        if (pixelSceltoColonna < 3){
+    arrayBlur[pixelSceltoRiga+1][pixelSceltoColonna+1] = 1;
+        }
+    arrayBlur[pixelSceltoRiga+1][pixelSceltoColonna] = 2;
+        
+    }
+
+    if (pixelSceltoColonna < 4){
+    arrayBlur[pixelSceltoRiga][pixelSceltoColonna+1] = 2;
+    if (pixelSceltoRiga > 0)
+    arrayBlur[pixelSceltoRiga-1][pixelSceltoColonna+1] = 1;
+    if (pixelSceltoRiga < 3){
+        arrayBlur[pixelSceltoRiga+1][pixelSceltoColonna+1] = 1;
+        if (pixelSceltoRiga > 0 && pixelSceltoColonna > 0 && pixelSceltoRiga < 3 && pixelSceltoColonna < 4){
+            arrayBlur[pixelSceltoRiga+1][pixelSceltoColonna-1] = 1;
+        }
+    }
+    }
+
+    if (pixelSceltoColonna == 4){
+        if (pixelSceltoRiga < 3){
+        arrayBlur[pixelSceltoRiga+1][pixelSceltoColonna-1] = 1;
+        }
+    }
+System.out.println("Array blur:");
+    for (int i = 0; i<4; i++){
+        for (int a = 0; a < 5; a++){
+            System.out.print(" " + arrayBlur[i][a] + " ");
+        }
+        System.out.println();
+    }
+        
+int totaleBlur = 0;
+    for (int i = 0; i < 4; i++){
+        for (int a = 0; a < 5; a++){
+            totaleBlur = 0;
+
+            for (int b = 0; b <4; b++){
+                for (int c = 0; c < 5; c++){
+                    totaleBlur += arrayBlur[b][c];
+                }
+            }
+        }
+    }
+
+    for (int i = 0; i < 4; i++){
+        for (int a = 0; a < 4; a++){
+            totaleNumeri = totaleNumeri+(arrayBlur[i][a] * immagine[i][a]);
+        }
+    }
+
+    risultato[x][y] = totaleNumeri/totaleBlur;
+    
+}
+System.out.println();
+    }
+
+    for (int i = 0; i<4; i++){
+        for (int a = 0; a < 5; a++){
+            System.out.print(" " + risultato[i][a] + " ");
+        }
+        System.out.println();
+    }
 }
 }
