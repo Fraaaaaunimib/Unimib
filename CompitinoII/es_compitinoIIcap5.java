@@ -626,6 +626,14 @@ public class es_compitinoIIcap5{
 
             System.out.println("Totale numeri dispari inseriti: " + toDispari);
             break;
+
+            case 4:
+            System.out.print("Scrivi un numero: ");
+            a = sc.nextInt();
+            ricorsivoContaCifre(a);
+            int totaleConti = ricorsivoContaCifre(a);
+            System.out.println("Totale cifre: " + totaleConti);
+            break;
             case 0:
             System.exit(0);
             break;
@@ -1217,6 +1225,26 @@ public static int ricorsivoCifreDispari(int a ){
     }
 
     return somma;
+    }
+
+    public static int ricorsivoContaCifre(int a){
+        String a2 = ""+a;
+        int somma = 0;
+        int ultimacifra = 0;
+        int myNum = new Integer(a2.substring(0,1));
+        ultimacifra = ultimacifra + myNum;
+        System.out.println( " - " + a + " : " + myNum + " - " + ultimacifra);
+        /*
+         * somma di 1+2+3+4+5
+         */
+
+         if (a2.length()>1){
+            a2 = a2.substring(1);
+            int restoNum=new Integer(a2);
+            
+            ultimacifra += ricorsivoContaCifre(restoNum);
+         }
+        return ultimacifra;
     }
 }
 
