@@ -600,9 +600,46 @@ public class es_compitinoIIcap5{
             break;
         }
     }
+    if (sceltaCategoria == 3){
+        System.out.print("Scrivi quale esercizio vuoi provare: ");
+        int sceltaEsercizi = sc.nextInt();
+
+        switch (sceltaEsercizi){
+            case 1:
+            int a = 23;
+            if (a > 0){
+                a = a/2;
+                System.out.println(a%2);
+            }
+            break;
+
+            case 2:
+            System.out.println("Attenzione: va all'infinito.");
+            metodoCase2(11156);
+            break;
+
+            case 3:
+            System.out.print("Scrivi un numero: ");
+            a = sc.nextInt();
+            ricorsivoCifreDispari(a);
+            int toDispari = ricorsivoCifreDispari(a);
+
+            System.out.println("Totale numeri dispari inseriti: " + toDispari);
+            break;
+            case 0:
+            System.exit(0);
+            break;
+
+            default:
+            System.out.println("e");
+            break;
+        }
 }
-        sc.close();
+        
     }
+    sc.close();
+}
+
 
     //Esercizio 1
     public static void confronta(int a, int b){
@@ -1146,4 +1183,41 @@ System.out.println();
         System.out.println();
     }
 }
+public static void metodoCase2(int numero){
+if (numero > 0){
+    int d = numero % 10;
+    boolean dispari = (numero/10)%2 == 1;
+    metodoCase2(numero/10);
+    if (dispari)
+    System.out.print(d/2 + 5);
+    else
+    System.out.print(d/2);
 }
+}
+
+public static int ricorsivoCifreDispari(int a ){
+  
+    String a2 = ""+a;
+    int contaDispari = 0;
+    int ultimacifra = 0;
+    int somma = 0;
+
+    int myNum = new Integer(a2.substring(0,1)); //create a substring from zero to one - selects a single number
+    ultimacifra = myNum %2; //calculates the rest between the number chosen and two
+    System.out.println( " - " + a + " : " + myNum + " - " + ultimacifra); //a: each number gets removed one by one at the start; myNum: the number selected. ultimacifra: whether it is dispari or not
+
+    if (ultimacifra != 0){
+        somma++; //counts the dispari numbers
+    }
+
+    if (a2.length() > 1){
+        a2 = a2.substring(1); //creates a new substring that starts from the second letter
+        int restoNum = new Integer(a2);
+        somma += ricorsivoCifreDispari(restoNum); //recursive method: somma is what counts the dispari,restoNum is the substring from the second number to the end.
+    }
+
+    return somma;
+    }
+}
+
+
