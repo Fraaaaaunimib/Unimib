@@ -634,6 +634,63 @@ public class es_compitinoIIcap5{
             int totaleConti = ricorsivoContaCifre(a);
             System.out.println("Totale cifre: " + totaleConti);
             break;
+
+            case 6:
+            System.out.print("Quanti numeri vuoi inserire? ");
+            a = sc.nextInt();
+            int[] n = new int[a];
+
+            for (int i = 0; i < n.length; i++){
+            System.out.print("Scrivi un numero per l'array: ");
+            n[i] = sc.nextInt();
+            }
+            int returno = 0;
+            int index = 0;
+            returno = sommaArray(n,returno, index);
+            System.out.println("La somma totale degli elementi nell'array è " + returno + ". ");
+            break;
+
+            case 7:
+            System.out.print("Quanti numeri vuoi nell'array? ");
+            a = sc.nextInt();
+            n = new int[a];
+
+            for (int i = 0; i < n.length; i++){
+                System.out.print("Scrivi un numero per l'array: ");
+                n[i] = sc.nextInt();
+            }
+
+            returno = valoreMassimo(n, 0, n.length - 1);
+            System.out.println("La ricorsione fa schifo, il valore massimo è " + returno);
+            break;
+        
+
+            case 8:
+            System.out.print("Quanti numeri vuoi nell'array? ");
+            a = sc.nextInt();
+            n = new int[a];
+
+            for (int i = 0; i < n.length; i++){
+                n[i] = i;
+            }
+            int triage = ((n.length - 1) / 3)+1;
+            returno = valoreMassimo2(n, 0, n.length - 1, triage);
+            System.out.println("La ricorsione fa schifo, il valore massimo è " + returno);
+            break;
+            
+            case 9:
+            System.out.print("Quanti numeri vuoi nell'array? ");
+            a = sc.nextInt();
+            n = new int[a];
+
+            for (int i = 0; i < n.length; i++){
+                n[i] = i;
+            }
+            returno = 0;
+            index = n.length;
+            returno = sommaArrayCumulative(n,returno, index);
+            System.out.println("La somma totale degli elementi nell'array è " + returno + ". ");
+            break;
             case 0:
             System.exit(0);
             break;
@@ -1246,6 +1303,90 @@ public static int ricorsivoCifreDispari(int a ){
          }
         return ultimacifra;
     }
-}
+
+    private static int index = 0;
+    public static int sommaArray(int[] n, int returno, int index) {
+        if (index >= n.length) {
+            return returno;
+        }
+        returno += n[index];
+        return sommaArray(n, returno, index + 1);
+    }
+        
+    public static int valoreMassimo(int []array, int left, int right){
+        /*
+         * cercare il massimo in un array
+         * 1. divido a metà gli array
+         * 2. cerco il massimo in ogni metà
+         * 3. ritorno il valore massimo tra ciascuna metà
+         */
+
+         if (left == right) {
+            return array[left];
+        }
+        int middle = (left + right) / 2;
+        int maxLeft = valoreMassimo(array, left, middle); //parte sinistra dell'array
+        int maxRight = valoreMassimo(array, middle + 1, right); //parte destra dell'array
+        return Math.max(maxLeft, maxRight); //calcolo il massimo tra Left e Right
+         //chiamata ricorsiva, continua fino a quando non ha più numeri da fare
+
+    }
+
+    public static int valoreMassimo2(int []array, int left, int right, int triage2){
+        /*
+         * cercare il massimo in un array
+         * 1. divido a metà gli array
+         * 2. cerco il massimo in ogni metà
+         * 3. ritorno il valore massimo tra ciascuna metà
+         */
+      boolean maxLeftTrue = false;
+         int triage = ((right + 1)+left)/3;
+         if (right == array.length - 1 && triage != triage2){
+            triage = (array.length) - left;
+         }
+      if (triage <= 1&& right != array.length - 1 || left == right && right != array.length - 1|| triage == left && right != array.length - 1|| triage == right && right != array.length - 1|| triage == right-triage && right != array.length - 1|| triage2 == 3 && right != array.length - 1 || left == array.length - triage){
+        maxLeftTrue = true;
+        int maxLeft2 = Math.max(left, triage-1);
+        int maxRight2 = Math.max(right-triage+1, right);
+        int maxMid2 = Math.max(triage,right-triage);
+
+        int maxTotLeftMid = Math.max(maxLeft2, maxMid2);
+        int maxTotRightMid = Math.max(maxRight2, maxMid2);
+        int maxTotTot = Math.max(maxTotLeftMid, maxTotRightMid);
+        return maxTotTot;
+        
+      } 
+        
+        int maxLeft = valoreMassimo2(array, left, triage-1, triage);
+        int maxMid = 0;
+        int maxRight = 0;
+        if (maxLeftTrue == false){
+         maxMid = valoreMassimo2(array, triage, right-triage, triage);
+         maxRight = valoreMassimo2 (array, right-triage+1, right, triage);
+    }
+        int maxLeftMid =  Math.max(maxLeft, maxMid);
+        int maxRightMid = Math.max(maxRight, maxMid);
+        
+     return Math.max(maxLeftMid,maxRightMid);
+    }
+
+    public static int sommaArrayCumulative(int[] n, int returno, int index) {
+        if (index == 0) {
+            return returno;
+        }
+returno = 0;
+        for (int i = index - 1; i > 0; i--){
+        returno += n[i];
+        }
+
+        if (index != 0)
+        System.out.println("Somma cumulativa di " + n[index-1] + " :" + returno);
+        else if (index == 0)
+        System.out.println("Somma cumulativa di " + n[0] + " :" + returno);
+        return sommaArrayCumulative(n, returno, index - 1);
+    }
+    }
+
+    
 
 
