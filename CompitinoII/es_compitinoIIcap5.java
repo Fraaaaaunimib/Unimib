@@ -691,10 +691,23 @@ public class es_compitinoIIcap5{
             returno = sommaArrayCumulative(n,returno, index);
             System.out.println("La somma totale degli elementi nell'array è " + returno + ". ");
             break;
+
             case 0:
             System.exit(0);
             break;
 
+            case 10:
+            System.out.println("Interesse composto - inserisci: ");
+            double m = 0.005;
+            System.out.println("Per quanti mesi? ");
+            int t = sc.nextInt();
+            int start = 0;
+            contoBancario(t,m,start);
+            break;
+
+            case 11:
+
+            break;
             default:
             System.out.println("e");
             break;
@@ -1384,6 +1397,31 @@ returno = 0;
         else if (index == 0)
         System.out.println("Somma cumulativa di " + n[0] + " :" + returno);
         return sommaArrayCumulative(n, returno, index - 1);
+    }
+
+    public static int contoBancario(int t, double m, double start){
+        double somma = 0;
+        /*
+         * interesse composto
+         * se m è la somma depositata sul conto, la somma disponibile alla fine del mese sarà 1.005m
+         * si aggiunge 0.005 per ogni mese
+         */
+
+         if (t == 0){
+            return 0;
+         }
+         somma += start + m;
+         System.out.println("Al mese " + t + " l'interesse composto è " + somma + " m " );
+         start = somma;
+         t--;
+         contoBancario(t,m,start);
+         return 0;
+    }
+
+    public static int Satellite(int k, int M){
+        (if k == 0 || k == 1){
+            
+        }
     }
     }
 
