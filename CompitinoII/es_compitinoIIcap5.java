@@ -1419,12 +1419,9 @@ returno = 0;
     }
 
     public static int Satellite(int k, int M){
-        (if k == 0 || k == 1){
-            
-        }
     }
-    }
-
+}
+        
     
 
 
