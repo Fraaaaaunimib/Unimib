@@ -706,8 +706,38 @@ public class es_compitinoIIcap5{
             break;
 
             case 11:
+          System.out.print("Inserisci quanti secondi:");
+          int k = sc.nextInt();
+          int tempk = k;
+String M = "";
+          for (int i = k; i >= 0; i--){
+            while (k - 3 >= 0){
+                M = M + "-";
+                k = k-3;
+            }
 
+            while (k-2 >= 0){
+                M = M + ".";
+                k = k-2;
+            }
+          }
+          System.out.println(M);
+          Satellite(tempk, M);
             break;
+
+            case 12:
+            System.out.print("Scrivi una stringa: ");
+            M = sc.next();
+
+            String finale = "";
+            contaVocalir(M,finale);
+            break;
+           
+            case 13:
+            System.out.println("Scrivi una stringa:");
+            M = sc.next();
+            finale = "";
+            duplicaLettere(M, finale);
             default:
             System.out.println("e");
             break;
@@ -1418,7 +1448,52 @@ returno = 0;
          return 0;
     }
 
-    public static int Satellite(int k, int M){
+    public static int Satellite(int k, String M){
+        if (k == 0 || k == 1){
+            System.out.println("Si può trasmettere un messaggio vuoto.");
+        } else if (k == 2){
+            System.out.println("Si può trasmettere il punto.");
+        } else if (k == 3){
+            System.out.println("Si può trasmetter euna linea");
+        } else if (k > 3){
+            if (M.charAt(0) == '.'){
+                k = k - 2;
+                System.out.print(".");
+            } else if (M.charAt(0) == '-'){
+                k = k - 3;
+                System.out.print("-");
+            }
+            String e = M.substring(1,M.length());
+            Satellite(k, e);
+        }
+        return k;
+    }
+
+    public static void contaVocalir(String a, String finale){
+
+        if (a.length() == 0){
+            System.out.println(finale);
+        } else {
+            if (a.charAt(0) == 'a' || a.charAt(0) == 'e' || a.charAt(0) == 'i' || a.charAt(0) == 'o' || a.charAt(0) == 'u'){
+                    System.out.println("Abbiamo una vocale!");
+                  
+            } else {
+                finale += a.charAt(0);
+            }
+            contaVocalir(a.substring(1,a.length()),finale);
+        }
+
+    }
+
+    public static void duplicaLettere(String a, String finale){
+        if (a.length() == 0){
+            System.out.println(finale);
+        } else {
+            finale += finale.concat(""+a.charAt(0));
+            finale += finale.concat(""+a.charAt(0));
+            duplicaLettere(a.substring(1,a.length()), finale);
+        }
+
     }
 }
         
