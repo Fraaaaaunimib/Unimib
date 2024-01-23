@@ -10,7 +10,7 @@ int main() {
   treedict_ref myTree = treedict_new("MyTree");
   
   int keyToFind; int keyToDelete; int length; int forInt; int* keyToInsert;
-  void* foundValue;void** valueToInsert; char buffer[100];
+  void* foundValue;void* * valueToInsert; char buffer[100];
 
   //inserimento a runtime di nodi nell'albero
   printf("========== Write here how many nodes you want to enter: ========== \n");
@@ -18,6 +18,13 @@ int main() {
 
  keyToInsert = malloc(length * sizeof(int)); //Allocazione dinamica memoria per keyToInsert
  valueToInsert = malloc(length * sizeof(void*)); // Allocazione dinamica memoria per valueToInsert
+
+ /*
+ 8 nodi |4|3|5|6| | | | | | | | | | | |
+
+ buffer = 
+ | ciao | |
+  */
 
  if (valueToInsert == NULL || keyToInsert == NULL) {
     printf("treedict: main: allocazione di memoria fallita.\n");
@@ -90,7 +97,7 @@ for (forInt = 0; forInt < length; forInt++){
     // Libero la memoria allocata per l'albero
 	free(myTree); 
 
-	//libero ogni void* all'interno dell'array
+	//libero ogni void* all'interno dell'a
 	for (forInt = 0; forInt < length; forInt++){
     free(valueToInsert[forInt]);
 }

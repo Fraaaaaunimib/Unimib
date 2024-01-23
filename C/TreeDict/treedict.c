@@ -74,23 +74,25 @@ node_ref node_insert(node_ref n, int k, void * v){
 	 
   }
 
-//Crea un nuovo albero
-treedict_ref treedict_new(char * name){
-  
-  //Alloca un nuovo spazio di memoria per un treedict
-  treedict_ref new_td = (treedict_ref) malloc(sizeof(struct treedict));
-  
-  //Se non può creare lo spazio di memoria:
-  if (new_td == NULL) {
-	fprintf(stderr, "treedict: treedict_new: cannot allocate memory.\n");
-	exit(-1);
-	}
-  
-  //"istanzia" i valori all'interno della struct
-  new_td -> id = name;
-  new_td -> root = NULL;
-  
-  return new_td;
+  // Crea un nuovo albero
+  treedict_ref treedict_new(char *name)
+  {
+
+    // Alloca un nuovo spazio di memoria per un treedict
+    treedict_ref new_td = (treedict_ref) malloc(sizeof(struct treedict));
+
+    // Se non può creare lo spazio di memoria:
+    if (new_td == NULL)
+    {
+      fprintf(stderr, "treedict: treedict_new: cannot allocate memory.\n");
+      exit(-1);
+    }
+
+    //"istanzia" i valori all'interno della struct
+    new_td->id = name;
+    new_td->root = NULL;
+
+    return new_td;
   
   }
 
@@ -220,3 +222,9 @@ se nodo ha sia parte destra che sinistra
 	}
   return n;
   }
+
+  /*
+      8
+    5   15
+      8  20  
+  */
