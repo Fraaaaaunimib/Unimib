@@ -9,12 +9,15 @@
 #include <sys/types.h>
 #include <ctype.h>
 #include <signal.h>
+#include <readline/readline.h>
+#include <readline/history.h>
 
 #define MAX_LINE 4096
 #define MAX_ARGS 256
 #define MAX_PATH 512
 #define MAX_PROMPT 32
 #define MAX_VARIABLES 64
+#define _XOPEN_SOURCE 700
 #define HISTORY_SIZE 10
 
 char _path[MAX_PATH] = "/bin/:/usr/bin";
@@ -191,17 +194,11 @@ const char *get_variable_value(const char *name) {
   return "";
 }
 
-void handle_sigint(int signo) {
- #if USE_DEBUG_PRINTF
-  printf("\nCaught SIGINT (Ctrl+C)\n");
-#endif
-  if (current_pid > 0 && current_pid != shell_pid){
-    kill(current_pid, SIGINT);
-  }
-
+void handle_sigint(int sig) {
   if (getpid() == shell_pid) {
-    printf("\n%s", prompt_string);
-    fflush(stdout);
+    printf("\n");
+  } else {
+    exit(EXIT_FAILURE);
   }
 }
 
@@ -238,14 +235,26 @@ void handle_sigint(int signo) {
 void do_exec (char** arg_list) {
   int pid = fork();
   if(pid >0){
+    // Nel processo padre, aspetta che il processo figlio termini
     int wpid = wait(NULL);
     if (wpid < 0) panic("wait");
+
+    // Cambia il gruppo di processi in primo piano nel terminale al gruppo di processi del processo padre
+    tcsetpgrp(STDIN_FILENO, getpgrp());
   } else if(pid == 0){
-    //begin child code
+    // Nel processo figlio, crea un nuovo gruppo di processi
+    setpgid(0, 0);
+
+    // Cambia il gruppo di processi in primo piano nel terminale al gruppo di processi del processo figlio
+    tcsetpgrp(STDIN_FILENO, getpgrp());
+
+    // Ripristina l'azione predefinita per SIGINT
+    signal(SIGINT, SIG_DFL);
+
+    // Esegui il comando
     exec_rel2abs(arg_list);
     perror(arg_list[0]);
     exit(EXIT_FAILURE);
-    //end child code
   } else {
     panic("do_exec: fork");
   }
@@ -259,34 +268,23 @@ int main(void) {
   size_t i;
   int run_in_background = 0;
  
-  
-  
-  enable_raw_mode();
   shell_pid = getpid();
-  if(signal(SIGINT, handle_sigint) == SIG_ERR) {
-  perror("signal");
-  exit(EXIT_FAILURE);
-}
-  
+  sigaction(SIGINT, &(struct sigaction){ .sa_handler = handle_sigint }, NULL);
+
   if (isatty(0)){
   strcpy(prompt_string, "dsh$ \0");
 }
   
-  while(prompt(input_buffer, MAX_LINE, prompt_string) >= 0) {
-  printf("%s", prompt_string);
+  char* temp_buffer;
+  while((temp_buffer = readline(prompt_string)) != NULL) {
+    strncpy(input_buffer, temp_buffer, sizeof(input_buffer) - 1);
+    add_history(input_buffer);
+    free(temp_buffer);
+
   fflush(stdout);
-  if (fgets(input_buffer, sizeof(input_buffer), stdin) == NULL) {
-  break;
-}
 
-  input_buffer[strcspn(input_buffer, "\n")] = '\0';
-  expand_variables(input_buffer);
-
-  strncpy(command_history[history_index], input_buffer, MAX_LINE - 1);
-  history_index = (history_index + 1) % HISTORY_SIZE;
-  if (history_count < HISTORY_SIZE) {
-  history_count++;
-}
+input_buffer[strcspn(input_buffer, "\n")] = '\0';
+    expand_variables(input_buffer);
   
     //tokenize
     arg_count = 0;
@@ -377,6 +375,7 @@ int main(void) {
 	pid_t child_pid = fork();
 	run_in_background = 1;
 	if (child_pid == 0){
+    signal(SIGINT, SIG_DFL);
 	  do_exec(arg_list);
 	} else if (child_pid > 0){
   current_pid = child_pid; int status;
@@ -385,7 +384,8 @@ int main(void) {
 	}
 	run_in_background = 0;
       } else {
-	do_exec(arg_list);
+        signal(SIGINT, handle_sigint);
+        do_exec(arg_list);
       }
       
     }
